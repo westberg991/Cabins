@@ -732,7 +732,7 @@
   const nav = document.getElementById('navLinks');
   burger.addEventListener('click', () => nav.classList.toggle('open'));
 
-  // Scroll reveal
+  // Scroll reveall
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
