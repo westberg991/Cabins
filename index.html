@@ -12,13 +12,13 @@
     /* ─── TOKENS ─────────────────────────────────────────────── */
     :root {
       --night:   #0d1418;
-      --deep:    #131d22;
-      --mist:    #1e2d35;
-      --fog:     #263540;
-      --glass:   rgba(19,29,34,0.72);
+      --deep:    #111b21;
+      --mist:    #1b2b33;
+      --fog:     #223040;
+      --glass:   rgba(17,27,33,0.80);
       --text:    #e8ede8;
-      --sub:     #93a89a;
-      --dim:     #566b5c;
+      --sub:     #8fa89a;
+      --dim:     #4d6258;
       --amber:   #e8a830;
       --amber-d: #c48a18;
       --pine:    #2f6b4a;
@@ -29,12 +29,13 @@
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
+
     body {
       background: var(--night);
       color: var(--text);
       font-family: 'Sora', sans-serif;
       font-weight: 300;
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
     }
 
@@ -43,44 +44,41 @@
       position: fixed;
       top:0; left:0; width:100%;
       height: var(--nav-h);
-      z-index: 100;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 5%;
-      background: rgba(13,20,24,0.60);
-      backdrop-filter: blur(18px);
+      background: rgba(13,20,24,0.70);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--divider);
     }
 
     .logo {
       font-family: 'Lora', serif;
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 600;
       color: var(--text);
       letter-spacing: 0.05em;
+      text-decoration: none;
     }
-
     .logo span { color: var(--amber); }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: 2.2rem;
     }
-
     .nav-links a {
       color: var(--sub);
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 400;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       transition: color .2s;
     }
-
     .nav-links a:hover { color: var(--text); }
-
     .nav-book {
       background: var(--text) !important;
       color: var(--night) !important;
@@ -89,10 +87,10 @@
       font-weight: 600 !important;
       letter-spacing: 0.04em !important;
       text-transform: none !important;
-      transition: background .2s !important;
+      font-size: 0.85rem !important;
+      transition: background .2s, color .2s !important;
     }
-
-    .nav-book:hover { background: var(--amber) !important; }
+    .nav-book:hover { background: var(--amber) !important; color: var(--night) !important; }
 
     .burger {
       display: none;
@@ -100,15 +98,12 @@
       gap: 5px;
       cursor: pointer;
       padding: 4px;
+      background: none;
+      border: none;
     }
-
     .burger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: .3s;
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px; transition: .3s;
     }
 
     /* ─── HERO ───────────────────────────────────────────────── */
@@ -117,34 +112,23 @@
       min-height: 100vh;
       display: flex;
       align-items: flex-end;
-      padding: calc(var(--nav-h) + 2rem) 5% 5rem;
+      padding: calc(var(--nav-h) + 3rem) 5% 5.5rem;
       overflow: hidden;
     }
-
     .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        url("https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/129898f7-cc94-441f-9728-2f82c6249a2b.jpeg?im_w=1440")
-        center / cover no-repeat;
+      position: absolute; inset: 0;
+      background: url("https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/129898f7-cc94-441f-9728-2f82c6249a2b.jpeg?im_w=1440") center / cover no-repeat;
     }
-
-    /* layered overlays to deepen the misty mood */
     .hero-bg::after {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
-        linear-gradient(to top, rgba(13,20,24,0.96) 0%, rgba(13,20,24,0.55) 45%, rgba(13,20,24,0.25) 100%),
-        linear-gradient(to right, rgba(13,20,24,0.5) 0%, transparent 60%);
+        linear-gradient(to top, rgba(13,20,24,0.97) 0%, rgba(13,20,24,0.60) 40%, rgba(13,20,24,0.20) 100%),
+        linear-gradient(to right, rgba(13,20,24,0.55) 0%, transparent 65%);
     }
-
     .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 720px;
+      position: relative; z-index: 2; max-width: 740px;
     }
-
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -156,15 +140,12 @@
       color: var(--amber);
       margin-bottom: 1.4rem;
     }
-
     .eyebrow::before {
       content: '';
       display: inline-block;
-      width: 28px;
-      height: 1.5px;
+      width: 28px; height: 1.5px;
       background: var(--amber);
     }
-
     h1 {
       font-family: 'Sora', sans-serif;
       font-size: clamp(3rem, 7vw, 6.5rem);
@@ -174,26 +155,21 @@
       color: var(--text);
       margin-bottom: 1.6rem;
     }
-
-    h1 .ghost {
-      color: rgba(232,237,232,0.2);
-    }
+    h1 .ghost { color: rgba(232,237,232,0.18); }
 
     .hero-desc {
       font-size: 1rem;
       color: var(--sub);
-      line-height: 1.75;
+      line-height: 1.8;
       max-width: 460px;
       margin-bottom: 2.5rem;
     }
-
     .hero-cta-row {
       display: flex;
       align-items: center;
       gap: 1.5rem;
       flex-wrap: wrap;
     }
-
     .btn-book {
       display: inline-block;
       background: var(--text);
@@ -206,9 +182,7 @@
       letter-spacing: 0.04em;
       transition: background .25s, transform .2s;
     }
-
     .btn-book:hover { background: var(--amber); transform: translateY(-2px); }
-
     .hero-rating {
       display: flex;
       align-items: center;
@@ -216,32 +190,28 @@
       color: var(--sub);
       font-size: 0.82rem;
     }
-
-    .hero-rating .star { color: var(--amber); font-size: 1rem; }
+    .star { color: var(--amber); }
 
     /* ─── SPECS STRIP ────────────────────────────────────────── */
     .specs-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
     }
-
     .spec {
       padding: 2.2rem 5%;
       border-right: 1px solid var(--divider);
     }
-
     .spec:last-child { border-right: none; }
-
     .spec-val {
       font-family: 'Lora', serif;
       font-size: 1.9rem;
       font-weight: 400;
       color: var(--amber);
       display: block;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
-
     .spec-label {
       font-size: 0.72rem;
       color: var(--dim);
@@ -249,9 +219,8 @@
       letter-spacing: 0.12em;
     }
 
-    /* ─── GALLERY ────────────────────────────────────────────── */
-    #gallery { background: var(--deep); }
-
+    /* ─── SHARED SECTION ─────────────────────────────────────── */
+    section { scroll-margin-top: calc(var(--nav-h) + 8px); }
     .section-inner { padding: 5.5rem 5%; }
 
     .section-label {
@@ -265,15 +234,12 @@
       color: var(--amber);
       margin-bottom: 0.9rem;
     }
-
     .section-label::before {
       content: '';
       display: inline-block;
-      width: 20px;
-      height: 1.5px;
+      width: 20px; height: 1.5px;
       background: var(--amber);
     }
-
     h2 {
       font-family: 'Sora', sans-serif;
       font-size: clamp(1.7rem, 2.8vw, 2.4rem);
@@ -284,7 +250,8 @@
       line-height: 1.2;
     }
 
-    /* mosaic layout */
+    /* ─── GALLERY ────────────────────────────────────────────── */
+    #gallery { background: var(--deep); }
     .gallery-mosaic {
       display: grid;
       grid-template-columns: 1.6fr 1fr;
@@ -293,30 +260,14 @@
       border-radius: var(--r);
       overflow: hidden;
     }
-
-    .g-main {
-      grid-row: 1 / 3;
-      overflow: hidden;
-    }
-
-    .g-thumb { overflow: hidden; }
-
+    .g-main { grid-row: 1 / 3; overflow: hidden; }
+    .g-thumb { overflow: hidden; background: var(--mist); }
     .gallery-mosaic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform .6s ease;
     }
-
     .gallery-mosaic img:hover { transform: scale(1.05); }
-
-    .gallery-nav {
-      display: flex;
-      gap: .75rem;
-      margin-top: 1.25rem;
-    }
-
+    .gallery-nav { display: flex; gap: .75rem; margin-top: 1.25rem; }
     .gbtn {
       background: var(--mist);
       border: 1px solid var(--divider);
@@ -329,28 +280,23 @@
       font-weight: 400;
       transition: background .2s, border-color .2s;
     }
-
     .gbtn:hover { background: var(--fog); border-color: var(--sub); }
 
     /* ─── INFO ───────────────────────────────────────────────── */
     #info { background: var(--night); }
-
     .info-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
       align-items: start;
     }
-
     .info-lead {
       font-size: 1rem;
       color: var(--sub);
       line-height: 1.85;
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
-
     .info-cards { display: flex; flex-direction: column; gap: 1rem; }
-
     .icard {
       background: var(--mist);
       border: 1px solid var(--divider);
@@ -358,7 +304,6 @@
       padding: 1.6rem 1.75rem;
       border-left: 3px solid var(--amber);
     }
-
     .icard h4 {
       font-family: 'Lora', serif;
       font-size: 1rem;
@@ -366,29 +311,66 @@
       color: var(--text);
       margin-bottom: 0.9rem;
     }
-
     .icard ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
-
     .icard li {
       color: var(--sub);
       font-size: .85rem;
       display: flex;
       align-items: flex-start;
       gap: .55rem;
-      line-height: 1.55;
+      line-height: 1.6;
     }
-
     .icard li::before { content: '—'; color: var(--dim); flex-shrink: 0; margin-top: .05em; }
 
-    /* ─── FEATURES ───────────────────────────────────────────── */
-    #features { background: var(--deep); }
+    /* ─── SLEEPING / HYGIENE BLOCK ───────────────────────────── */
+    #boende { background: var(--deep); }
+    .boende-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .bcard {
+      background: var(--mist);
+      border: 1px solid var(--divider);
+      border-radius: var(--r);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .bcard-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+    .bcard h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .bcard p {
+      color: var(--sub);
+      font-size: .88rem;
+      line-height: 1.75;
+    }
+    .bcard-tip {
+      background: rgba(232,168,48,0.08);
+      border: 1px solid rgba(232,168,48,0.18);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      font-size: .8rem;
+      color: var(--amber);
+      line-height: 1.55;
+    }
+    .bcard-tip strong { display: block; margin-bottom: .25rem; font-weight: 600; }
 
+    /* ─── FEATURES ───────────────────────────────────────────── */
+    #features { background: var(--night); }
     .feat-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
     }
-
     .fcard {
       background: var(--mist);
       border: 1px solid var(--divider);
@@ -396,41 +378,104 @@
       padding: 2.2rem 1.75rem;
       transition: transform .3s, border-color .3s;
     }
-
     .fcard:hover { transform: translateY(-4px); border-color: rgba(232,168,48,.25); }
-
-    .ficon {
-      font-size: 1.6rem;
-      margin-bottom: 1.25rem;
-      display: block;
-    }
-
+    .ficon { font-size: 1.6rem; margin-bottom: 1.25rem; display: block; }
     .fcard h3 {
       font-family: 'Lora', serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--text);
       margin-bottom: .65rem;
     }
-
     .fcard p { color: var(--sub); font-size: .87rem; line-height: 1.7; }
+
+    /* ─── UTFORSKA NEARBY ────────────────────────────────────── */
+    #utforska { background: var(--deep); }
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .ecard {
+      background: var(--mist);
+      border: 1px solid var(--divider);
+      border-radius: var(--r);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s, border-color .3s;
+    }
+    .ecard:hover { transform: translateY(-4px); border-color: rgba(232,168,48,.3); }
+    .ecard-head {
+      padding: 1.75rem 1.75rem 0;
+    }
+    .ecard-badge {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      background: rgba(232,168,48,0.1);
+      border: 1px solid rgba(232,168,48,0.2);
+      border-radius: 4px;
+      padding: .2rem .55rem;
+      margin-bottom: 1rem;
+    }
+    .ecard h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: .7rem;
+      line-height: 1.3;
+    }
+    .ecard p {
+      color: var(--sub);
+      font-size: .86rem;
+      line-height: 1.72;
+      padding: 0 1.75rem;
+    }
+    .ecard-foot {
+      margin-top: auto;
+      padding: 1.25rem 1.75rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ecard-dist {
+      font-size: .75rem;
+      color: var(--dim);
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .ecard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--amber);
+      text-decoration: none;
+      letter-spacing: .04em;
+      transition: gap .2s;
+    }
+    .ecard-link:hover { gap: .55rem; }
 
     /* ─── PACKLISTA ──────────────────────────────────────────── */
     #packlista { background: var(--night); }
-
     .pack-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
     }
-
     .pcard {
       background: var(--mist);
       border: 1px solid var(--divider);
       border-radius: var(--r);
       padding: 1.75rem;
     }
-
     .pcard h4 {
       font-family: 'Lora', serif;
       font-size: 1rem;
@@ -440,9 +485,7 @@
       padding-bottom: .75rem;
       border-bottom: 1px solid var(--divider);
     }
-
     .pcard ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
-
     .pcard li {
       color: var(--sub);
       font-size: .85rem;
@@ -451,7 +494,6 @@
       gap: .55rem;
       line-height: 1.5;
     }
-
     .pcard li::before { content: '✓'; color: var(--amber); font-size: .75rem; font-weight: 700; flex-shrink: 0; margin-top: .15em; }
 
     /* ─── FOOTER ─────────────────────────────────────────────── */
@@ -459,23 +501,43 @@
       background: var(--deep);
       border-top: 1px solid var(--divider);
       padding: 4rem 5%;
+    }
+    .footer-inner {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       flex-wrap: wrap;
-      gap: 2rem;
+      gap: 3rem;
+      margin-bottom: 3rem;
     }
-
-    .foot-brand .logo { font-size: 1.3rem; display: block; margin-bottom: .35rem; }
-    .foot-brand p { font-size: .8rem; color: var(--dim); }
-
-    .foot-right { text-align: right; }
-    .foot-right p { font-size: .85rem; color: var(--sub); margin-bottom: .3rem; }
-    .foot-right a { color: var(--amber); text-decoration: none; }
-    .foot-right a:hover { text-decoration: underline; }
-
-    /* ─── SECTION DIVIDERS ──────────────────────────────────── */
-    section + section { /* nothing needed — bg colors handle separation */ }
+    .foot-brand .logo { font-size: 1.3rem; display: block; margin-bottom: .5rem; }
+    .foot-brand p { font-size: .82rem; color: var(--dim); line-height: 1.6; max-width: 280px; }
+    .foot-col h5 {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+    .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .foot-col li a, .foot-col li {
+      font-size: .85rem;
+      color: var(--sub);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .foot-col li a:hover { color: var(--amber); }
+    .footer-bottom {
+      border-top: 1px solid var(--divider);
+      padding-top: 1.5rem;
+      font-size: .75rem;
+      color: var(--dim);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
 
     /* ─── REVEAL ─────────────────────────────────────────────── */
     [data-r] {
@@ -486,25 +548,20 @@
     [data-r].on { opacity: 1; transform: none; }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .explore-grid { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 960px) {
       .specs-strip { grid-template-columns: repeat(2,1fr); }
       .spec:nth-child(2) { border-right: none; }
-      .spec:nth-child(3),
-      .spec:nth-child(4) { border-top: 1px solid var(--divider); }
-
-      .gallery-mosaic {
-        grid-template-columns: 1fr;
-        grid-template-rows: 56vw;
-      }
+      .spec:nth-child(3), .spec:nth-child(4) { border-top: 1px solid var(--divider); }
+      .gallery-mosaic { grid-template-columns: 1fr; grid-template-rows: 56vw; }
       .g-main { grid-row: auto; }
       .g-thumb { display: none; }
-
       .info-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .feat-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; align-items: flex-start; }
-      .foot-right { text-align: left; }
+      .feat-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { gap: 2rem; }
     }
-
     @media (max-width: 640px) {
       :root { --nav-h: 60px; }
       .nav-links { display: none; }
@@ -512,39 +569,41 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: var(--nav-h);
-        left: 0; right: 0;
+        top: var(--nav-h); left: 0; right: 0;
         background: var(--deep);
         padding: 2rem 5%;
         border-bottom: 1px solid var(--divider);
         gap: 1.5rem;
-        z-index: 99;
+        z-index: 199;
       }
       .burger { display: flex; }
       h1 { font-size: 2.8rem; }
-      .pack-grid { grid-template-columns: 1fr; }
+      .boende-grid, .pack-grid, .feat-grid, .explore-grid { grid-template-columns: 1fr; }
       .section-inner { padding: 4rem 5%; }
-      .hero { padding-bottom: 3.5rem; align-items: flex-end; }
+      .footer-inner { flex-direction: column; }
+      .footer-bottom { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ═══ NAV ══════════════════════════════════════════════════ -->
 <nav>
-  <div class="logo">Fri<span>den</span></div>
+  <a href="#" class="logo">Fri<span>den</span></a>
   <div class="nav-links" id="navLinks">
     <a href="#info">Boendet</a>
+    <a href="#boende">Faciliteter</a>
+    <a href="#utforska">Utforska</a>
     <a href="#packlista">Packlista</a>
     <a href="#kontakt">Kontakt</a>
     <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="nav-book">Boka nu</a>
   </div>
-  <div class="burger" id="burger" aria-label="Meny" role="button" tabindex="0">
+  <button class="burger" id="burger" aria-label="Öppna meny">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
-<!-- HERO -->
+<!-- ═══ HERO ══════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
@@ -562,7 +621,7 @@
   </div>
 </section>
 
-<!-- SPECS STRIP -->
+<!-- ═══ SPECS STRIP ═══════════════════════════════════════════ -->
 <div class="specs-strip">
   <div class="spec">
     <span class="spec-val">4 st</span>
@@ -582,7 +641,7 @@
   </div>
 </div>
 
-<!-- GALLERY -->
+<!-- ═══ GALLERY ═══════════════════════════════════════════════ -->
 <section id="gallery">
   <div class="section-inner" data-r>
     <span class="section-label">Galleri</span>
@@ -605,22 +664,22 @@
   </div>
 </section>
 
-<!-- INFO -->
+<!-- ═══ INFO ══════════════════════════════════════════════════ -->
 <section id="info">
   <div class="section-inner" data-r>
     <span class="section-label">Boendet</span>
     <h2>Livet vid Bodtjärnen</h2>
     <div class="info-layout">
       <div>
-        <p class="info-lead">Belägen vid en privat sjö utan grannar — mellan Örnsköldsvik och Sollefteå — ger stugan dig en sällsynt chans att uppleva norrländsk natur på egna villkor. Rymmer upp till 4 personer med våningssäng, bäddsoffa, gasdriven kyl och spis samt vedkamin för kyliga kvällar.</p>
-        <p class="info-lead" style="font-size:.9rem;">Observera: på andra sidan sjön passerar tåg emellanåt — en liten påminnelse om att omvärlden finns, även om den känns långt borta.</p>
+        <p class="info-lead">Belägen vid en privat sjö utan grannar — mellan Örnsköldsvik och Sollefteå — ger stugan dig en sällsynt chans att uppleva norrländsk natur på egna villkor. Stugan rymmer upp till 4 personer med våningssäng, bäddsoffa, gasdriven kyl och spis samt vedkamin för kyliga kvällar.</p>
+        <p class="info-lead" style="font-size:.9rem;">På andra sidan sjön passerar tåg emellanåt — en liten, stämningsfull påminnelse om att omvärlden finns, fast den känns obegripligt långt borta.</p>
       </div>
       <div class="info-cards">
         <div class="icard">
           <h4>Off-grid — det enkla livet</h4>
           <ul>
-            <li>Inget rinnande vatten — ta med eget dricksvatten.</li>
-            <li>Ingen el, inget internet — ladda och ta med powerbank.</li>
+            <li>Inget rinnande vatten indraget — ta med eget dricksvatten.</li>
+            <li>Ingen el, inget internet — ladda upp och ta med powerbank.</li>
             <li>Utedass och förråd med ved på tomten.</li>
           </ul>
         </div>
@@ -630,12 +689,13 @@
             <li>Vedkamin, grill och tändmaterial.</li>
             <li>Båt, fiskespön och bastukachel.</li>
             <li>Picknickbord, utemöbler och tältplats.</li>
+            <li>Gasoldrivet kylskåp och spis.</li>
           </ul>
         </div>
         <div class="icard">
           <h4>Att tänka på</h4>
           <ul>
-            <li>Sängkläder medföljer ej — sovsäck rekommenderas.</li>
+            <li>Underlakan medföljer inte — ta med egna (se sömn-sektionen nedan).</li>
             <li>Perfekt för dig som söker ett genuint naturnära boende.</li>
           </ul>
         </div>
@@ -644,7 +704,38 @@
   </div>
 </section>
 
-<!-- FEATURES -->
+<!-- ═══ BOENDE & FACILITETER ══════════════════════════════════ -->
+<section id="boende">
+  <div class="section-inner" data-r>
+    <span class="section-label">Faciliteter</span>
+    <h2>Sova gott & hålla sig ren</h2>
+    <div class="boende-grid">
+
+      <div class="bcard">
+        <span class="bcard-icon">🛏</span>
+        <h3>Sovkomfort för 4 personer</h3>
+        <p>Stugan har täcken och kuddar till alla 4 gäster — du sover med riktigt sängkläder, inte bara en sovsäck på ett hårt underlag.</p>
+        <div class="bcard-tip">
+          <strong>Så här bäddar du:</strong>
+          Täcken och kuddar finns på plats. Ta med egna underlakan som du lägger direkt mot madrassen. Lägg sedan på påslakanet — eller din sovsäck — och sov gott.
+        </div>
+      </div>
+
+      <div class="bcard">
+        <span class="bcard-icon">🚿</span>
+        <h3>Utedusch med gasolvärmt vatten</h3>
+        <p>Ute vid stugan finns en enkel utedusch som fungerar riktigt bra. Vattnet värms med gasol och pumpas upp via en manuell vattenpump — primitivt på rätt sätt.</p>
+        <div class="bcard-tip">
+          <strong>Så fungerar det:</strong>
+          Fyll tanken med vatten, tänd gasolen och låt det värmas upp. Pumpa sedan upp vattnet med handpumpen och duscha under öppen himmel — med skogen som vägg.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES ══════════════════════════════════════════════ -->
 <section id="features">
   <div class="section-inner" data-r>
     <span class="section-label">Vad ingår</span>
@@ -658,7 +749,7 @@
       <div class="fcard">
         <span class="ficon">🚣</span>
         <h3>Friluftsliv</h3>
-        <p>Båt och fiske ingår utan extra kostnad. Perfekt för morgonbad, fångst vid bryggan och paddling.</p>
+        <p>Båt och fiske ingår utan extra kostnad. Perfekt för morgonbad, fångst vid bryggan och paddling på sjön.</p>
       </div>
       <div class="fcard">
         <span class="ficon">🌲</span>
@@ -669,7 +760,54 @@
   </div>
 </section>
 
-<!-- PACKLISTA -->
+<!-- ═══ UTFORSKA OMRÅDET ═══════════════════════════════════════ -->
+<section id="utforska">
+  <div class="section-inner" data-r>
+    <span class="section-label">Utforska</span>
+    <h2>I närheten av Friden</h2>
+    <div class="explore-grid">
+
+      <div class="ecard">
+        <div class="ecard-head">
+          <span class="ecard-badge">Vandring</span>
+          <h3>Nätra Fjällskog</h3>
+        </div>
+        <p>En av Norrlands dolda pärlor — Nätra fjällskog erbjuder dramatisk fjällterräng och fantastiska vyer, alldeles nära stugan. Perfekt dagsutflykt för den som vill ta sig ut på ordentliga stigar bortom Höga Kusten-området.</p>
+        <div class="ecard-foot">
+          <span class="ecard-dist">📍 Nätra, Västernorrland</span>
+          <a href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank" class="ecard-link">Läs mer →</a>
+        </div>
+      </div>
+
+      <div class="ecard">
+        <div class="ecard-head">
+          <span class="ecard-badge">Utsikt</span>
+          <h3>Hästbacken & Ormvägen</h3>
+        </div>
+        <p>Följ Ormvägen upp mot Hästbacken för en fin utsiktsplats i det närmaste naturområdet. En lättgången promenad som belönar dig med en storslagen vy över det norrländska landskapet.</p>
+        <div class="ecard-foot">
+          <span class="ecard-dist">📍 Nära stugan</span>
+          <a href="#kontakt" class="ecard-link">Fråga oss om vägen →</a>
+        </div>
+      </div>
+
+      <div class="ecard">
+        <div class="ecard-head">
+          <span class="ecard-badge">Promenad</span>
+          <h3>Stordegersjön</h3>
+        </div>
+        <p>Starta promenaden från Hinnsjövägen och gå längs stigarna ned till det lugna Stordegersjön. En avslappnad naturpromenad för hela familjen, med fin natur och sjöutsikt som belöning.</p>
+        <div class="ecard-foot">
+          <span class="ecard-dist">📍 Från Hinnsjövägen</span>
+          <a href="#kontakt" class="ecard-link">Fråga oss om vägen →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PACKLISTA ════════════════════════════════════════════ -->
 <section id="packlista">
   <div class="section-inner" data-r>
     <span class="section-label">Packlista</span>
@@ -678,9 +816,17 @@
       <div class="pcard">
         <h4>Sovkomfort</h4>
         <ul>
-          <li>Sängkläder, kudde och sovsäck</li>
+          <li>Underlakan (ett per person — täcken och kuddar finns)</li>
+          <li>Påslakanset eller sovsäck</li>
           <li>Extra filt för kyliga kvällar</li>
-          <li>Hygienartiklar och handduk</li>
+        </ul>
+      </div>
+      <div class="pcard">
+        <h4>Hygien</h4>
+        <ul>
+          <li>Handduk och duschtvål</li>
+          <li>Hygienartiklar och tandborste</li>
+          <li>Myggmedel och solkräm</li>
         </ul>
       </div>
       <div class="pcard">
@@ -692,53 +838,63 @@
         </ul>
       </div>
       <div class="pcard">
-        <h4>Elektronik</h4>
+        <h4>Elektronik & Friluftsliv</h4>
         <ul>
           <li>Powerbank (ingen el på plats)</li>
-          <li>Ficklampor och reservbatterier</li>
-          <li>Ladda allt elektronik innan avresa</li>
-        </ul>
-      </div>
-      <div class="pcard">
-        <h4>Friluftsliv</h4>
-        <ul>
+          <li>Ficklampa och reservbatterier</li>
           <li>Vattentåliga kläder och skor</li>
-          <li>Badutrustning och handduk</li>
-          <li>Solkräm och myggmedel</li>
+          <li>Vandringskarta om du planerar Nätra</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
 <footer id="kontakt">
-  <div class="foot-brand">
-    <span class="logo">Friden</span>
-    <p>Off-grid stuga vid Bodtjärnen, Undrom, Sverige</p>
+  <div class="footer-inner">
+    <div class="foot-brand">
+      <span class="logo">Friden</span>
+      <p>Off-grid stuga vid Bodtjärnen, Undrom, Västernorrland. En plats för dem som söker verklig avkoppling i norrländsk natur.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Navigera</h5>
+      <ul>
+        <li><a href="#info">Boendet</a></li>
+        <li><a href="#boende">Faciliteter</a></li>
+        <li><a href="#utforska">Utforska</a></li>
+        <li><a href="#packlista">Packlista</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Kontakt & Bokning</h5>
+      <ul>
+        <li><a href="mailto:bokning@undrom.se">bokning@undrom.se</a></li>
+        <li><a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank">Boka via Airbnb →</a></li>
+        <li><a href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank">Nätra Fjällskog →</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="foot-right">
-    <p>Frågor & önskemål</p>
-    <p><a href="mailto:bokning@undrom.se">bokning@undrom.se</a></p>
-    <p style="margin-top:.7rem; font-size:.78rem; color:var(--dim);">
-      Eller boka direkt via <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank">Airbnb →</a>
-    </p>
+  <div class="footer-bottom">
+    <span>© 2025 Friden — Undrom, Sverige</span>
+    <span>Off-grid stuga vid Bodtjärnen</span>
   </div>
 </footer>
 
 <script>
-  // Burger menuu
+  // Burger menu
   const burger = document.getElementById('burger');
-  const nav = document.getElementById('navLinks');
-  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  // Scroll reveall
+  // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('[data-r]').forEach(el => obs.observe(el));
 
-  // Slider
+  // Gallery slider
   const imgs = [
     { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/129898f7-cc94-441f-9728-2f82c6249a2b.jpeg?im_w=720', alt:'Stugan vid sjön' },
     { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTI2MTYzMTM2NTc4MjEzNzk4MQ==/original/eefa9f5b-bbda-4340-bafe-eb991753054e.jpeg?im_w=320', alt:'Utsikt' },
@@ -747,19 +903,21 @@
     { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/d11689d0-11ed-4a41-871a-8b318618732a.jpeg?im_w=320', alt:'Kvällsbild' },
     { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/1f9550d6-d9cf-497c-82d1-7325403089ea.jpeg?im_w=320', alt:'Uteplats' }
   ];
-  let i = 0;
+  let idx = 0;
   const mainImg = document.getElementById('mainImg');
   const th1 = document.getElementById('th1');
   const th2 = document.getElementById('th2');
 
   function update() {
-    mainImg.src = imgs[i].src; mainImg.alt = imgs[i].alt;
-    if (th1) { const n1 = imgs[(i+1)%imgs.length]; th1.src=n1.src; th1.alt=n1.alt; }
-    if (th2) { const n2 = imgs[(i+2)%imgs.length]; th2.src=n2.src; th2.alt=n2.alt; }
+    mainImg.src = imgs[idx].src; mainImg.alt = imgs[idx].alt;
+    if (th1) { const n1 = imgs[(idx+1)%imgs.length]; th1.src=n1.src; th1.alt=n1.alt; }
+    if (th2) { const n2 = imgs[(idx+2)%imgs.length]; th2.src=n2.src; th2.alt=n2.alt; }
   }
-
-  document.getElementById('next').addEventListener('click', () => { i=(i+1)%imgs.length; update(); });
-  document.getElementById('prev').addEventListener('click', () => { i=(i-1+imgs.length)%imgs.length; update(); });
+  document.getElementById('next').addEventListener('click', () => { idx=(idx+1)%imgs.length; update(); });
+  document.getElementById('prev').addEventListener('click', () => { idx=(idx-1+imgs.length)%imgs.length; update(); });
 </script>
 </body>
 </html>
+
+
+
