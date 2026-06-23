@@ -26,10 +26,10 @@
       --r:       14px;
       --nav-h:   68px;
     }
-
+ 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-
+ 
     body {
       background: var(--night);
       color: var(--text);
@@ -38,7 +38,7 @@
       line-height: 1.65;
       overflow-x: hidden;
     }
-
+ 
     /* ─── NAV ────────────────────────────────────────────────── */
     nav {
       position: fixed;
@@ -53,7 +53,7 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--divider);
     }
-
+ 
     .logo {
       font-family: 'Lora', serif;
       font-size: 1.45rem;
@@ -63,7 +63,7 @@
       text-decoration: none;
     }
     .logo span { color: var(--amber); }
-
+ 
     .nav-links {
       display: flex;
       align-items: center;
@@ -91,7 +91,7 @@
       transition: background .2s, color .2s !important;
     }
     .nav-book:hover { background: var(--amber) !important; color: var(--night) !important; }
-
+ 
     .burger {
       display: none;
       flex-direction: column;
@@ -105,7 +105,7 @@
       display: block; width: 22px; height: 2px;
       background: var(--text); border-radius: 2px; transition: .3s;
     }
-
+ 
     /* ─── HERO ───────────────────────────────────────────────── */
     .hero {
       position: relative;
@@ -156,7 +156,7 @@
       margin-bottom: 1.6rem;
     }
     h1 .ghost { color: rgba(232,237,232,0.18); }
-
+ 
     .hero-desc {
       font-size: 1rem;
       color: var(--sub);
@@ -191,7 +191,7 @@
       font-size: 0.82rem;
     }
     .star { color: var(--amber); }
-
+ 
     /* ─── SPECS STRIP ────────────────────────────────────────── */
     .specs-strip {
       display: grid;
@@ -218,11 +218,11 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
-
+ 
     /* ─── SHARED SECTION ─────────────────────────────────────── */
     section { scroll-margin-top: calc(var(--nav-h) + 8px); }
     .section-inner { padding: 5.5rem 5%; }
-
+ 
     .section-label {
       display: inline-flex;
       align-items: center;
@@ -249,7 +249,7 @@
       margin-bottom: 2.5rem;
       line-height: 1.2;
     }
-
+ 
     /* ─── GALLERY ────────────────────────────────────────────── */
     #gallery { background: var(--deep); }
     .gallery-mosaic {
@@ -281,7 +281,7 @@
       transition: background .2s, border-color .2s;
     }
     .gbtn:hover { background: var(--fog); border-color: var(--sub); }
-
+ 
     /* ─── INFO ───────────────────────────────────────────────── */
     #info { background: var(--night); }
     .info-layout {
@@ -321,7 +321,7 @@
       line-height: 1.6;
     }
     .icard li::before { content: '—'; color: var(--dim); flex-shrink: 0; margin-top: .05em; }
-
+ 
     /* ─── SLEEPING / HYGIENE BLOCK ───────────────────────────── */
     #boende { background: var(--deep); }
     .boende-grid {
@@ -363,7 +363,7 @@
       line-height: 1.55;
     }
     .bcard-tip strong { display: block; margin-bottom: .25rem; font-weight: 600; }
-
+ 
     /* ─── FEATURES ───────────────────────────────────────────── */
     #features { background: var(--night); }
     .feat-grid {
@@ -388,7 +388,7 @@
       margin-bottom: .65rem;
     }
     .fcard p { color: var(--sub); font-size: .87rem; line-height: 1.7; }
-
+ 
     /* ─── UTFORSKA NEARBY ────────────────────────────────────── */
     #utforska { background: var(--deep); }
     .explore-grid {
@@ -462,7 +462,7 @@
       transition: gap .2s;
     }
     .ecard-link:hover { gap: .55rem; }
-
+ 
     /* ─── PACKLISTA ──────────────────────────────────────────── */
     #packlista { background: var(--night); }
     .pack-grid {
@@ -495,7 +495,204 @@
       line-height: 1.5;
     }
     .pcard li::before { content: '✓'; color: var(--amber); font-size: .75rem; font-weight: 700; flex-shrink: 0; margin-top: .15em; }
-
+ 
+    /* ─── REVIEWS ────────────────────────────────────────────── */
+    #reviews { background: var(--deep); }
+ 
+    .reviews-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+ 
+    .rating-big {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+    }
+ 
+    .rating-num {
+      font-family: 'Lora', serif;
+      font-size: 4.5rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1;
+    }
+ 
+    .rating-right { display: flex; flex-direction: column; gap: .3rem; }
+ 
+    .stars-row { display: flex; gap: 3px; }
+    .stars-row span { color: var(--amber); font-size: 1.25rem; }
+ 
+    .rating-count { font-size: .82rem; color: var(--dim); }
+ 
+    .rating-link {
+      display: inline-block;
+      margin-top: .5rem;
+      font-size: .8rem;
+      color: var(--amber);
+      text-decoration: none;
+      border: 1px solid rgba(232,168,48,.3);
+      padding: .45rem 1rem;
+      border-radius: 6px;
+      transition: background .2s;
+    }
+    .rating-link:hover { background: rgba(232,168,48,.08); }
+ 
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+ 
+    .cat-card {
+      background: var(--mist);
+      border: 1px solid var(--divider);
+      border-radius: var(--r);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+    }
+ 
+    .cat-icon { font-size: 1.5rem; display: block; margin-bottom: .75rem; }
+ 
+    .cat-label {
+      font-size: .78rem;
+      color: var(--sub);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      display: block;
+      margin-bottom: .65rem;
+    }
+ 
+    .cat-bar-bg {
+      width: 100%;
+      height: 4px;
+      background: rgba(232,237,232,.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: .45rem;
+    }
+ 
+    .cat-bar-fill {
+      height: 100%;
+      background: var(--amber);
+      border-radius: 4px;
+    }
+ 
+    .cat-score {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--amber);
+    }
+ 
+    /* ─── MAP ────────────────────────────────────────────────── */
+    #karta { background: var(--night); }
+ 
+    .map-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 2rem;
+      align-items: start;
+    }
+ 
+    .map-embed-wrap {
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--divider);
+      line-height: 0;
+    }
+ 
+    .map-embed-wrap iframe {
+      width: 100%;
+      height: 440px;
+      border: none;
+      display: block;
+      filter: grayscale(20%) invert(90%) hue-rotate(170deg) saturate(0.6) brightness(0.85);
+    }
+ 
+    .map-panel {
+      background: var(--mist);
+      border: 1px solid var(--divider);
+      border-radius: var(--r);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+ 
+    .map-address {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+ 
+    .map-address-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+ 
+    .map-address-text {
+      font-size: .95rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+ 
+    .map-address-coord {
+      font-size: .75rem;
+      color: var(--dim);
+      font-family: monospace;
+    }
+ 
+    .map-divider { height: 1px; background: var(--divider); }
+ 
+    .map-cta-head {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: .1rem;
+    }
+ 
+    .map-btns { display: flex; flex-direction: column; gap: .65rem; }
+ 
+    .map-btn {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .85rem 1.1rem;
+      border-radius: 8px;
+      font-size: .87rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--divider);
+      background: rgba(232,237,232,.03);
+      color: var(--text);
+      transition: background .2s, border-color .2s;
+      font-family: 'Sora', sans-serif;
+      width: 100%;
+      text-align: left;
+    }
+ 
+    .map-btn:hover { background: rgba(232,237,232,.07); border-color: rgba(232,237,232,.18); }
+ 
+    .map-btn-icon { font-size: 1.1rem; flex-shrink: 0; }
+ 
+    .map-btn-sub {
+      font-size: .72rem;
+      color: var(--dim);
+      display: block;
+      margin-top: .1rem;
+      font-weight: 300;
+    }
+ 
     /* ─── FOOTER ─────────────────────────────────────────────── */
     footer {
       background: var(--deep);
@@ -538,7 +735,7 @@
       flex-wrap: wrap;
       gap: .5rem;
     }
-
+ 
     /* ─── REVEAL ─────────────────────────────────────────────── */
     [data-r] {
       opacity: 0;
@@ -546,10 +743,14 @@
       transition: opacity .75s ease, transform .75s ease;
     }
     [data-r].on { opacity: 1; transform: none; }
-
+ 
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .explore-grid { grid-template-columns: 1fr 1fr; }
+      .map-layout { grid-template-columns: 1fr; }
+      .map-panel { flex-direction: row; flex-wrap: wrap; gap: 1.25rem; }
+      .map-btns { flex-direction: row; flex-wrap: wrap; }
+      .map-btn { width: auto; flex: 1 1 160px; }
     }
     @media (max-width: 960px) {
       .specs-strip { grid-template-columns: repeat(2,1fr); }
@@ -561,6 +762,7 @@
       .info-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .feat-grid { grid-template-columns: 1fr 1fr; }
       .footer-inner { gap: 2rem; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
       :root { --nav-h: 60px; }
@@ -582,11 +784,18 @@
       .section-inner { padding: 4rem 5%; }
       .footer-inner { flex-direction: column; }
       .footer-bottom { flex-direction: column; }
+      .map-panel { flex-direction: column; }
+      .map-btns { flex-direction: column; }
+      .map-btn { width: 100%; }
+      .map-embed-wrap iframe { height: 280px; }
+      .rating-num { font-size: 3.5rem; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-top { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-
+ 
 <!-- ═══ NAV ══════════════════════════════════════════════════ -->
 <nav>
   <a href="#" class="logo">Fri<span>den</span></a>
@@ -595,6 +804,7 @@
     <a href="#boende">Faciliteter</a>
     <a href="#utforska">Utforska</a>
     <a href="#packlista">Packlista</a>
+    <a href="#karta">Hitta hit</a>
     <a href="#kontakt">Kontakt</a>
     <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="nav-book">Boka nu</a>
   </div>
@@ -602,7 +812,7 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
-
+ 
 <!-- ═══ HERO ══════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
@@ -620,7 +830,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ═══ SPECS STRIP ═══════════════════════════════════════════ -->
 <div class="specs-strip">
   <div class="spec">
@@ -640,7 +850,7 @@
     <span class="spec-label">Båt & fiske ingår</span>
   </div>
 </div>
-
+ 
 <!-- ═══ GALLERY ═══════════════════════════════════════════════ -->
 <section id="gallery">
   <div class="section-inner" data-r>
@@ -663,7 +873,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ═══ INFO ══════════════════════════════════════════════════ -->
 <section id="info">
   <div class="section-inner" data-r>
@@ -703,14 +913,14 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ═══ BOENDE & FACILITETER ══════════════════════════════════ -->
 <section id="boende">
   <div class="section-inner" data-r>
     <span class="section-label">Faciliteter</span>
     <h2>Sova gott & hålla sig ren</h2>
     <div class="boende-grid">
-
+ 
       <div class="bcard">
         <span class="bcard-icon">🛏</span>
         <h3>Sovkomfort för 4 personer</h3>
@@ -720,7 +930,7 @@
           Täcken och kuddar finns på plats. Ta med egna underlakan som du lägger direkt mot madrassen. Lägg sedan på påslakanet — eller din sovsäck — och sov gott.
         </div>
       </div>
-
+ 
       <div class="bcard">
         <span class="bcard-icon">🚿</span>
         <h3>Utedusch med gasolvärmt vatten</h3>
@@ -730,11 +940,11 @@
           Fyll tanken med vatten, tänd gasolen och låt det värmas upp. Pumpa sedan upp vattnet med handpumpen och duscha under öppen himmel — med skogen som vägg.
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <!-- ═══ FEATURES ══════════════════════════════════════════════ -->
 <section id="features">
   <div class="section-inner" data-r>
@@ -759,14 +969,14 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ═══ UTFORSKA OMRÅDET ═══════════════════════════════════════ -->
 <section id="utforska">
   <div class="section-inner" data-r>
     <span class="section-label">Utforska</span>
     <h2>I närheten av Friden</h2>
     <div class="explore-grid">
-
+ 
       <div class="ecard">
         <div class="ecard-head">
           <span class="ecard-badge">Vandring</span>
@@ -778,7 +988,7 @@
           <a href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank" class="ecard-link">Läs mer →</a>
         </div>
       </div>
-
+ 
       <div class="ecard">
         <div class="ecard-head">
           <span class="ecard-badge">Utsikt</span>
@@ -790,7 +1000,7 @@
           <a href="#kontakt" class="ecard-link">Fråga oss om vägen →</a>
         </div>
       </div>
-
+ 
       <div class="ecard">
         <div class="ecard-head">
           <span class="ecard-badge">Promenad</span>
@@ -802,11 +1012,11 @@
           <a href="#kontakt" class="ecard-link">Fråga oss om vägen →</a>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <!-- ═══ PACKLISTA ════════════════════════════════════════════ -->
 <section id="packlista">
   <div class="section-inner" data-r>
@@ -849,7 +1059,107 @@
     </div>
   </div>
 </section>
-
+ 
+<!-- ═══ OMDÖMEN ══════════════════════════════════════════════ -->
+<section id="reviews">
+  <div class="section-inner" data-r>
+    <span class="section-label">Omdömen</span>
+    <h2>Vad gästerna säger</h2>
+    <div class="reviews-top">
+      <div class="rating-big">
+        <span class="rating-num">4,5</span>
+        <div class="rating-right">
+          <div class="stars-row">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span style="opacity:.5">★</span>
+          </div>
+          <span class="rating-count">Baserat på 6 omdömen på Airbnb</span>
+        </div>
+      </div>
+      <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="rating-link">Läs alla omdömen på Airbnb →</a>
+    </div>
+ 
+    <div class="categories-grid">
+      <div class="cat-card">
+        <span class="cat-icon">📍</span>
+        <span class="cat-label">Plats</span>
+        <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:96%"></div></div>
+        <span class="cat-score">4,8</span>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">✅</span>
+        <span class="cat-label">Korrekt info</span>
+        <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:90%"></div></div>
+        <span class="cat-score">4,5</span>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">😌</span>
+        <span class="cat-label">Komfort</span>
+        <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:88%"></div></div>
+        <span class="cat-score">4,4</span>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">🧹</span>
+        <span class="cat-label">Renlighet</span>
+        <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:90%"></div></div>
+        <span class="cat-score">4,5</span>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ═══ KARTA & VÄGBESKRIVNING ════════════════════════════════ -->
+<section id="karta">
+  <div class="section-inner" data-r>
+    <span class="section-label">Hitta hit</span>
+    <h2>Stugan vid Bodtjärnen</h2>
+    <div class="map-layout">
+      <div class="map-embed-wrap">
+        <iframe
+          src="https://maps.google.com/maps?q=63.226306,18.033650&z=13&output=embed"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Karta över Friden vid Bodtjärnen">
+        </iframe>
+      </div>
+      <div class="map-panel">
+        <div class="map-address">
+          <span class="map-address-label">Adress</span>
+          <span class="map-address-text">Friden, Bodtjärnen<br>Undrom, Västernorrland</span>
+          <span class="map-address-coord">63.2263° N, 18.0337° Ö</span>
+        </div>
+        <div class="map-divider"></div>
+        <div>
+          <p class="map-cta-head">Vägbeskrivning</p>
+          <div class="map-btns">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=63.226306,18.033650" target="_blank" class="map-btn">
+              <span class="map-btn-icon">🗺</span>
+              <span>
+                Google Maps
+                <span class="map-btn-sub">Öppna i Google Maps</span>
+              </span>
+            </a>
+            <a href="https://maps.apple.com/?daddr=63.226306,18.033650&dirflg=d" target="_blank" class="map-btn">
+              <span class="map-btn-icon">🍎</span>
+              <span>
+                Apple Kartor
+                <span class="map-btn-sub">Öppna i Apple Maps</span>
+              </span>
+            </a>
+            <a href="https://waze.com/ul?ll=63.226306,18.033650&navigate=yes" target="_blank" class="map-btn">
+              <span class="map-btn-icon">🚗</span>
+              <span>
+                Waze
+                <span class="map-btn-sub">Öppna i Waze</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
 <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
 <footer id="kontakt">
   <div class="footer-inner">
@@ -864,6 +1174,8 @@
         <li><a href="#boende">Faciliteter</a></li>
         <li><a href="#utforska">Utforska</a></li>
         <li><a href="#packlista">Packlista</a></li>
+        <li><a href="#reviews">Omdömen</a></li>
+        <li><a href="#karta">Hitta hit</a></li>
       </ul>
     </div>
     <div class="foot-col">
@@ -880,20 +1192,20 @@
     <span>Off-grid stuga vid Bodtjärnen</span>
   </div>
 </footer>
-
+ 
 <script>
   // Burger menu
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
   burger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
+ 
   // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('[data-r]').forEach(el => obs.observe(el));
-
+ 
   // Gallery slider
   const imgs = [
     { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/129898f7-cc94-441f-9728-2f82c6249a2b.jpeg?im_w=720', alt:'Stugan vid sjön' },
@@ -907,7 +1219,7 @@
   const mainImg = document.getElementById('mainImg');
   const th1 = document.getElementById('th1');
   const th2 = document.getElementById('th2');
-
+ 
   function update() {
     mainImg.src = imgs[idx].src; mainImg.alt = imgs[idx].alt;
     if (th1) { const n1 = imgs[(idx+1)%imgs.length]; th1.src=n1.src; th1.alt=n1.alt; }
@@ -918,6 +1230,3 @@
 </script>
 </body>
 </html>
-
-
-
