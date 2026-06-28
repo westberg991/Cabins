@@ -26,10 +26,10 @@
       --r:       14px;
       --nav-h:   68px;
     }
- 
+
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
- 
+
     body {
       background: var(--night);
       color: var(--text);
@@ -38,7 +38,7 @@
       line-height: 1.65;
       overflow-x: hidden;
     }
- 
+
     /* ─── NAV ────────────────────────────────────────────────── */
     nav {
       position: fixed;
@@ -53,7 +53,7 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--divider);
     }
- 
+
     .logo {
       font-family: 'Lora', serif;
       font-size: 1.45rem;
@@ -63,7 +63,7 @@
       text-decoration: none;
     }
     .logo span { color: var(--amber); }
- 
+
     .nav-links {
       display: flex;
       align-items: center;
@@ -91,7 +91,7 @@
       transition: background .2s, color .2s !important;
     }
     .nav-book:hover { background: var(--amber) !important; color: var(--night) !important; }
- 
+
     .burger {
       display: none;
       flex-direction: column;
@@ -105,7 +105,7 @@
       display: block; width: 22px; height: 2px;
       background: var(--text); border-radius: 2px; transition: .3s;
     }
- 
+
     /* ─── HERO ───────────────────────────────────────────────── */
     .hero {
       position: relative;
@@ -117,7 +117,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: url("https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/129898f7-cc94-441f-9728-2f82c6249a2b.jpeg?im_w=1440") center / cover no-repeat;
+      background: url("StugaVyUte.jpg") center / cover no-repeat;
     }
     .hero-bg::after {
       content: '';
@@ -156,7 +156,7 @@
       margin-bottom: 1.6rem;
     }
     h1 .ghost { color: rgba(232,237,232,0.18); }
- 
+
     .hero-desc {
       font-size: 1rem;
       color: var(--sub);
@@ -191,7 +191,7 @@
       font-size: 0.82rem;
     }
     .star { color: var(--amber); }
- 
+
     /* ─── SPECS STRIP ────────────────────────────────────────── */
     .specs-strip {
       display: grid;
@@ -218,11 +218,11 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
- 
+
     /* ─── SHARED SECTION ─────────────────────────────────────── */
     section { scroll-margin-top: calc(var(--nav-h) + 8px); }
     .section-inner { padding: 5.5rem 5%; }
- 
+
     .section-label {
       display: inline-flex;
       align-items: center;
@@ -249,7 +249,7 @@
       margin-bottom: 2.5rem;
       line-height: 1.2;
     }
- 
+
     /* ─── GALLERY ────────────────────────────────────────────── */
     #gallery { background: var(--deep); }
     .gallery-mosaic {
@@ -281,7 +281,7 @@
       transition: background .2s, border-color .2s;
     }
     .gbtn:hover { background: var(--fog); border-color: var(--sub); }
- 
+
     /* ─── INFO ───────────────────────────────────────────────── */
     #info { background: var(--night); }
     .info-layout {
@@ -321,7 +321,7 @@
       line-height: 1.6;
     }
     .icard li::before { content: '—'; color: var(--dim); flex-shrink: 0; margin-top: .05em; }
- 
+
     /* ─── SLEEPING / HYGIENE BLOCK ───────────────────────────── */
     #boende { background: var(--deep); }
     .boende-grid {
@@ -363,7 +363,7 @@
       line-height: 1.55;
     }
     .bcard-tip strong { display: block; margin-bottom: .25rem; font-weight: 600; }
- 
+
     /* ─── FEATURES ───────────────────────────────────────────── */
     #features { background: var(--night); }
     .feat-grid {
@@ -388,7 +388,7 @@
       margin-bottom: .65rem;
     }
     .fcard p { color: var(--sub); font-size: .87rem; line-height: 1.7; }
- 
+
     /* ─── UTFORSKA NEARBY ────────────────────────────────────── */
     #utforska { background: var(--deep); }
     .explore-grid {
@@ -462,7 +462,7 @@
       transition: gap .2s;
     }
     .ecard-link:hover { gap: .55rem; }
- 
+
     /* ─── PACKLISTA ──────────────────────────────────────────── */
     #packlista { background: var(--night); }
     .pack-grid {
@@ -495,10 +495,10 @@
       line-height: 1.5;
     }
     .pcard li::before { content: '✓'; color: var(--amber); font-size: .75rem; font-weight: 700; flex-shrink: 0; margin-top: .15em; }
- 
+
     /* ─── REVIEWS ────────────────────────────────────────────── */
     #reviews { background: var(--deep); }
- 
+
     .reviews-top {
       display: flex;
       align-items: flex-end;
@@ -507,13 +507,13 @@
       flex-wrap: wrap;
       margin-bottom: 3rem;
     }
- 
+
     .rating-big {
       display: flex;
       align-items: baseline;
       gap: .75rem;
     }
- 
+
     .rating-num {
       font-family: 'Lora', serif;
       font-size: 4.5rem;
@@ -521,14 +521,14 @@
       color: var(--text);
       line-height: 1;
     }
- 
+
     .rating-right { display: flex; flex-direction: column; gap: .3rem; }
- 
+
     .stars-row { display: flex; gap: 3px; }
     .stars-row span { color: var(--amber); font-size: 1.25rem; }
- 
+
     .rating-count { font-size: .82rem; color: var(--dim); }
- 
+
     .rating-link {
       display: inline-block;
       margin-top: .5rem;
@@ -541,13 +541,13 @@
       transition: background .2s;
     }
     .rating-link:hover { background: rgba(232,168,48,.08); }
- 
+
     .categories-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
     }
- 
+
     .cat-card {
       background: var(--mist);
       border: 1px solid var(--divider);
@@ -555,9 +555,9 @@
       padding: 1.5rem 1.25rem;
       text-align: center;
     }
- 
+
     .cat-icon { font-size: 1.5rem; display: block; margin-bottom: .75rem; }
- 
+
     .cat-label {
       font-size: .78rem;
       color: var(--sub);
@@ -566,7 +566,7 @@
       display: block;
       margin-bottom: .65rem;
     }
- 
+
     .cat-bar-bg {
       width: 100%;
       height: 4px;
@@ -575,36 +575,36 @@
       overflow: hidden;
       margin-bottom: .45rem;
     }
- 
+
     .cat-bar-fill {
       height: 100%;
       background: var(--amber);
       border-radius: 4px;
     }
- 
+
     .cat-score {
       font-size: .82rem;
       font-weight: 600;
       color: var(--amber);
     }
- 
+
     /* ─── MAP ────────────────────────────────────────────────── */
     #karta { background: var(--night); }
- 
+
     .map-layout {
       display: grid;
       grid-template-columns: 1fr 360px;
       gap: 2rem;
       align-items: start;
     }
- 
+
     .map-embed-wrap {
       border-radius: var(--r);
       overflow: hidden;
       border: 1px solid var(--divider);
       line-height: 0;
     }
- 
+
     .map-embed-wrap iframe {
       width: 100%;
       height: 440px;
@@ -612,7 +612,7 @@
       display: block;
       filter: grayscale(20%) invert(90%) hue-rotate(170deg) saturate(0.6) brightness(0.85);
     }
- 
+
     .map-panel {
       background: var(--mist);
       border: 1px solid var(--divider);
@@ -622,13 +622,13 @@
       flex-direction: column;
       gap: 1.5rem;
     }
- 
+
     .map-address {
       display: flex;
       flex-direction: column;
       gap: .4rem;
     }
- 
+
     .map-address-label {
       font-size: .72rem;
       font-weight: 600;
@@ -636,21 +636,21 @@
       text-transform: uppercase;
       color: var(--dim);
     }
- 
+
     .map-address-text {
       font-size: .95rem;
       color: var(--text);
       line-height: 1.55;
     }
- 
+
     .map-address-coord {
       font-size: .75rem;
       color: var(--dim);
       font-family: monospace;
     }
- 
+
     .map-divider { height: 1px; background: var(--divider); }
- 
+
     .map-cta-head {
       font-size: .78rem;
       font-weight: 600;
@@ -659,9 +659,9 @@
       color: var(--dim);
       margin-bottom: .1rem;
     }
- 
+
     .map-btns { display: flex; flex-direction: column; gap: .65rem; }
- 
+
     .map-btn {
       display: flex;
       align-items: center;
@@ -680,11 +680,11 @@
       width: 100%;
       text-align: left;
     }
- 
+
     .map-btn:hover { background: rgba(232,237,232,.07); border-color: rgba(232,237,232,.18); }
- 
+
     .map-btn-icon { font-size: 1.1rem; flex-shrink: 0; }
- 
+
     .map-btn-sub {
       font-size: .72rem;
       color: var(--dim);
@@ -692,7 +692,7 @@
       margin-top: .1rem;
       font-weight: 300;
     }
- 
+
     /* ─── FOOTER ─────────────────────────────────────────────── */
     footer {
       background: var(--deep);
@@ -735,7 +735,7 @@
       flex-wrap: wrap;
       gap: .5rem;
     }
- 
+
     /* ─── REVEAL ─────────────────────────────────────────────── */
     [data-r] {
       opacity: 0;
@@ -743,7 +743,7 @@
       transition: opacity .75s ease, transform .75s ease;
     }
     [data-r].on { opacity: 1; transform: none; }
- 
+
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .explore-grid { grid-template-columns: 1fr 1fr; }
@@ -795,7 +795,7 @@
   </style>
 </head>
 <body>
- 
+
 <!-- ═══ NAV ══════════════════════════════════════════════════ -->
 <nav>
   <a href="#" class="logo">Fri<span>den</span></a>
@@ -812,7 +812,7 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
- 
+
 <!-- ═══ HERO ══════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
@@ -824,13 +824,13 @@
       <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="btn-book">Boka via Airbnb</a>
       <div class="hero-rating">
         <span class="star">★</span>
-        <strong>4.5</strong>
+        <strong>4.9</strong>
         <span>· Upp till 4 gäster</span>
       </div>
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ SPECS STRIP ═══════════════════════════════════════════ -->
 <div class="specs-strip">
   <div class="spec">
@@ -850,21 +850,32 @@
     <span class="spec-label">Båt & fiske ingår</span>
   </div>
 </div>
- 
+
 <!-- ═══ GALLERY ═══════════════════════════════════════════════ -->
 <section id="gallery">
   <div class="section-inner" data-r>
     <span class="section-label">Galleri</span>
     <h2>Se stugan i verkligheten</h2>
     <div class="gallery-mosaic">
-      <div class="g-main">
-        <img id="mainImg" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/129898f7-cc94-441f-9728-2f82c6249a2b.jpeg?im_w=720" alt="Stugan vid sjön" />
+      <div class="g-main" style="position:relative;">
+        <img id="mainImg" src="StugaVyUte.jpg" alt="Stugan utifrån" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <video id="mainVideo" src="FilmStugaInne.MOV" poster="StugaInne.jpg"
+          controls playsinline preload="none"
+          style="display:none;width:100%;height:100%;object-fit:cover;background:#000;">
+        </video>
+        <div id="videoTag" style="display:none;position:absolute;top:1rem;left:1rem;background:rgba(13,20,24,.75);backdrop-filter:blur(6px);color:#e8a830;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;border-radius:4px;pointer-events:none;">▶ Video</div>
       </div>
       <div class="g-thumb">
-        <img id="th1" src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTI2MTYzMTM2NTc4MjEzNzk4MQ==/original/655a6cee-6614-4fa5-bbbe-282c24cbf171.jpeg?im_w=320" alt="Inomhus" />
+        <img id="th1" src="StugaInne.jpg" alt="Inomhus" />
       </div>
       <div class="g-thumb">
-        <img id="th2" src="https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/d11689d0-11ed-4a41-871a-8b318618732a.jpeg?im_w=320" alt="Kvällsbild" />
+        <img id="th2" src="Kamin.jpg" alt="Vedkamin" />
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:.75rem;margin-top:.75rem;margin-bottom:-.5rem;">
+      <div id="slideCounter" style="font-size:.78rem;color:var(--dim);letter-spacing:.08em;">1 / 12</div>
+      <div style="flex:1;height:2px;background:var(--divider);border-radius:2px;overflow:hidden;">
+        <div id="slideProgress" style="height:100%;background:var(--amber);border-radius:2px;transition:width .3s ease;width:8.3%"></div>
       </div>
     </div>
     <div class="gallery-nav">
@@ -873,7 +884,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ INFO ══════════════════════════════════════════════════ -->
 <section id="info">
   <div class="section-inner" data-r>
@@ -882,6 +893,7 @@
     <div class="info-layout">
       <div>
         <p class="info-lead">Belägen vid en privat sjö utan grannar — mellan Örnsköldsvik och Sollefteå — ger stugan dig en sällsynt chans att uppleva norrländsk natur på egna villkor. Stugan rymmer upp till 4 personer med våningssäng, bäddsoffa, gasdriven kyl och spis samt vedkamin för kyliga kvällar.</p>
+        <img src="StenPir.jpg" alt="Stenpiren vid Bodtjärnen" style="width:100%;height:220px;object-fit:cover;border-radius:var(--r);margin:0 0 1.75rem;display:block;" />
         <p class="info-lead" style="font-size:.9rem;">På andra sidan sjön passerar tåg emellanåt — en liten, stämningsfull påminnelse om att omvärlden finns, fast den känns obegripligt långt borta.</p>
       </div>
       <div class="info-cards">
@@ -913,14 +925,14 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ BOENDE & FACILITETER ══════════════════════════════════ -->
 <section id="boende">
   <div class="section-inner" data-r>
     <span class="section-label">Faciliteter</span>
     <h2>Sova gott & hålla sig ren</h2>
     <div class="boende-grid">
- 
+
       <div class="bcard">
         <span class="bcard-icon">🛏</span>
         <h3>Sovkomfort för 4 personer</h3>
@@ -930,21 +942,22 @@
           Täcken och kuddar finns på plats. Ta med egna underlakan som du lägger direkt mot madrassen. Lägg sedan på påslakanet — eller din sovsäck — och sov gott.
         </div>
       </div>
- 
+
       <div class="bcard">
         <span class="bcard-icon">🚿</span>
         <h3>Utedusch med gasolvärmt vatten</h3>
+        <img src="UteDusch.jpg" alt="Utedusch" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin:.25rem 0 .25rem;" />
         <p>Ute vid stugan finns en enkel utedusch som fungerar riktigt bra. Vattnet värms med gasol och pumpas upp via en manuell vattenpump — primitivt på rätt sätt.</p>
         <div class="bcard-tip">
           <strong>Så fungerar det:</strong>
           Fyll tanken med vatten, tänd gasolen och låt det värmas upp. Pumpa sedan upp vattnet med handpumpen och duscha under öppen himmel — med skogen som vägg.
         </div>
       </div>
- 
+
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ FEATURES ══════════════════════════════════════════════ -->
 <section id="features">
   <div class="section-inner" data-r>
@@ -969,14 +982,14 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ UTFORSKA OMRÅDET ═══════════════════════════════════════ -->
 <section id="utforska">
   <div class="section-inner" data-r>
     <span class="section-label">Utforska</span>
     <h2>I närheten av Friden</h2>
     <div class="explore-grid">
- 
+
       <div class="ecard">
         <div class="ecard-head">
           <span class="ecard-badge">Vandring</span>
@@ -988,7 +1001,7 @@
           <a href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank" class="ecard-link">Läs mer →</a>
         </div>
       </div>
- 
+
       <div class="ecard">
         <div class="ecard-head">
           <span class="ecard-badge">Utsikt</span>
@@ -1000,7 +1013,7 @@
           <a href="#kontakt" class="ecard-link">Fråga oss om vägen →</a>
         </div>
       </div>
- 
+
       <div class="ecard">
         <div class="ecard-head">
           <span class="ecard-badge">Promenad</span>
@@ -1012,11 +1025,11 @@
           <a href="#kontakt" class="ecard-link">Fråga oss om vägen →</a>
         </div>
       </div>
- 
+
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ PACKLISTA ════════════════════════════════════════════ -->
 <section id="packlista">
   <div class="section-inner" data-r>
@@ -1059,7 +1072,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ OMDÖMEN ══════════════════════════════════════════════ -->
 <section id="reviews">
   <div class="section-inner" data-r>
@@ -1077,7 +1090,7 @@
       </div>
       <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="rating-link">Läs alla omdömen på Airbnb →</a>
     </div>
- 
+
     <div class="categories-grid">
       <div class="cat-card">
         <span class="cat-icon">📍</span>
@@ -1106,7 +1119,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ KARTA & VÄGBESKRIVNING ════════════════════════════════ -->
 <section id="karta">
   <div class="section-inner" data-r>
@@ -1159,7 +1172,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
 <footer id="kontakt">
   <div class="footer-inner">
@@ -1192,39 +1205,77 @@
     <span>Off-grid stuga vid Bodtjärnen</span>
   </div>
 </footer>
- 
+
 <script>
   // Burger menu
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
   burger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
- 
+
   // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('[data-r]').forEach(el => obs.observe(el));
- 
-  // Gallery slider
+
+  // Gallery slider with video support
   const imgs = [
-    { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/129898f7-cc94-441f-9728-2f82c6249a2b.jpeg?im_w=720', alt:'Stugan vid sjön' },
-    { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTI2MTYzMTM2NTc4MjEzNzk4MQ==/original/eefa9f5b-bbda-4340-bafe-eb991753054e.jpeg?im_w=320', alt:'Utsikt' },
-    { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTI2MTYzMTM2NTc4MjEzNzk4MQ==/original/655a6cee-6614-4fa5-bbbe-282c24cbf171.jpeg?im_w=320', alt:'Vedkamin' },
-    { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTI2MTYzMTM2NTc4MjEzNzk4MQ==/original/7dad0cfd-685a-4b35-8cf5-82581fb6886d.jpeg?im_w=320', alt:'Sovplats' },
-    { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/d11689d0-11ed-4a41-871a-8b318618732a.jpeg?im_w=320', alt:'Kvällsbild' },
-    { src:'https://a0.muscache.com/im/pictures/hosting/Hosting-1261631365782137981/original/1f9550d6-d9cf-497c-82d1-7325403089ea.jpeg?im_w=320', alt:'Uteplats' }
+    { src:'StugaVyUte.jpg',      alt:'Stugan utifrån',    type:'img' },
+    { src:'Ute.jpg',             alt:'Utsikt från sjön',  type:'img' },
+    { src:'StugaNedan.jpg',      alt:'Stugan nedan',      type:'img' },
+    { src:'StugaInne.jpg',       alt:'Inomhus',           type:'img' },
+    { src:'FilmStugaInne.MOV',   alt:'Film inomhus',      type:'video', poster:'StugaInne.jpg' },
+    { src:'Kamin.jpg',           alt:'Vedkaminen',        type:'img' },
+    { src:'KaminBord.jpg',       alt:'Kamin och bord',    type:'img' },
+    { src:'Matplats.jpg',        alt:'Matplats',          type:'img' },
+    { src:'Kok.jpg',             alt:'Köket',             type:'img' },
+    { src:'StenPir.jpg',         alt:'Stenpiren',         type:'img' },
+    { src:'UteDusch.jpg',        alt:'Utedusch',          type:'img' },
+    { src:'Dass.jpg',            alt:'Utedass',           type:'img' },
   ];
   let idx = 0;
-  const mainImg = document.getElementById('mainImg');
+  const mainImg   = document.getElementById('mainImg');
+  const mainVideo = document.getElementById('mainVideo');
+  const videoTag  = document.getElementById('videoTag');
   const th1 = document.getElementById('th1');
   const th2 = document.getElementById('th2');
- 
+  const counter  = document.getElementById('slideCounter');
+  const progress = document.getElementById('slideProgress');
+
   function update() {
-    mainImg.src = imgs[idx].src; mainImg.alt = imgs[idx].alt;
-    if (th1) { const n1 = imgs[(idx+1)%imgs.length]; th1.src=n1.src; th1.alt=n1.alt; }
-    if (th2) { const n2 = imgs[(idx+2)%imgs.length]; th2.src=n2.src; th2.alt=n2.alt; }
+    const cur = imgs[idx];
+    const isVideo = cur.type === 'video';
+
+    // Stop any playing video when navigating away
+    if (!isVideo) { mainVideo.pause(); mainVideo.currentTime = 0; }
+
+    mainImg.style.display   = isVideo ? 'none' : 'block';
+    mainVideo.style.display = isVideo ? 'block' : 'none';
+    videoTag.style.display  = isVideo ? 'block' : 'none';
+
+    if (isVideo) {
+      mainVideo.src    = cur.src;
+      mainVideo.poster = cur.poster || '';
+    } else {
+      mainImg.src = cur.src;
+      mainImg.alt = cur.alt;
+    }
+
+    // Update thumbnails (always images — skip video slide)
+    const imgOnlySlides = imgs.filter(i => i.type === 'img');
+    const imgIdx = imgOnlySlides.findIndex(i => i.src === cur.src);
+    const base = imgIdx >= 0 ? imgIdx : 0;
+    const n1 = imgOnlySlides[(base + 1) % imgOnlySlides.length];
+    const n2 = imgOnlySlides[(base + 2) % imgOnlySlides.length];
+    if (th1 && n1) { th1.src = n1.src; th1.alt = n1.alt; }
+    if (th2 && n2) { th2.src = n2.src; th2.alt = n2.alt; }
+
+    // Counter + progress bar
+    if (counter)  counter.textContent = `${idx + 1} / ${imgs.length}`;
+    if (progress) progress.style.width = `${((idx + 1) / imgs.length) * 100}%`;
   }
+
   document.getElementById('next').addEventListener('click', () => { idx=(idx+1)%imgs.length; update(); });
   document.getElementById('prev').addEventListener('click', () => { idx=(idx-1+imgs.length)%imgs.length; update(); });
 </script>
