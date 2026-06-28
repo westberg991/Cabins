@@ -252,35 +252,149 @@
 
     /* ─── GALLERY ────────────────────────────────────────────── */
     #gallery { background: var(--deep); }
-    .gallery-mosaic {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      grid-template-rows: 340px 220px;
-      gap: 6px;
+
+    /* Main viewer — always shows the full image, letterboxed if needed */
+    .gallery-viewer {
+      position: relative;
+      width: 100%;
+      background: #080e12;
       border-radius: var(--r);
       overflow: hidden;
+      border: 1px solid var(--divider);
+      /* min-height keeps it from collapsing on load */
+      min-height: 260px;
     }
-    .g-main { grid-row: 1 / 3; overflow: hidden; }
-    .g-thumb { overflow: hidden; background: var(--mist); }
-    .gallery-mosaic img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform .6s ease;
+
+    .gallery-viewer img,
+    .gallery-viewer video {
+      display: block;
+      width: 100%;
+      /* contain = whole image always visible */
+      object-fit: contain;
+      /* height grows/shrinks with the image — capped so it doesn't go fullscreen */
+      max-height: 70vh;
+      /* fallback height while image loads */
+      min-height: 200px;
     }
-    .gallery-mosaic img:hover { transform: scale(1.05); }
-    .gallery-nav { display: flex; gap: .75rem; margin-top: 1.25rem; }
-    .gbtn {
-      background: var(--mist);
+
+    .gallery-viewer video {
+      background: #000;
+    }
+
+    /* Prev / Next arrow buttons overlaid on the viewer */
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(13,20,24,0.65);
+      backdrop-filter: blur(6px);
       border: 1px solid var(--divider);
       color: var(--text);
-      padding: .65rem 1.4rem;
-      border-radius: 6px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
       cursor: pointer;
-      font-family: 'Sora', sans-serif;
-      font-size: .82rem;
-      font-weight: 400;
-      transition: background .2s, border-color .2s;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+      z-index: 5;
     }
-    .gbtn:hover { background: var(--fog); border-color: var(--sub); }
+    .gallery-arrow:hover { background: rgba(13,20,24,0.9); }
+    .gallery-arrow.prev { left: .75rem; }
+    .gallery-arrow.next { right: .75rem; }
+
+    /* Video badge */
+    .gallery-video-badge {
+      position: absolute;
+      top: .75rem;
+      left: .75rem;
+      background: rgba(13,20,24,.75);
+      backdrop-filter: blur(6px);
+      color: var(--amber);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .28rem .65rem;
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Counter + progress */
+    .gallery-meta {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-top: .75rem;
+    }
+    .gallery-counter {
+      font-size: .75rem;
+      color: var(--dim);
+      letter-spacing: .08em;
+      white-space: nowrap;
+    }
+    .gallery-progress-bg {
+      flex: 1;
+      height: 2px;
+      background: var(--divider);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .gallery-progress-fill {
+      height: 100%;
+      background: var(--amber);
+      border-radius: 2px;
+      transition: width .3s ease;
+    }
+
+    /* Thumbnail strip */
+    .gallery-thumbs {
+      display: flex;
+      gap: 6px;
+      margin-top: .75rem;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--dim) transparent;
+    }
+    .gallery-thumbs::-webkit-scrollbar { height: 3px; }
+    .gallery-thumbs::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
+
+    .gallery-thumb-item {
+      flex: 0 0 80px;
+      height: 56px;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color .2s, opacity .2s;
+      opacity: 0.5;
+      position: relative;
+      background: var(--mist);
+    }
+    .gallery-thumb-item.active {
+      border-color: var(--amber);
+      opacity: 1;
+    }
+    .gallery-thumb-item:hover { opacity: 0.85; }
+    .gallery-thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-thumb-video-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      background: rgba(0,0,0,.35);
+    }
 
     /* ─── INFO ───────────────────────────────────────────────── */
     #info { background: var(--night); }
@@ -856,32 +970,26 @@
   <div class="section-inner" data-r>
     <span class="section-label">Galleri</span>
     <h2>Se stugan i verkligheten</h2>
-    <div class="gallery-mosaic">
-      <div class="g-main" style="position:relative;">
-        <img id="mainImg" src="StugaVyUte.jpg" alt="Stugan utifrån" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        <video id="mainVideo" src="FilmStugaInne.MOV" poster="StugaInne.jpg"
-          controls playsinline preload="none"
-          style="display:none;width:100%;height:100%;object-fit:cover;background:#000;">
-        </video>
-        <div id="videoTag" style="display:none;position:absolute;top:1rem;left:1rem;background:rgba(13,20,24,.75);backdrop-filter:blur(6px);color:#e8a830;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;border-radius:4px;pointer-events:none;">▶ Video</div>
-      </div>
-      <div class="g-thumb">
-        <img id="th1" src="StugaInne.jpg" alt="Inomhus" />
-      </div>
-      <div class="g-thumb">
-        <img id="th2" src="Kamin.jpg" alt="Vedkamin" />
+
+    <!-- Main viewer -->
+    <div class="gallery-viewer" id="galleryViewer">
+      <img id="mainImg" src="StugaVyUte.jpg" alt="Stugan utifrån" />
+      <video id="mainVideo" poster="StugaInne.jpg" controls playsinline preload="none" style="display:none;"></video>
+      <div id="videoTag" class="gallery-video-badge" style="display:none;">▶ Video</div>
+      <button class="gallery-arrow prev" id="prev" aria-label="Föregående">‹</button>
+      <button class="gallery-arrow next" id="next" aria-label="Nästa">›</button>
+    </div>
+
+    <!-- Counter + progress -->
+    <div class="gallery-meta">
+      <span class="gallery-counter" id="slideCounter">1 / 12</span>
+      <div class="gallery-progress-bg">
+        <div class="gallery-progress-fill" id="slideProgress" style="width:8.3%"></div>
       </div>
     </div>
-    <div style="display:flex;align-items:center;gap:.75rem;margin-top:.75rem;margin-bottom:-.5rem;">
-      <div id="slideCounter" style="font-size:.78rem;color:var(--dim);letter-spacing:.08em;">1 / 12</div>
-      <div style="flex:1;height:2px;background:var(--divider);border-radius:2px;overflow:hidden;">
-        <div id="slideProgress" style="height:100%;background:var(--amber);border-radius:2px;transition:width .3s ease;width:8.3%"></div>
-      </div>
-    </div>
-    <div class="gallery-nav">
-      <button class="gbtn" id="prev">← Föregående</button>
-      <button class="gbtn" id="next">Nästa →</button>
-    </div>
+
+    <!-- Thumbnail strip -->
+    <div class="gallery-thumbs" id="thumbStrip"></div>
   </div>
 </section>
 
@@ -1219,65 +1327,96 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('[data-r]').forEach(el => obs.observe(el));
 
-  // Gallery slider with video support
-  const imgs = [
-    { src:'StugaVyUte.jpg',      alt:'Stugan utifrån',    type:'img' },
-    { src:'Ute.jpg',             alt:'Utsikt från sjön',  type:'img' },
-    { src:'StugaNedan.jpg',      alt:'Stugan nedan',      type:'img' },
-    { src:'StugaInne.jpg',       alt:'Inomhus',           type:'img' },
-    { src:'FilmStugaInne.MOV',   alt:'Film inomhus',      type:'video', poster:'StugaInne.jpg' },
-    { src:'Kamin.jpg',           alt:'Vedkaminen',        type:'img' },
-    { src:'KaminBord.jpg',       alt:'Kamin och bord',    type:'img' },
-    { src:'Matplats.jpg',        alt:'Matplats',          type:'img' },
-    { src:'Kok.jpg',             alt:'Köket',             type:'img' },
-    { src:'StenPir.jpg',         alt:'Stenpiren',         type:'img' },
-    { src:'UteDusch.jpg',        alt:'Utedusch',          type:'img' },
-    { src:'Dass.jpg',            alt:'Utedass',           type:'img' },
+  // ── Gallery ──────────────────────────────────────────────
+  const slides = [
+    { src:'StugaVyUte.jpg',    alt:'Stugan utifrån',    type:'img' },
+    { src:'Ute.jpg',           alt:'Utsikt från sjön',  type:'img' },
+    { src:'StugaNedan.jpg',    alt:'Stugan nedan',      type:'img' },
+    { src:'StugaInne.jpg',     alt:'Inomhus',           type:'img' },
+    { src:'FilmStugaInne.MOV', alt:'Film inomhus',      type:'video', poster:'StugaInne.jpg' },
+    { src:'Kamin.jpg',         alt:'Vedkaminen',        type:'img' },
+    { src:'KaminBord.jpg',     alt:'Kamin och bord',    type:'img' },
+    { src:'Matplats.jpg',      alt:'Matplats',          type:'img' },
+    { src:'Kok.jpg',           alt:'Köket',             type:'img' },
+    { src:'StenPir.jpg',       alt:'Stenpiren',         type:'img' },
+    { src:'UteDusch.jpg',      alt:'Utedusch',          type:'img' },
+    { src:'Dass.jpg',          alt:'Utedass',           type:'img' },
   ];
+
   let idx = 0;
-  const mainImg   = document.getElementById('mainImg');
-  const mainVideo = document.getElementById('mainVideo');
-  const videoTag  = document.getElementById('videoTag');
-  const th1 = document.getElementById('th1');
-  const th2 = document.getElementById('th2');
-  const counter  = document.getElementById('slideCounter');
-  const progress = document.getElementById('slideProgress');
+  const mainImg    = document.getElementById('mainImg');
+  const mainVideo  = document.getElementById('mainVideo');
+  const videoTag   = document.getElementById('videoTag');
+  const counter    = document.getElementById('slideCounter');
+  const progressEl = document.getElementById('slideProgress');
+  const thumbStrip = document.getElementById('thumbStrip');
 
-  function update() {
-    const cur = imgs[idx];
-    const isVideo = cur.type === 'video';
+  // Build thumbnail strip
+  slides.forEach((s, i) => {
+    const item = document.createElement('div');
+    item.className = 'gallery-thumb-item' + (i === 0 ? ' active' : '');
+    item.dataset.idx = i;
 
-    // Stop any playing video when navigating away
-    if (!isVideo) { mainVideo.pause(); mainVideo.currentTime = 0; }
+    if (s.type === 'video') {
+      // Video thumb uses poster image
+      const poster = s.poster || '';
+      item.innerHTML = poster
+        ? `<img src="${poster}" alt="Video" /><div class="gallery-thumb-video-icon">▶</div>`
+        : `<div class="gallery-thumb-video-icon" style="background:var(--mist);width:100%;height:100%;">▶</div>`;
+    } else {
+      item.innerHTML = `<img src="${s.src}" alt="${s.alt}" loading="lazy" />`;
+    }
 
+    item.addEventListener('click', () => goTo(i));
+    thumbStrip.appendChild(item);
+  });
+
+  function goTo(newIdx) {
+    // Pause video if leaving video slide
+    if (slides[idx].type === 'video') {
+      mainVideo.pause();
+      mainVideo.removeAttribute('src');
+      mainVideo.load();
+    }
+
+    idx = newIdx;
+    const s = slides[idx];
+    const isVideo = s.type === 'video';
+
+    // Toggle img / video
     mainImg.style.display   = isVideo ? 'none' : 'block';
     mainVideo.style.display = isVideo ? 'block' : 'none';
     videoTag.style.display  = isVideo ? 'block' : 'none';
 
     if (isVideo) {
-      mainVideo.src    = cur.src;
-      mainVideo.poster = cur.poster || '';
+      mainVideo.src    = s.src;
+      mainVideo.poster = s.poster || '';
+      mainVideo.load();
     } else {
-      mainImg.src = cur.src;
-      mainImg.alt = cur.alt;
+      mainImg.src = s.src;
+      mainImg.alt = s.alt;
     }
 
-    // Update thumbnails (always images — skip video slide)
-    const imgOnlySlides = imgs.filter(i => i.type === 'img');
-    const imgIdx = imgOnlySlides.findIndex(i => i.src === cur.src);
-    const base = imgIdx >= 0 ? imgIdx : 0;
-    const n1 = imgOnlySlides[(base + 1) % imgOnlySlides.length];
-    const n2 = imgOnlySlides[(base + 2) % imgOnlySlides.length];
-    if (th1 && n1) { th1.src = n1.src; th1.alt = n1.alt; }
-    if (th2 && n2) { th2.src = n2.src; th2.alt = n2.alt; }
+    // Progress + counter
+    counter.textContent   = `${idx + 1} / ${slides.length}`;
+    progressEl.style.width = `${((idx + 1) / slides.length) * 100}%`;
 
-    // Counter + progress bar
-    if (counter)  counter.textContent = `${idx + 1} / ${imgs.length}`;
-    if (progress) progress.style.width = `${((idx + 1) / imgs.length) * 100}%`;
+    // Update active thumb + scroll it into view
+    document.querySelectorAll('.gallery-thumb-item').forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+    const activeThumb = thumbStrip.children[idx];
+    if (activeThumb) activeThumb.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
   }
 
-  document.getElementById('next').addEventListener('click', () => { idx=(idx+1)%imgs.length; update(); });
-  document.getElementById('prev').addEventListener('click', () => { idx=(idx-1+imgs.length)%imgs.length; update(); });
+  document.getElementById('next').addEventListener('click', () => goTo((idx + 1) % slides.length));
+  document.getElementById('prev').addEventListener('click', () => goTo((idx - 1 + slides.length) % slides.length));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') goTo((idx + 1) % slides.length);
+    if (e.key === 'ArrowLeft')  goTo((idx - 1 + slides.length) % slides.length);
+  });
 </script>
 </body>
 </html>
