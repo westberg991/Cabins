@@ -990,8 +990,8 @@
 
     <!-- Main viewer -->
     <div class="gallery-viewer" id="galleryViewer">
-      <div class="gallery-backdrop" id="galleryBackdrop" style="background-image:url('StugaVyUte.jpg');"></div>
-      <img id="mainImg" src="StugaVyUte.jpg" alt="Stugan utifrån" />
+      <div class="gallery-backdrop" id="galleryBackdrop" style="background-image:url('FramsidaStuga.jpg');"></div>
+      <img id="mainImg" src="FramsidaStuga.jpg" alt="Stugans framsida" />
       <video id="mainVideo" poster="StugaInne.jpg" controls playsinline preload="metadata" style="display:none;"></video>
       <div id="videoTag" class="gallery-video-badge" style="display:none;">▶ Video</div>
       <button class="gallery-arrow prev" id="prev" aria-label="Föregående">‹</button>
@@ -1000,9 +1000,9 @@
 
     <!-- Counter + progress -->
     <div class="gallery-meta">
-      <span class="gallery-counter" id="slideCounter">1 / 12</span>
+      <span class="gallery-counter" id="slideCounter">1 / 16</span>
       <div class="gallery-progress-bg">
-        <div class="gallery-progress-fill" id="slideProgress" style="width:8.3%"></div>
+        <div class="gallery-progress-fill" id="slideProgress" style="width:6.25%"></div>
       </div>
     </div>
 
@@ -1351,15 +1351,20 @@
 
   // ── Gallery ──────────────────────────────────────────────
   const slides = [
+    { src:'FramsidaStuga.jpg', alt:'Stugans framsida',  type:'img' },
     { src:'StugaVyUte.jpg',    alt:'Stugan utifrån',    type:'img' },
     { src:'Ute.jpg',           alt:'Utsikt från sjön',  type:'img' },
-    { src:'StugaNedan.jpg',    alt:'Stugan nedan',      type:'img' },
-    { src:'StugaInne.jpg',     alt:'Inomhus',           type:'img' },
+    { src:'Ute2.jpg',          alt:'Utsikt från sjön',  type:'img' },
+    { src:'Ute3.jpg',          alt:'Utsikt från sjön',  type:'img' },
+    { src:'StugaNedan.JPG',    alt:'Stugan nedan',      type:'img' },
+    { src:'StugaInne.JPG',     alt:'Inomhus',           type:'img' },
     { src:'FilmStugaInne.MOV', alt:'Film inomhus',      type:'video', poster:'StugaInne.jpg' },
-    { src:'Kamin.jpg',         alt:'Vedkaminen',        type:'img' },
+    { src:'Kamin.JPG',         alt:'Vedkaminen',        type:'img' },
     { src:'KaminBord.jpg',     alt:'Kamin och bord',    type:'img' },
+    { src:'DubbelSang.jpg',    alt:'Sovplats',          type:'img' },
     { src:'Matplats.jpg',      alt:'Matplats',          type:'img' },
     { src:'Kok.jpg',           alt:'Köket',             type:'img' },
+    { src:'Forrad.jpg',        alt:'Förråd med ved',    type:'img' },
     { src:'StenPir.jpg',       alt:'Stenpiren',         type:'img' },
     { src:'UteDusch.jpg',      alt:'Utedusch',          type:'img' },
     { src:'Dass.jpg',          alt:'Utedass',           type:'img' },
