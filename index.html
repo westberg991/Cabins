@@ -49,9 +49,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 5%;
-      background: rgba(13,20,24,0.70);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--divider);
+      background: transparent;
     }
 
     .logo {
@@ -265,8 +263,28 @@
       min-height: 260px;
     }
 
+    /* Blurred mirror backdrop — fills the empty space behind the contained image */
+    .gallery-backdrop {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: blur(28px) brightness(0.55) saturate(1.2);
+      transform: scale(1.15); /* hide blur edge artifacts */
+      transition: background-image .3s ease;
+      z-index: 0;
+    }
+    .gallery-backdrop::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(8,14,18,0.25);
+    }
+
     .gallery-viewer img,
     .gallery-viewer video {
+      position: relative;
+      z-index: 1;
       display: block;
       width: 100%;
       /* contain = whole image always visible */
@@ -278,7 +296,7 @@
     }
 
     .gallery-viewer video {
-      background: #000;
+      background: transparent;
     }
 
     /* Prev / Next arrow buttons overlaid on the viewer */
@@ -797,7 +815,7 @@
 
     .map-btn:hover { background: rgba(232,237,232,.07); border-color: rgba(232,237,232,.18); }
 
-    .map-btn-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .map-btn-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 
     .map-btn-sub {
       font-size: .72rem;
@@ -919,7 +937,6 @@
     <a href="#utforska">Utforska</a>
     <a href="#packlista">Packlista</a>
     <a href="#karta">Hitta hit</a>
-    <a href="#kontakt">Kontakt</a>
     <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="nav-book">Boka nu</a>
   </div>
   <button class="burger" id="burger" aria-label="Öppna meny">
@@ -973,8 +990,9 @@
 
     <!-- Main viewer -->
     <div class="gallery-viewer" id="galleryViewer">
+      <div class="gallery-backdrop" id="galleryBackdrop" style="background-image:url('StugaVyUte.jpg');"></div>
       <img id="mainImg" src="StugaVyUte.jpg" alt="Stugan utifrån" />
-      <video id="mainVideo" poster="StugaInne.jpg" controls playsinline preload="none" style="display:none;"></video>
+      <video id="mainVideo" poster="StugaInne.jpg" controls playsinline preload="metadata" style="display:none;"></video>
       <div id="videoTag" class="gallery-video-badge" style="display:none;">▶ Video</div>
       <button class="gallery-arrow prev" id="prev" aria-label="Föregående">‹</button>
       <button class="gallery-arrow next" id="next" aria-label="Nästa">›</button>
@@ -1247,28 +1265,33 @@
         <div class="map-address">
           <span class="map-address-label">Adress</span>
           <span class="map-address-text">Friden, Bodtjärnen<br>Undrom, Västernorrland</span>
-          <span class="map-address-coord">63.2263° N, 18.0337° Ö</span>
         </div>
         <div class="map-divider"></div>
         <div>
           <p class="map-cta-head">Vägbeskrivning</p>
           <div class="map-btns">
             <a href="https://www.google.com/maps/dir/?api=1&destination=63.226306,18.033650" target="_blank" class="map-btn">
-              <span class="map-btn-icon">🗺</span>
+              <span class="map-btn-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><path fill="#4285F4" d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.6 11.1 7.6 11.9.2.2.6.2.8 0C13.4 21.1 20 15.4 20 10c0-4.4-3.6-8-8-8z"/><circle cx="12" cy="10" r="3.2" fill="#fff"/><path fill="#34A853" d="M12 2C9.6 2 7.5 3.1 6.1 4.8l3.9 3.9c.5-.6 1.2-1 2-1V2z"/><path fill="#FBBC04" d="M4 10c0-2 .7-3.8 1.9-5.2l3.9 3.9c-.5.6-.8 1.4-.8 2.3l-5-1z"/><path fill="#EA4335" d="M12 2c2.4 0 4.5 1.1 5.9 2.8l-3.9 3.9c-.5-.6-1.2-1-2-1V2z"/></svg>
+              </span>
               <span>
                 Google Maps
                 <span class="map-btn-sub">Öppna i Google Maps</span>
               </span>
             </a>
             <a href="https://maps.apple.com/?daddr=63.226306,18.033650&dirflg=d" target="_blank" class="map-btn">
-              <span class="map-btn-icon">🍎</span>
+              <span class="map-btn-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><defs><linearGradient id="appleMapGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5BC8F5"/><stop offset="1" stop-color="#2E9AE0"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#appleMapGrad)"/><path fill="#fff" d="M12 6l4.5 12-4.5-2.5L7.5 18z"/></svg>
+              </span>
               <span>
                 Apple Kartor
                 <span class="map-btn-sub">Öppna i Apple Maps</span>
               </span>
             </a>
             <a href="https://waze.com/ul?ll=63.226306,18.033650&navigate=yes" target="_blank" class="map-btn">
-              <span class="map-btn-icon">🚗</span>
+              <span class="map-btn-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#33CCFF"/><circle cx="9" cy="11" r="1.4" fill="#062331"/><circle cx="15" cy="11" r="1.4" fill="#062331"/><path d="M8 15c1.2 1 2.6 1.5 4 1.5s2.8-.5 4-1.5" stroke="#062331" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+              </span>
               <span>
                 Waze
                 <span class="map-btn-sub">Öppna i Waze</span>
@@ -1300,9 +1323,8 @@
       </ul>
     </div>
     <div class="foot-col">
-      <h5>Kontakt & Bokning</h5>
+      <h5>Bokning</h5>
       <ul>
-        <li><a href="mailto:bokning@undrom.se">bokning@undrom.se</a></li>
         <li><a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank">Boka via Airbnb →</a></li>
         <li><a href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank">Nätra Fjällskog →</a></li>
       </ul>
@@ -1331,10 +1353,10 @@
   const slides = [
     { src:'StugaVyUte.jpg',    alt:'Stugan utifrån',    type:'img' },
     { src:'Ute.jpg',           alt:'Utsikt från sjön',  type:'img' },
-    { src:'StugaNedan.JPG',    alt:'Stugan nedan',      type:'img' },
-    { src:'StugaInne.JPG',     alt:'Inomhus',           type:'img' },
+    { src:'StugaNedan.jpg',    alt:'Stugan nedan',      type:'img' },
+    { src:'StugaInne.jpg',     alt:'Inomhus',           type:'img' },
     { src:'FilmStugaInne.MOV', alt:'Film inomhus',      type:'video', poster:'StugaInne.jpg' },
-    { src:'Kamin.JPG',         alt:'Vedkaminen',        type:'img' },
+    { src:'Kamin.jpg',         alt:'Vedkaminen',        type:'img' },
     { src:'KaminBord.jpg',     alt:'Kamin och bord',    type:'img' },
     { src:'Matplats.jpg',      alt:'Matplats',          type:'img' },
     { src:'Kok.jpg',           alt:'Köket',             type:'img' },
@@ -1344,12 +1366,13 @@
   ];
 
   let idx = 0;
-  const mainImg    = document.getElementById('mainImg');
-  const mainVideo  = document.getElementById('mainVideo');
-  const videoTag   = document.getElementById('videoTag');
-  const counter    = document.getElementById('slideCounter');
-  const progressEl = document.getElementById('slideProgress');
-  const thumbStrip = document.getElementById('thumbStrip');
+  const mainImg     = document.getElementById('mainImg');
+  const mainVideo   = document.getElementById('mainVideo');
+  const videoTag    = document.getElementById('videoTag');
+  const counter     = document.getElementById('slideCounter');
+  const progressEl  = document.getElementById('slideProgress');
+  const thumbStrip  = document.getElementById('thumbStrip');
+  const backdrop    = document.getElementById('galleryBackdrop');
 
   // Build thumbnail strip
   slides.forEach((s, i) => {
@@ -1388,10 +1411,13 @@
     mainVideo.style.display = isVideo ? 'block' : 'none';
     videoTag.style.display  = isVideo ? 'block' : 'none';
 
+    // Blurred mirror backdrop always matches the visible photo (poster for video)
+    backdrop.style.backgroundImage = `url('${isVideo ? (s.poster || '') : s.src}')`;
+
     if (isVideo) {
-      mainVideo.src    = s.src;
       mainVideo.poster = s.poster || '';
-      mainVideo.load();
+      mainVideo.src    = s.src;
+      mainVideo.load(); // ensures poster renders immediately, video itself loads lazily
     } else {
       mainImg.src = s.src;
       mainImg.alt = s.alt;
