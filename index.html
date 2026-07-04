@@ -155,7 +155,7 @@
       color: var(--text);
       margin-bottom: 1.6rem;
     }
-    h1 .ghost { color: rgba(232,237,232,0.18); }
+    h1 .ghost { color: var(--amber); }
 
     .hero-desc {
       font-size: 1rem;
@@ -186,10 +186,12 @@
     .hero-rating {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--sub);
-      font-size: 0.82rem;
+      gap: 0.6rem;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 400;
     }
+    .hero-rating strong { font-size: 1.1rem; font-weight: 600; }
     .star { color: var(--amber); }
 
     /* ─── SPECS STRIP ────────────────────────────────────────── */
@@ -950,8 +952,8 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <span class="eyebrow">Off-grid · Bodtjärnen · Norrland</span>
-    <h1>Norrlands<br><span class="ghost">Perfekta</span><br>Fristad</h1>
+    <span class="eyebrow">Bodtjärnen · Norrland</span>
+    <h1>Norrlands<br><span class="ghost">Avslappnade</span><br>Fristad</h1>
     <p class="hero-desc">Enkel, avskalad stuga utan el och internet. Koppla bort omvärlden, elda i vedkaminen och vakna upp med spegelblankt sjövatten utanför fönstret.</p>
     <div class="hero-cta-row">
       <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="btn-book">Boka via Airbnb</a>
@@ -1057,14 +1059,19 @@
 
       <div class="bcard">
         <span class="bcard-icon">🚿</span>
-        <h3>Utedusch med gasolvärmt vatten</h3>
-        <div style="width:100%;height:180px;border-radius:8px;margin:.25rem 0 .25rem;overflow:hidden;background:var(--night);display:flex;align-items:center;justify-content:center;">
-          <img src="UteDusch.jpg" alt="Utedusch" style="width:100%;height:100%;object-fit:contain;display:block;" />
+        <h3>Utedusch & Utedass</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:.25rem 0 .5rem;">
+          <div style="height:160px;border-radius:8px;overflow:hidden;background:var(--night);display:flex;align-items:center;justify-content:center;">
+            <img src="UteDusch.jpg" alt="Utedusch" style="width:100%;height:100%;object-fit:contain;display:block;" />
+          </div>
+          <div style="height:160px;border-radius:8px;overflow:hidden;">
+            <img src="Dass.jpg" alt="Utedass" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
         </div>
-        <p>Ute vid stugan finns en enkel utedusch som fungerar riktigt bra. Vattnet värms med gasol och pumpas upp via en manuell vattenpump — primitivt på rätt sätt.</p>
+        <p>Ute vid stugan finns en enkel utedusch med gasolvärmt vatten — pumpa upp med handpump och duscha under öppen himmel. På tomten finns även ett välskött utedass.</p>
         <div class="bcard-tip">
-          <strong>Så fungerar det:</strong>
-          Fyll tanken med vatten, tänd gasolen och låt det värmas upp. Pumpa sedan upp vattnet med handpumpen och duscha under öppen himmel — med skogen som vägg.
+          <strong>Så fungerar duschen:</strong>
+          Fyll tanken, tänd gasolen och låt värmas upp. Pumpa sedan upp vattnet och duscha med skogen som vägg.
         </div>
       </div>
 
@@ -1072,12 +1079,15 @@
   </div>
 </section>
 
-<!-- ═══ FEATURES ══════════════════════════════════════════════ -->
-<section id="features">
+<!-- ═══ VAD INGÅR + OMDÖMEN ══════════════════════════════════ -->
+<section id="reviews">
   <div class="section-inner" data-r>
-    <span class="section-label">Vad ingår</span>
-    <h2>Allt för din naturupplevelse</h2>
-    <div class="feat-grid">
+
+    <!-- Vad ingår -->
+    <span class="section-label">Vad ingår & omdömen</span>
+    <h2>Allt du behöver — och vad gästerna tycker</h2>
+
+    <div class="feat-grid" style="margin-bottom:3.5rem;">
       <div class="fcard">
         <span class="ficon">🌙</span>
         <h3>Avkoppling</h3>
@@ -1094,10 +1104,25 @@
         <p>Långt från trafik och stadsljus — stjärnhimlen blir din kvällsutsikt och skogen din granne.</p>
       </div>
     </div>
+
+    <!-- Omdömen -->
+    <div class="reviews-top">
+      <div class="rating-big">
+        <span class="rating-num">4,5</span>
+        <div class="rating-right">
+          <div class="stars-row">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span style="opacity:.5">★</span>
+          </div>
+          <span class="rating-count">Baserat på 6 omdömen på Airbnb</span>
+        </div>
+      </div>
+      <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="rating-link">Läs alla omdömen på Airbnb →</a>
+    </div>
+
   </div>
 </section>
 
-<!-- ═══ UTFORSKA OMRÅDET ═══════════════════════════════════════ -->
+
 <section id="utforska">
   <div class="section-inner" data-r>
     <span class="section-label">Utforska</span>
@@ -1182,53 +1207,6 @@
           <li>Vattentåliga kläder och skor</li>
           <li>Vandringskarta om du planerar Nätra</li>
         </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ OMDÖMEN ══════════════════════════════════════════════ -->
-<section id="reviews">
-  <div class="section-inner" data-r>
-    <span class="section-label">Omdömen</span>
-    <h2>Vad gästerna säger</h2>
-    <div class="reviews-top">
-      <div class="rating-big">
-        <span class="rating-num">4,5</span>
-        <div class="rating-right">
-          <div class="stars-row">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span style="opacity:.5">★</span>
-          </div>
-          <span class="rating-count">Baserat på 6 omdömen på Airbnb</span>
-        </div>
-      </div>
-      <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="rating-link">Läs alla omdömen på Airbnb →</a>
-    </div>
-
-    <div class="categories-grid">
-      <div class="cat-card">
-        <span class="cat-icon">📍</span>
-        <span class="cat-label">Plats</span>
-        <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:96%"></div></div>
-        <span class="cat-score">4,8</span>
-      </div>
-      <div class="cat-card">
-        <span class="cat-icon">✅</span>
-        <span class="cat-label">Korrekt info</span>
-        <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:90%"></div></div>
-        <span class="cat-score">4,5</span>
-      </div>
-      <div class="cat-card">
-        <span class="cat-icon">😌</span>
-        <span class="cat-label">Komfort</span>
-        <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:88%"></div></div>
-        <span class="cat-score">4,4</span>
-      </div>
-      <div class="cat-card">
-        <span class="cat-icon">🧹</span>
-        <span class="cat-label">Renlighet</span>
-        <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:90%"></div></div>
-        <span class="cat-score">4,5</span>
       </div>
     </div>
   </div>
