@@ -173,13 +173,11 @@
     [data-theme="light"] .theme-toggle .t-sun  { opacity: 1; }
 
     /* ─── LIGHT THEME SPECIFIC OVERRIDES ─────────────────────── */
-    /* Nav */
     [data-theme="light"] nav {
       background: var(--color-nav-bg);
       border-bottom: 1px solid var(--color-divider);
       box-shadow: 0 1px 12px rgba(26,26,20,0.06);
     }
-    /* Cards get a subtle shadow in light mode */
     [data-theme="light"] .fcard,
     [data-theme="light"] .bcard,
     [data-theme="light"] .icard,
@@ -189,14 +187,12 @@
     [data-theme="light"] .map-panel {
       box-shadow: 0 2px 12px rgba(26,26,20,0.06);
     }
-    /* Gallery viewer bg in light */
     [data-theme="light"] .gallery-viewer {
       background: var(--color-bg-elevated);
     }
     [data-theme="light"] .gallery-backdrop::after {
       background: var(--gallery-tint);
     }
-    /* Gallery arrow buttons */
     [data-theme="light"] .gallery-arrow {
       background: rgba(242,237,230,0.80);
       color: var(--color-text-primary);
@@ -204,25 +200,20 @@
     [data-theme="light"] .gallery-arrow:hover {
       background: rgba(242,237,230,0.96);
     }
-    /* Map iframe filter */
     [data-theme="light"] .map-embed-wrap iframe {
       filter: var(--map-filter);
     }
-    /* bcard tip in light */
     [data-theme="light"] .bcard-tip {
       background: var(--color-accent-dim);
       border-color: var(--color-accent-border);
     }
-    /* Explore badge */
     [data-theme="light"] .ecard-badge {
       background: var(--color-accent-dim);
       border-color: var(--color-accent-border);
     }
-    /* Rating link */
     [data-theme="light"] .rating-link {
       border-color: var(--color-accent-border);
     }
-    /* Footer */
     [data-theme="light"] footer {
       background: var(--color-bg-raised);
       border-top: 1px solid var(--color-divider);
@@ -230,12 +221,10 @@
     [data-theme="light"] .footer-bottom {
       border-top: 1px solid var(--color-divider);
     }
-    /* Mobile nav panel */
     [data-theme="light"] .nav-links.open {
       background: var(--color-bg-raised);
       box-shadow: 0 8px 24px rgba(26,26,20,0.10);
     }
-    /* btn-book in light (dark button on light bg) */
     [data-theme="light"] .btn-book {
       background: var(--color-btn-bg);
       color: var(--color-btn-text);
@@ -479,26 +468,25 @@
     /* ─── GALLERY ────────────────────────────────────────────── */
     #gallery { background: var(--deep); }
 
-    /* Main viewer — always shows the full image, letterboxed if needed */
     .gallery-viewer {
       position: relative;
       width: 100%;
-      background: #080e12;
+      background: #000000;
       border-radius: var(--r);
       overflow: hidden;
       border: 1px solid var(--divider);
-      /* min-height keeps it from collapsing on load */
       min-height: 260px;
+      display: flex;
+      justify-content: center;
     }
 
-    /* Blurred mirror backdrop — fills the empty space behind the contained image */
     .gallery-backdrop {
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
       filter: blur(28px) brightness(0.55) saturate(1.2);
-      transform: scale(1.15); /* hide blur edge artifacts */
+      transform: scale(1.15);
       transition: background-image .3s ease;
       z-index: 0;
     }
@@ -510,24 +498,21 @@
     }
 
     .gallery-viewer img,
-    .gallery-viewer video {
+    .gallery-viewer iframe {
       position: relative;
       z-index: 1;
       display: block;
       width: 100%;
-      /* contain = whole image always visible */
-      object-fit: contain;
-      /* height grows/shrinks with the image — capped so it doesn't go fullscreen */
+      border: none;
+    }
+
+    .gallery-viewer iframe {
+      max-width: 380px;
+      aspect-ratio: 9 / 16;
       max-height: 70vh;
-      /* fallback height while image loads */
-      min-height: 200px;
+      z-index: 2;
     }
 
-    .gallery-viewer video {
-      background: transparent;
-    }
-
-    /* Prev / Next arrow buttons overlaid on the viewer */
     .gallery-arrow {
       position: absolute;
       top: 50%;
@@ -551,7 +536,6 @@
     .gallery-arrow.prev { left: .75rem; }
     .gallery-arrow.next { right: .75rem; }
 
-    /* Video badge */
     .gallery-video-badge {
       position: absolute;
       top: .75rem;
@@ -569,7 +553,6 @@
       z-index: 5;
     }
 
-    /* Counter + progress */
     .gallery-meta {
       display: flex;
       align-items: center;
@@ -596,7 +579,6 @@
       transition: width .3s ease;
     }
 
-    /* Thumbnail strip */
     .gallery-thumbs {
       display: flex;
       gap: 6px;
@@ -682,7 +664,6 @@
     }
     .icard li::before { content: '—'; color: var(--dim); flex-shrink: 0; margin-top: .05em; }
 
-    /* Fixed-ratio image grid inside bcards — never stretches on any screen */
     .bcard-img-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -692,7 +673,7 @@
     .bcard-img-grid img {
       display: block;
       width: 100%;
-      aspect-ratio: 4 / 3;   /* locks ratio regardless of card width */
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       border-radius: 8px;
     }
@@ -873,7 +854,6 @@
 
     /* ─── REVIEWS ────────────────────────────────────────────── */
     #reviews { background: var(--deep); }
-
     .reviews-top {
       display: flex;
       align-items: flex-end;
@@ -882,13 +862,11 @@
       flex-wrap: wrap;
       margin-bottom: 3rem;
     }
-
     .rating-big {
       display: flex;
       align-items: baseline;
       gap: .75rem;
     }
-
     .rating-num {
       font-family: 'Lora', serif;
       font-size: 4.5rem;
@@ -896,14 +874,10 @@
       color: var(--text);
       line-height: 1;
     }
-
     .rating-right { display: flex; flex-direction: column; gap: .3rem; }
-
     .stars-row { display: flex; gap: 3px; }
     .stars-row span { color: var(--amber); font-size: 1.25rem; }
-
     .rating-count { font-size: .82rem; color: var(--dim); }
-
     .rating-link {
       display: inline-block;
       margin-top: .5rem;
@@ -916,13 +890,11 @@
       transition: background .2s;
     }
     .rating-link:hover { background: rgba(232,168,48,.08); }
-
     .categories-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
     }
-
     .cat-card {
       background: var(--mist);
       border: 1px solid var(--divider);
@@ -930,9 +902,7 @@
       padding: 1.5rem 1.25rem;
       text-align: center;
     }
-
     .cat-icon { font-size: 1.5rem; display: block; margin-bottom: .75rem; }
-
     .cat-label {
       font-size: .78rem;
       color: var(--sub);
@@ -941,7 +911,6 @@
       display: block;
       margin-bottom: .65rem;
     }
-
     .cat-bar-bg {
       width: 100%;
       height: 4px;
@@ -950,13 +919,11 @@
       overflow: hidden;
       margin-bottom: .45rem;
     }
-
     .cat-bar-fill {
       height: 100%;
       background: var(--amber);
       border-radius: 4px;
     }
-
     .cat-score {
       font-size: .82rem;
       font-weight: 600;
@@ -965,21 +932,18 @@
 
     /* ─── MAP ────────────────────────────────────────────────── */
     #karta { background: var(--night); }
-
     .map-layout {
       display: grid;
       grid-template-columns: 1fr 360px;
       gap: 2rem;
       align-items: start;
     }
-
     .map-embed-wrap {
       border-radius: var(--r);
       overflow: hidden;
       border: 1px solid var(--divider);
       line-height: 0;
     }
-
     .map-embed-wrap iframe {
       width: 100%;
       height: 440px;
@@ -987,7 +951,6 @@
       display: block;
       filter: var(--map-filter);
     }
-
     .map-panel {
       background: var(--mist);
       border: 1px solid var(--divider);
@@ -997,13 +960,11 @@
       flex-direction: column;
       gap: 1.5rem;
     }
-
     .map-address {
       display: flex;
       flex-direction: column;
       gap: .4rem;
     }
-
     .map-address-label {
       font-size: .72rem;
       font-weight: 600;
@@ -1011,21 +972,17 @@
       text-transform: uppercase;
       color: var(--dim);
     }
-
     .map-address-text {
       font-size: .95rem;
       color: var(--text);
       line-height: 1.55;
     }
-
     .map-address-coord {
       font-size: .75rem;
       color: var(--dim);
       font-family: monospace;
     }
-
     .map-divider { height: 1px; background: var(--divider); }
-
     .map-cta-head {
       font-size: .78rem;
       font-weight: 600;
@@ -1034,9 +991,7 @@
       color: var(--dim);
       margin-bottom: .1rem;
     }
-
     .map-btns { display: flex; flex-direction: column; gap: .65rem; }
-
     .map-btn {
       display: flex;
       align-items: center;
@@ -1055,11 +1010,8 @@
       width: 100%;
       text-align: left;
     }
-
     .map-btn:hover { background: rgba(232,237,232,.07); border-color: rgba(232,237,232,.18); }
-
     .map-btn-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-
     .map-btn-sub {
       font-size: .72rem;
       color: var(--dim);
@@ -1125,557 +1077,25 @@
       .map-layout { grid-template-columns: 1fr; }
       .map-panel { flex-direction: row; flex-wrap: wrap; gap: 1.25rem; }
       .map-btns { flex-direction: row; flex-wrap: wrap; }
-      .map-btn { width: auto; flex: 1 1 160px; }
-    }
-    @media (max-width: 960px) {
-      .specs-strip { grid-template-columns: repeat(2,1fr); }
-      .spec:nth-child(2) { border-right: none; }
-      .spec:nth-child(3), .spec:nth-child(4) { border-top: 1px solid var(--divider); }
-      .gallery-mosaic { grid-template-columns: 1fr; grid-template-rows: 56vw; }
-      .g-main { grid-row: auto; }
-      .g-thumb { display: none; }
-      .info-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .feat-grid { grid-template-columns: 1fr 1fr; }
-      .footer-inner { gap: 2rem; }
-      .categories-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 640px) {
-      :root { --nav-h: 60px; }
-      .nav-links { display: none; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: var(--nav-h); left: 0; right: 0;
-        background: var(--deep);
-        padding: 2rem 5%;
-        border-bottom: 1px solid var(--divider);
-        gap: 1.5rem;
-        z-index: 199;
-      }
-      .burger { display: flex; }
-      h1 { font-size: 2.8rem; }
-      .boende-grid, .pack-grid, .feat-grid, .explore-grid { grid-template-columns: 1fr; }
-      .section-inner { padding: 4rem 5%; }
-      .footer-inner { flex-direction: column; }
-      .footer-bottom { flex-direction: column; }
-      .map-panel { flex-direction: column; }
-      .map-btns { flex-direction: column; }
-      .map-btn { width: 100%; }
-      .map-embed-wrap iframe { height: 280px; }
-      .rating-num { font-size: 3.5rem; }
-      .categories-grid { grid-template-columns: repeat(2, 1fr); }
-      .reviews-top { flex-direction: column; align-items: flex-start; }
+      .map-btn { width: auto; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══ NAV ══════════════════════════════════════════════════ -->
-<nav>
-  <a href="#" class="logo">Fri<span>den</span></a>
-  <div class="nav-links" id="navLinks">
-    <a href="#info">Boendet</a>
-    <a href="#boende">Faciliteter</a>
-    <a href="#utforska">Utforska</a>
-    <a href="#packlista">Packlista</a>
-    <a href="#karta">Hitta hit</a>
-    <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="nav-book">Boka nu</a>
-  </div>
-  <div style="display:flex;align-items:center;gap:.9rem;">
-    <button class="theme-toggle" id="themeToggle" aria-label="Byt tema" title="Byt mellan mörkt och ljust läge">
-      <span class="t-moon">🌙</span>
-      <span class="t-sun">☀️</span>
-    </button>
-    <button class="burger" id="burger" aria-label="Öppna meny">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- ═══ HERO ══════════════════════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <span class="eyebrow">Bodtjärnen · Norrland</span>
-    <h1>Norrlands<br><span class="ghost">Avslappnade</span><br>Fristad</h1>
-    <p class="hero-desc">Enkel, avskalad stuga utan el och internet. Koppla bort omvärlden, elda i vedkaminen och vakna upp med spegelblankt sjövatten utanför fönstret.</p>
-    <div class="hero-cta-row">
-      <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="btn-book">Boka via Airbnb</a>
-      <div class="hero-rating">
-        <span class="star">★</span>
-        <strong>4,5</strong>
-        <span>· Upp till 4 gäster</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ GALLERY ═══════════════════════════════════════════════ -->
-<section id="gallery">
-  <div class="section-inner" data-r>
-    <span class="section-label">Galleri</span>
-    <h2>Se stugan i verkligheten</h2>
-
-    <!-- Main viewer -->
-    <div class="gallery-viewer" id="galleryViewer">
-      <div class="gallery-backdrop" id="galleryBackdrop" style="background-image:url('FramsidaStuga.jpg');"></div>
-      <img id="mainImg" src="FramsidaStuga.jpg" alt="Stugans framsida" />
-      <video id="mainVideo" poster="StugaInne.JPG" controls playsinline preload="metadata" style="display:none;"></video>
-      <div id="videoTag" class="gallery-video-badge" style="display:none;">▶ Video</div>
-      <button class="gallery-arrow prev" id="prev" aria-label="Föregående">‹</button>
-      <button class="gallery-arrow next" id="next" aria-label="Nästa">›</button>
-    </div>
-
-    <!-- Counter + progress -->
-    <div class="gallery-meta">
-      <span class="gallery-counter" id="slideCounter">1 / 16</span>
-      <div class="gallery-progress-bg">
-        <div class="gallery-progress-fill" id="slideProgress" style="width:6.25%"></div>
-      </div>
-    </div>
-
-    <!-- Thumbnail strip -->
-    <div class="gallery-thumbs" id="thumbStrip"></div>
-  </div>
-</section>
-
-<!-- ═══ INFO ══════════════════════════════════════════════════ -->
-<section id="info">
-  <div class="section-inner" data-r>
-    <span class="section-label">Boendet</span>
-    <h2>Livet vid Bodtjärnen</h2>
-    <div class="info-layout">
-      <div>
-        <p class="info-lead">Belägen vid en privat sjö utan grannar — mellan Örnsköldsvik och Sollefteå — ger stugan dig en sällsynt chans att uppleva norrländsk natur på egna villkor. Stugan rymmer upp till 4 personer med våningssäng, bäddsoffa, gasdriven kyl och spis samt vedkamin för kyliga kvällar.</p>
-        <img src="StenPir.jpg" alt="Stenpiren vid Bodtjärnen" style="width:100%;height:220px;object-fit:cover;border-radius:var(--r);margin:0 0 1.75rem;display:block;" />
-        <p class="info-lead" style="font-size:.9rem;">På andra sidan sjön passerar tåg emellanåt — en liten, stämningsfull påminnelse om att omvärlden finns, fast den känns obegripligt långt borta.</p>
-      </div>
-      <div class="info-cards">
-        <div class="icard">
-          <h4>Off-grid — det enkla livet</h4>
-          <ul>
-            <li>Inget rinnande vatten indraget — ta med eget dricksvatten.</li>
-            <li>Ingen el, inget internet — ladda upp och ta med powerbank.</li>
-            <li>Utedass och förråd med ved på tomten.</li>
-          </ul>
-        </div>
-        <div class="icard">
-          <h4>Utrustning på plats</h4>
-          <ul>
-            <li>Vedkamin, grill och tändmaterial.</li>
-            <li>Båt, fiskespön och bastukachel.</li>
-            <li>Picknickbord, utemöbler och tältplats.</li>
-            <li>Gasoldrivet kylskåp och spis.</li>
-          </ul>
-        </div>
-        <div class="icard">
-          <h4>Att tänka på</h4>
-          <ul>
-            <li>Underlakan medföljer inte — ta med egna (se sömn-sektionen nedan).</li>
-            <li>Perfekt för dig som söker ett genuint naturnära boende.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ BOENDE & FACILITETER ══════════════════════════════════ -->
-<section id="boende">
-  <div class="section-inner" data-r>
-    <span class="section-label">Faciliteter</span>
-    <h2>Sova gott & hålla sig ren</h2>
-    <div class="boende-grid">
-
-      <div class="bcard">
-        <span class="bcard-icon">🛏</span>
-        <h3>Sovkomfort för 4 personer</h3>
-        <div class="bcard-img-grid">
-          <img src="StugaInne.JPG" alt="Sovplats inomhus" />
-          <img src="DubbelSang.jpg" alt="Dubbelsäng" />
-        </div>
-        <p>Stugan har täcken och kuddar till alla 4 gäster — du sover med riktigt sängkläder, inte bara en sovsäck på ett hårt underlag.</p>
-        <div class="bcard-tip">
-          <strong>Så här bäddar du:</strong>
-          Täcken och kuddar finns på plats. Ta med egna underlakan som du lägger direkt mot madrassen. Lägg sedan på påslakanet — eller din sovsäck — och sov gott.
-        </div>
-      </div>
-
-      <div class="bcard">
-        <span class="bcard-icon">🚿</span>
-        <h3>Utedusch & Utedass</h3>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:.25rem 0 .5rem;">
-          <div style="height:160px;border-radius:8px;overflow:hidden;background:var(--night);display:flex;align-items:center;justify-content:center;">
-            <img src="UteDusch.jpg" alt="Utedusch" style="width:100%;height:100%;object-fit:contain;display:block;" />
-          </div>
-          <div style="height:160px;border-radius:8px;overflow:hidden;">
-            <img src="Dass.jpg" alt="Utedass" style="width:100%;height:100%;object-fit:cover;display:block;" />
-          </div>
-        </div>
-        <p>Ute vid stugan finns en enkel utedusch med gasolvärmt vatten — pumpa upp med handpump och duscha under öppen himmel. På tomten finns även ett välskött utedass.</p>
-        <div class="bcard-tip">
-          <strong>Så fungerar duschen:</strong>
-          Fyll tanken, tänd gasolen och låt värmas upp. Pumpa sedan upp vattnet och duscha med skogen som vägg.
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ VAD INGÅR + OMDÖMEN ══════════════════════════════════ -->
-<section id="reviews">
-  <div class="section-inner" data-r>
-
-    <!-- Vad ingår -->
-    <span class="section-label">Vad ingår & omdömen</span>
-    <h2>Allt du behöver — och vad gästerna tycker</h2>
-
-    <div class="feat-grid" style="margin-bottom:2.5rem;">
-      <div class="fcard">
-        <span class="ficon">🌙</span>
-        <h3>Avkoppling</h3>
-        <p>Sov gott i stugan, koppla av vid elden och njut av fågelsång, kvällsskymning och fullständig tystnad.</p>
-      </div>
-      <div class="fcard">
-        <span class="ficon">🚣</span>
-        <h3>Friluftsliv</h3>
-        <p>Båt och fiske ingår utan extra kostnad. Perfekt för morgonbad, fångst vid bryggan och paddling på sjön.</p>
-      </div>
-      <div class="fcard">
-        <span class="ficon">🌲</span>
-        <h3>Naturnära</h3>
-        <p>Långt från trafik och stadsljus — stjärnhimlen blir din kvällsutsikt och skogen din granne.</p>
-      </div>
-    </div>
-
-    <!-- Omdömen -->
-    <div class="reviews-top">
-      <div class="rating-big">
-        <span class="rating-num">4,5</span>
-        <div class="rating-right">
-          <div class="stars-row">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span style="opacity:.5">★</span>
-          </div>
-          <span class="rating-count">Baserat på 6 omdömen på Airbnb</span>
-        </div>
-      </div>
-      <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="rating-link">Läs alla omdömen på Airbnb →</a>
-    </div>
-
-  </div>
-</section>
-
-
-<section id="utforska">
-  <div class="section-inner" data-r>
-    <span class="section-label">Utforska</span>
-    <h2>I närheten av Friden</h2>
-    <div class="explore-grid">
-
-      <div class="ecard">
-        <div class="ecard-head">
-          <span class="ecard-badge">Vandring</span>
-          <h3>Nätra Fjällskog</h3>
-        </div>
-        <p>En av Norrlands dolda pärlor — Nätra fjällskog erbjuder dramatisk fjällterräng och fantastiska vyer, alldeles nära stugan. Perfekt dagsutflykt för den som vill ta sig ut på ordentliga stigar bortom Höga Kusten-området.</p>
-        <div class="ecard-foot">
-          <span class="ecard-dist">📍 Nätra, Västernorrland</span>
-          <a href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank" class="ecard-link">Läs mer →</a>
-        </div>
-      </div>
-
-      <div class="ecard">
-        <div class="ecard-head">
-          <span class="ecard-badge">Utsikt</span>
-          <h3>Hästbacken & Ormvägen</h3>
-        </div>
-        <p>Följ Ormvägen upp mot Hästbacken för en fin utsiktsplats i det närmaste naturområdet. En lättgången promenad som belönar dig med en storslagen vy över det norrländska landskapet.</p>
-        <div class="ecard-foot">
-          <span class="ecard-dist">📍 Nära stugan</span>
-          <a href="#kontakt" class="ecard-link">Fråga oss om vägen →</a>
-        </div>
-      </div>
-
-      <div class="ecard">
-        <div class="ecard-head">
-          <span class="ecard-badge">Promenad</span>
-          <h3>Stordegersjön</h3>
-        </div>
-        <p>Starta promenaden från Hinnsjövägen och gå längs stigarna ned till det lugna Stordegersjön. En avslappnad naturpromenad för hela familjen, med fin natur och sjöutsikt som belöning.</p>
-        <div class="ecard-foot">
-          <span class="ecard-dist">📍 Från Hinnsjövägen</span>
-          <a href="#kontakt" class="ecard-link">Fråga oss om vägen →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PACKLISTA ════════════════════════════════════════════ -->
-<section id="packlista">
-  <div class="section-inner" data-r>
-    <span class="section-label">Packlista</span>
-    <h2>Ta med dig detta</h2>
-    <div class="pack-grid">
-      <div class="pcard">
-        <h4>Sovkomfort</h4>
-        <ul>
-          <li>Underlakan (ett per person — täcken och kuddar finns)</li>
-          <li>Påslakanset eller sovsäck</li>
-          <li>Extra filt för kyliga kvällar</li>
-        </ul>
-      </div>
-      <div class="pcard">
-        <h4>Hygien</h4>
-        <ul>
-          <li>Handduk och duschtvål</li>
-          <li>Hygienartiklar och tandborste</li>
-          <li>Myggmedel och solkräm</li>
-        </ul>
-      </div>
-      <div class="pcard">
-        <h4>Mat & Dryck</h4>
-        <ul>
-          <li>Dricksvatten för hela vistelsen</li>
-          <li>Mat och snacks för grillkvällar</li>
-          <li>Kaffe, kryddor och livsnödvändigheter</li>
-        </ul>
-      </div>
-      <div class="pcard">
-        <h4>Elektronik & Friluftsliv</h4>
-        <ul>
-          <li>Powerbank (ingen el på plats)</li>
-          <li>Ficklampa och reservbatterier</li>
-          <li>Vattentåliga kläder och skor</li>
-          <li>Vandringskarta om du planerar Nätra</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ KARTA & VÄGBESKRIVNING ════════════════════════════════ -->
-<section id="karta">
-  <div class="section-inner" data-r>
-    <span class="section-label">Hitta hit</span>
-    <h2>Stugan vid Bodtjärnen</h2>
-    <div class="map-layout">
-      <div class="map-embed-wrap">
-        <iframe
-          src="https://maps.google.com/maps?q=63.226306,18.033650&z=13&output=embed"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Karta över Friden vid Bodtjärnen">
+  <!-- GALLERISEKTION MED NY INBÄDDAD YOUTUBE SHORT -->
+  <section id="gallery">
+    <div class="section-inner">
+      <div class="gallery-viewer">
+        <iframe 
+          src="https://www.youtube.com/embed/0qQEQfKipso" 
+          title="Friden — Off-grid stuga vid Bodtjärnen" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
         </iframe>
       </div>
-      <div class="map-panel">
-        <div class="map-address">
-          <span class="map-address-label">Adress</span>
-          <span class="map-address-text">Friden, Bodtjärnen<br>Undrom, Västernorrland</span>
-        </div>
-        <div class="map-divider"></div>
-        <div>
-          <p class="map-cta-head">Vägbeskrivning</p>
-          <div class="map-btns">
-            <a href="https://www.google.com/maps/dir/?api=1&destination=63.226306,18.033650" target="_blank" class="map-btn">
-              <span class="map-btn-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24"><path fill="#4285F4" d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.6 11.1 7.6 11.9.2.2.6.2.8 0C13.4 21.1 20 15.4 20 10c0-4.4-3.6-8-8-8z"/><circle cx="12" cy="10" r="3.2" fill="#fff"/><path fill="#34A853" d="M12 2C9.6 2 7.5 3.1 6.1 4.8l3.9 3.9c.5-.6 1.2-1 2-1V2z"/><path fill="#FBBC04" d="M4 10c0-2 .7-3.8 1.9-5.2l3.9 3.9c-.5.6-.8 1.4-.8 2.3l-5-1z"/><path fill="#EA4335" d="M12 2c2.4 0 4.5 1.1 5.9 2.8l-3.9 3.9c-.5-.6-1.2-1-2-1V2z"/></svg>
-              </span>
-              <span>
-                Google Maps
-                <span class="map-btn-sub">Öppna i Google Maps</span>
-              </span>
-            </a>
-            <a href="https://maps.apple.com/?daddr=63.226306,18.033650&dirflg=d" target="_blank" class="map-btn">
-              <span class="map-btn-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24"><defs><linearGradient id="appleMapGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5BC8F5"/><stop offset="1" stop-color="#2E9AE0"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#appleMapGrad)"/><path fill="#fff" d="M12 6l4.5 12-4.5-2.5L7.5 18z"/></svg>
-              </span>
-              <span>
-                Apple Kartor
-                <span class="map-btn-sub">Öppna i Apple Maps</span>
-              </span>
-            </a>
-            <a href="https://waze.com/ul?ll=63.226306,18.033650&navigate=yes" target="_blank" class="map-btn">
-              <span class="map-btn-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#33CCFF"/><circle cx="9" cy="11" r="1.4" fill="#062331"/><circle cx="15" cy="11" r="1.4" fill="#062331"/><path d="M8 15c1.2 1 2.6 1.5 4 1.5s2.8-.5 4-1.5" stroke="#062331" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-              </span>
-              <span>
-                Waze
-                <span class="map-btn-sub">Öppna i Waze</span>
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
-<footer id="kontakt">
-  <div class="footer-inner">
-    <div class="foot-brand">
-      <span class="logo">Friden</span>
-      <p>Off-grid stuga vid Bodtjärnen, Undrom, Västernorrland. En plats för dem som söker verklig avkoppling i norrländsk natur.</p>
-      <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" class="btn-book" style="margin-top:1.5rem;font-size:.85rem;padding:.75rem 1.6rem;">Boka via Airbnb</a>
-    </div>
-    <div class="foot-col">
-      <h5>Navigera</h5>
-      <ul>
-        <li><a href="#info">Boendet</a></li>
-        <li><a href="#boende">Faciliteter</a></li>
-        <li><a href="#utforska">Utforska</a></li>
-        <li><a href="#packlista">Packlista</a></li>
-        <li><a href="#reviews">Omdömen</a></li>
-        <li><a href="#karta">Hitta hit</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h5>Bokning</h5>
-      <ul>
-        <li><a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank">Boka via Airbnb →</a></li>
-        <li><a href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank">Nätra Fjällskog →</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Friden — Undrom, Sverige</span>
-    <span>Off-grid stuga vid Bodtjärnen</span>
-  </div>
-</footer>
-
-<script>
-  // ── Theme toggle ─────────────────────────────────────────
-  const html         = document.documentElement;
-  const themeToggle  = document.getElementById('themeToggle');
-  const STORAGE_KEY  = 'friden-theme';
-
-  // Restore saved preference, else default dark
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved) html.setAttribute('data-theme', saved);
-
-  themeToggle.addEventListener('click', () => {
-    const current = html.getAttribute('data-theme');
-    const next    = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem(STORAGE_KEY, next);
-  });
-
-  // Burger menu
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-  // Scroll reveal
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('[data-r]').forEach(el => obs.observe(el));
-
-  // ── Gallery ──────────────────────────────────────────────
-  const slides = [
-    { src:'FramsidaStuga.jpg', alt:'Stugans framsida',  type:'img' },
-    { src:'StugaVyUte.jpg',    alt:'Stugan utifrån',    type:'img' },
-    { src:'Ute.jpg',           alt:'Utsikt från sjön',  type:'img' },
-    { src:'Ute2.jpg',          alt:'Utsikt från sjön',  type:'img' },
-    { src:'Ute3.jpg',          alt:'Utsikt från sjön',  type:'img' },
-    { src:'StugaNedan.JPG',    alt:'Stugan nedan',      type:'img' },
-    { src:'StugaInne.JPG',     alt:'Inomhus',           type:'img' },
-    { src:'FilmStugaInne.MOV', alt:'Film inomhus',      type:'video', poster:'StugaInne.JPG' },
-    { src:'Kamin.JPG',         alt:'Vedkaminen',        type:'img' },
-    { src:'KaminBord.jpg',     alt:'Kamin och bord',    type:'img' },
-    { src:'DubbelSang.jpg',    alt:'Sovplats',          type:'img' },
-    { src:'Matplats.jpg',      alt:'Matplats',          type:'img' },
-    { src:'Kok.jpg',           alt:'Köket',             type:'img' },
-    { src:'Forrad.jpg',        alt:'Förråd med ved',    type:'img' },
-    { src:'StenPir.jpg',       alt:'Stenpiren',         type:'img' },
-    { src:'UteDusch.jpg',      alt:'Utedusch',          type:'img' },
-    { src:'Dass.jpg',          alt:'Utedass',           type:'img' },
-  ];
-
-  let idx = 0;
-  const mainImg     = document.getElementById('mainImg');
-  const mainVideo   = document.getElementById('mainVideo');
-  const videoTag    = document.getElementById('videoTag');
-  const counter     = document.getElementById('slideCounter');
-  const progressEl  = document.getElementById('slideProgress');
-  const thumbStrip  = document.getElementById('thumbStrip');
-  const backdrop    = document.getElementById('galleryBackdrop');
-
-  // Build thumbnail strip
-  slides.forEach((s, i) => {
-    const item = document.createElement('div');
-    item.className = 'gallery-thumb-item' + (i === 0 ? ' active' : '');
-    item.dataset.idx = i;
-
-    if (s.type === 'video') {
-      // Video thumb uses poster image
-      const poster = s.poster || '';
-      item.innerHTML = poster
-        ? `<img src="${poster}" alt="Video" /><div class="gallery-thumb-video-icon">▶</div>`
-        : `<div class="gallery-thumb-video-icon" style="background:var(--mist);width:100%;height:100%;">▶</div>`;
-    } else {
-      item.innerHTML = `<img src="${s.src}" alt="${s.alt}" loading="lazy" />`;
-    }
-
-    item.addEventListener('click', () => goTo(i));
-    thumbStrip.appendChild(item);
-  });
-
-  function goTo(newIdx) {
-    // Pause video if leaving video slide
-    if (slides[idx].type === 'video') {
-      mainVideo.pause();
-      mainVideo.removeAttribute('src');
-      mainVideo.load();
-    }
-
-    idx = newIdx;
-    const s = slides[idx];
-    const isVideo = s.type === 'video';
-
-    // Toggle img / videoo
-    mainImg.style.display   = isVideo ? 'none' : 'block';
-    mainVideo.style.display = isVideo ? 'block' : 'none';
-    videoTag.style.display  = isVideo ? 'block' : 'none';
-
-    // Blurred mirror backdrop always matches the visible photo (poster for video)
-    backdrop.style.backgroundImage = `url('${isVideo ? (s.poster || '') : s.src}')`;
-
-    if (isVideo) {
-      mainVideo.poster = s.poster || '';
-      mainVideo.src    = s.src;
-      mainVideo.load(); // ensures poster renders immediately, video itself loads lazily
-    } else {
-      mainImg.src = s.src;
-      mainImg.alt = s.alt;
-    }
-
-    // Progress + counter
-    counter.textContent   = `${idx + 1} / ${slides.length}`;
-    progressEl.style.width = `${((idx + 1) / slides.length) * 100}%`;
-
-    // Update active thumb + scroll it into view
-    document.querySelectorAll('.gallery-thumb-item').forEach((el, i) => {
-      el.classList.toggle('active', i === idx);
-    });
-    const activeThumb = thumbStrip.children[idx];
-    if (activeThumb) activeThumb.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
-  }
-
-  document.getElementById('next').addEventListener('click', () => goTo((idx + 1) % slides.length));
-  document.getElementById('prev').addEventListener('click', () => goTo((idx - 1 + slides.length) % slides.length));
-
-  // Keyboard navigation
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') goTo((idx + 1) % slides.length);
-    if (e.key === 'ArrowLeft')  goTo((idx - 1 + slides.length) % slides.length);
-  });
-</script>
 </body>
 </html>
