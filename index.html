@@ -9,101 +9,55 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    /* ─── THEME SYSTEM ───────────────────────────────────────────
-       Semantic naming: --color-bg-*, --color-surface-*, --color-text-*
-       WCAG AA: all foreground/bg pairings ≥ 4.5:1
-       Dark default; light override via [data-theme="light"]
-    ──────────────────────────────────────────────────────────── */
-
-    /* Dark theme (default) — no black; uses elevated dark surfaces */
+    /* ─── THEME SYSTEM ─────────────────────────────────────────── */
     :root {
-      /* Backgrounds — elevated surfaces get progressively lighter */
-      --color-bg-base:      #0d1418;   /* page base */
-      --color-bg-raised:    #111b21;   /* cards level 1 */
-      --color-bg-elevated:  #1b2b33;   /* cards level 2 */
-      --color-bg-overlay:   #223040;   /* hover/focus states */
+      --color-bg-base:      #0d1418;
+      --color-bg-raised:    #111b21;
+      --color-bg-elevated:  #1b2b33;
+      --color-bg-overlay:   #223040;
       --color-nav-bg:       rgba(13,20,24,0.70);
-
-      /* Text */
-      --color-text-primary: #e8ede8;   /* 13.1:1 on bg-base ✓ */
-      --color-text-secondary:#8fa89a;  /* 5.1:1 on bg-base ✓ */
+      --color-text-primary: #e8ede8;
+      --color-text-secondary:#8fa89a;
       --color-text-muted:   #4d6258;
-
-      /* Borders */
       --color-divider:      rgba(232,237,232,0.08);
       --color-border:       rgba(232,237,232,0.12);
-
-      /* Accent */
       --color-accent:       #e8a830;
       --color-accent-hover: #f0bc50;
       --color-accent-dim:   rgba(232,168,48,0.10);
       --color-accent-border:rgba(232,168,48,0.22);
-
-      /* Ghost heading word */
       --color-ghost:        #e8a830;
-
-      /* Map filter */
       --map-filter: grayscale(20%) invert(90%) hue-rotate(170deg) saturate(0.6) brightness(0.85);
-
-      /* Hero overlay */
-      --hero-overlay:
-        linear-gradient(to top, rgba(13,20,24,0.85) 0%, rgba(13,20,24,0.35) 40%, rgba(13,20,24,0.08) 100%),
-        linear-gradient(to right, rgba(13,20,24,0.35) 0%, transparent 65%);
-
-      /* Gallery backdrop tint */
+      --hero-overlay: linear-gradient(to top, rgba(13,20,24,0.85) 0%, rgba(13,20,24,0.35) 40%, rgba(13,20,24,0.08) 100%), linear-gradient(to right, rgba(13,20,24,0.35) 0%, transparent 65%);
       --gallery-tint: rgba(8,14,18,0.25);
-
-      /* Button */
       --color-btn-bg:       #e8ede8;
       --color-btn-text:     #0d1418;
-
       --r: 14px;
       --nav-h: 68px;
-
-      /* Transitions on all theme-sensitive props */
-      --theme-transition: background-color 300ms ease, color 300ms ease,
-                          border-color 300ms ease, box-shadow 300ms ease;
     }
 
-    /* Light theme override */
     [data-theme="light"] {
-      /* Backgrounds */
-      --color-bg-base:      #f2ede6;   /* warm off-white, not pure #fff */
+      --color-bg-base:      #f2ede6;
       --color-bg-raised:    #ffffff;
       --color-bg-elevated:  #f7f3ee;
       --color-bg-overlay:   #ede8e0;
       --color-nav-bg:       rgba(242,237,230,0.88);
-
-      /* Text — dark on light, all ≥ 4.5:1 */
-      --color-text-primary: #1a1a14;   /* 15.8:1 on bg-base ✓ */
-      --color-text-secondary:#4a5a4e;  /* 7.2:1 on bg-base ✓ */
+      --color-text-primary: #1a1a14;
+      --color-text-secondary:#4a5a4e;
       --color-text-muted:   #8a9e90;
-
-      /* Borders */
       --color-divider:      rgba(26,26,20,0.10);
       --color-border:       rgba(26,26,20,0.14);
-
-      /* Accent — slightly deeper amber for contrast on light */
-      --color-accent:       #b87c10;   /* 5.2:1 on #f2ede6 ✓ */
+      --color-accent:       #b87c10;
       --color-accent-hover: #9a6608;
       --color-accent-dim:   rgba(184,124,16,0.10);
       --color-accent-border:rgba(184,124,16,0.25);
-
       --color-ghost:        #b87c10;
-
       --map-filter: none;
-
-      --hero-overlay:
-        linear-gradient(to top, rgba(26,26,20,0.78) 0%, rgba(26,26,20,0.30) 40%, rgba(26,26,20,0.05) 100%),
-        linear-gradient(to right, rgba(26,26,20,0.30) 0%, transparent 65%);
-
+      --hero-overlay: linear-gradient(to top, rgba(26,26,20,0.78) 0%, rgba(26,26,20,0.30) 40%, rgba(26,26,20,0.05) 100%), linear-gradient(to right, rgba(26,26,20,0.30) 0%, transparent 65%);
       --gallery-tint: rgba(242,237,230,0.15);
-
       --color-btn-bg:       #1a1a14;
       --color-btn-text:     #f2ede6;
     }
 
-    /* Alias old variable names to new semantic ones for compatibility */
     :root, [data-theme="light"] {
       --night:   var(--color-bg-base);
       --deep:    var(--color-bg-raised);
@@ -117,975 +71,203 @@
       --divider: var(--color-divider);
     }
 
-    /* Apply theme transitions globally — scoped to color props only */
-    body, nav, section, footer,
-    .fcard, .bcard, .icard, .pcard, .ecard,
-    .gallery-viewer, .gallery-backdrop, .map-panel, .map-btn,
-    .logo, h1, h2, h3, h4, p, a, li,
-    .hero-desc, .section-label, .nav-links a,
-    .btn-book, .nav-book, .footer-bottom {
-      transition: background-color 300ms ease, color 300ms ease,
-                  border-color 300ms ease, box-shadow 300ms ease,
-                  filter 300ms ease;
+    body, nav, section, footer, .fcard, .bcard, .icard, .pcard, .ecard, .gallery-viewer, .map-panel, .map-btn, .logo, h1, h2, h3, h4, p, a, li {
+      transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease, filter 300ms ease;
     }
 
-    /* ─── THEME TOGGLE BUTTON ─────────────────────────────────── */
+    /* ─── THEME TOGGLE ─── */
     .theme-toggle {
-      position: relative;
-      width: 48px;
-      height: 26px;
-      background: var(--color-bg-elevated);
-      border: 1px solid var(--color-border);
-      border-radius: 99px;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: background 300ms ease, border-color 300ms ease;
-      padding: 0;
+      position: relative; width: 48px; height: 26px; background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: 99px; cursor: pointer; padding: 0;
     }
     .theme-toggle::before {
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--color-accent);
-      transition: transform 300ms ease, background 300ms ease;
+      content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--color-accent); transition: transform 300ms ease;
     }
-    [data-theme="light"] .theme-toggle::before {
-      transform: translateX(22px);
-    }
-    /* Sun/moon icons in the toggle */
-    .theme-toggle .t-moon,
-    .theme-toggle .t-sun {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: .7rem;
-      line-height: 1;
-      transition: opacity 200ms ease;
-      pointer-events: none;
-    }
-    .theme-toggle .t-moon { left: 6px; opacity: 1; }
-    .theme-toggle .t-sun  { right: 6px; opacity: 0.4; }
-    [data-theme="light"] .theme-toggle .t-moon { opacity: 0.4; }
-    [data-theme="light"] .theme-toggle .t-sun  { opacity: 1; }
-
-    /* ─── LIGHT THEME SPECIFIC OVERRIDES ─────────────────────── */
-    [data-theme="light"] nav {
-      background: var(--color-nav-bg);
-      border-bottom: 1px solid var(--color-divider);
-      box-shadow: 0 1px 12px rgba(26,26,20,0.06);
-    }
-    [data-theme="light"] .fcard,
-    [data-theme="light"] .bcard,
-    [data-theme="light"] .icard,
-    [data-theme="light"] .pcard,
-    [data-theme="light"] .ecard,
-    [data-theme="light"] .cat-card,
-    [data-theme="light"] .map-panel {
-      box-shadow: 0 2px 12px rgba(26,26,20,0.06);
-    }
-    [data-theme="light"] .gallery-viewer {
-      background: var(--color-bg-elevated);
-    }
-    [data-theme="light"] .gallery-backdrop::after {
-      background: var(--gallery-tint);
-    }
-    [data-theme="light"] .gallery-arrow {
-      background: rgba(242,237,230,0.80);
-      color: var(--color-text-primary);
-    }
-    [data-theme="light"] .gallery-arrow:hover {
-      background: rgba(242,237,230,0.96);
-    }
-    [data-theme="light"] .map-embed-wrap iframe {
-      filter: var(--map-filter);
-    }
-    [data-theme="light"] .bcard-tip {
-      background: var(--color-accent-dim);
-      border-color: var(--color-accent-border);
-    }
-    [data-theme="light"] .ecard-badge {
-      background: var(--color-accent-dim);
-      border-color: var(--color-accent-border);
-    }
-    [data-theme="light"] .rating-link {
-      border-color: var(--color-accent-border);
-    }
-    [data-theme="light"] footer {
-      background: var(--color-bg-raised);
-      border-top: 1px solid var(--color-divider);
-    }
-    [data-theme="light"] .footer-bottom {
-      border-top: 1px solid var(--color-divider);
-    }
-    [data-theme="light"] .nav-links.open {
-      background: var(--color-bg-raised);
-      box-shadow: 0 8px 24px rgba(26,26,20,0.10);
-    }
-    [data-theme="light"] .btn-book {
-      background: var(--color-btn-bg);
-      color: var(--color-btn-text);
-    }
-    [data-theme="light"] .btn-book:hover {
-      background: var(--color-accent);
-      color: var(--color-bg-base);
-    }
-    [data-theme="light"] .nav-book {
-      background: var(--color-btn-bg) !important;
-      color: var(--color-btn-text) !important;
-    }
-    [data-theme="light"] .nav-book:hover {
-      background: var(--color-accent) !important;
-      color: var(--color-bg-base) !important;
-    }
+    [data-theme="light"] .theme-toggle::before { transform: translateX(22px); }
+    .theme-toggle .t-moon, .theme-toggle .t-sun { position: absolute; top: 50%; transform: translateY(-50%); font-size: .7rem; pointer-events: none; }
+    .theme-toggle .t-moon { left: 6px; } .theme-toggle .t-sun { right: 6px; opacity: 0.4; }
+    [data-theme="light"] .theme-toggle .t-moon { opacity: 0.4; } [data-theme="light"] .theme-toggle .t-sun { opacity: 1; }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
+    body { background: var(--night); color: var(--text); font-family: 'Sora', sans-serif; font-weight: 300; line-height: 1.65; overflow-x: hidden; }
 
-    body {
-      background: var(--night);
-      color: var(--text);
-      font-family: 'Sora', sans-serif;
-      font-weight: 300;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    /* ─── NAV ────────────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top:0; left:0; width:100%;
-      height: var(--nav-h);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5%;
-      background: var(--color-nav-bg);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--color-divider);
-    }
-
-    .logo {
-      font-family: 'Lora', serif;
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: 0.05em;
-      text-decoration: none;
-    }
+    /* ─── NAV ─── */
+    nav { position: fixed; top:0; left:0; width:100%; height: var(--nav-h); z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; background: var(--color-nav-bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--color-divider); }
+    .logo { font-family: 'Lora', serif; font-size: 1.45rem; font-weight: 600; color: var(--text); letter-spacing: 0.05em; text-decoration: none; }
     .logo span { color: var(--amber); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.2rem;
-    }
-    .nav-links a {
-      color: var(--sub);
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color .2s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 2.2rem; }
+    .nav-links a { color: var(--sub); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; }
     .nav-links a:hover { color: var(--text); }
-    .nav-book {
-      background: var(--text) !important;
-      color: var(--night) !important;
-      padding: 0.55rem 1.4rem;
-      border-radius: 6px;
-      font-weight: 600 !important;
-      letter-spacing: 0.04em !important;
-      text-transform: none !important;
-      font-size: 0.85rem !important;
-      transition: background .2s, color .2s !important;
-    }
-    .nav-book:hover { background: var(--amber) !important; color: var(--night) !important; }
+    .nav-book { background: var(--text) !important; color: var(--night) !important; padding: 0.55rem 1.4rem; border-radius: 6px; font-weight: 600 !important; font-size: 0.85rem !important; }
+    .nav-book:hover { background: var(--amber) !important; }
 
-    .burger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-    .burger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--text); border-radius: 2px; transition: .3s;
-    }
+    /* ─── HERO ─── */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; padding: calc(var(--nav-h) + 3rem) 5% 5.5rem; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: url("StugaVyUte.jpg") center / cover no-repeat; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: var(--hero-overlay); }
+    .hero-content { position: relative; z-index: 2; max-width: 740px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.4rem; }
+    .eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1.5px; background: var(--amber); }
+    h1 { font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.6rem; }
+    .hero-desc { font-size: 1rem; color: rgba(232,237,232,0.90); max-width: 460px; margin-bottom: 2.5rem; }
+    .btn-book { display: inline-block; background: var(--text); color: var(--night); text-decoration: none; padding: 0.9rem 2.2rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; }
+    .btn-book:hover { background: var(--amber); }
 
-    /* ─── HERO ───────────────────────────────────────────────── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-end;
-      padding: calc(var(--nav-h) + 3rem) 5% 5.5rem;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: url("StugaVyUte.jpg") center / cover no-repeat;
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: var(--hero-overlay);
-    }
-    .hero-content {
-      position: relative; z-index: 2; max-width: 740px;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 1.4rem;
-    }
-    .eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 28px; height: 1.5px;
-      background: var(--amber);
-    }
-    h1 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 1.6rem;
-    }
-    h1 .ghost { color: var(--amber); }
-
-    .hero-desc {
-      font-size: 1rem;
-      color: rgba(232,237,232,0.90);
-      line-height: 1.8;
-      max-width: 460px;
-      margin-bottom: 2.5rem;
-    }
-    .hero-cta-row {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .btn-book {
-      display: inline-block;
-      background: var(--text);
-      color: var(--night);
-      text-decoration: none;
-      padding: 0.9rem 2.2rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      transition: background .25s, transform .2s;
-    }
-    .btn-book:hover { background: var(--amber); transform: translateY(-2px); }
-    .hero-rating {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: var(--text);
-      font-size: 1rem;
-      font-weight: 400;
-    }
-    .hero-rating strong { font-size: 1.1rem; font-weight: 600; }
-    .star { color: var(--amber); }
-
-    /* ─── SPECS STRIP ────────────────────────────────────────── */
-    .specs-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--divider);
-      border-bottom: 1px solid var(--divider);
-    }
-    .spec {
-      padding: 2.2rem 5%;
-      border-right: 1px solid var(--divider);
-    }
+    /* ─── SPECS STRIP ─── */
+    .specs-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider); }
+    .spec { padding: 2.2rem 5%; border-right: 1px solid var(--divider); }
     .spec:last-child { border-right: none; }
-    .spec-val {
-      font-family: 'Lora', serif;
-      font-size: 1.9rem;
-      font-weight: 400;
-      color: var(--amber);
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-    .spec-label {
-      font-size: 0.72rem;
-      color: var(--dim);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
+    .spec-val { font-family: 'Lora', serif; font-size: 1.9rem; color: var(--amber); display: block; margin-bottom: 0.25rem; }
+    .spec-label { font-size: 0.72rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.12em; }
 
-    /* ─── SHARED SECTION ─────────────────────────────────────── */
+    /* ─── SHARED ─── */
     section { scroll-margin-top: calc(var(--nav-h) + 8px); }
     .section-inner { padding: 5.5rem 5%; }
+    .section-label { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.9rem; }
+    .section-label::before { content: ''; display: inline-block; width: 20px; height: 1.5px; background: var(--amber); }
+    h2 { font-family: 'Sora', sans-serif; font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 600; color: var(--text); margin-bottom: 2.5rem; }
 
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 0.9rem;
-    }
-    .section-label::before {
-      content: '';
-      display: inline-block;
-      width: 20px; height: 1.5px;
-      background: var(--amber);
-    }
-    h2 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 2.5rem;
-      line-height: 1.2;
-    }
-
-    /* ─── GALLERY ────────────────────────────────────────────── */
+    /* ─── GALLERY ─── */
     #gallery { background: var(--deep); }
+    .gallery-viewer { position: relative; width: 100%; background: #000000; border-radius: var(--r); overflow: hidden; border: 1px solid var(--divider); display: flex; justify-content: center; background: #000; }
+    .gallery-viewer iframe { width: 100%; max-width: 380px; aspect-ratio: 9 / 16; max-height: 70vh; border: none; z-index: 2; }
 
-    .gallery-viewer {
-      position: relative;
-      width: 100%;
-      background: #000000;
-      border-radius: var(--r);
-      overflow: hidden;
-      border: 1px solid var(--divider);
-      min-height: 260px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .gallery-backdrop {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      filter: blur(28px) brightness(0.55) saturate(1.2);
-      transform: scale(1.15);
-      transition: background-image .3s ease;
-      z-index: 0;
-    }
-    .gallery-backdrop::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--gallery-tint);
-    }
-
-    .gallery-viewer img,
-    .gallery-viewer iframe {
-      position: relative;
-      z-index: 1;
-      display: block;
-      width: 100%;
-      border: none;
-    }
-
-    .gallery-viewer iframe {
-      max-width: 380px;
-      aspect-ratio: 9 / 16;
-      max-height: 70vh;
-      z-index: 2;
-    }
-
-    .gallery-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(13,20,24,0.65);
-      backdrop-filter: blur(6px);
-      border: 1px solid var(--divider);
-      color: var(--text);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .2s;
-      z-index: 5;
-    }
-    .gallery-arrow:hover { background: rgba(13,20,24,0.9); }
-    .gallery-arrow.prev { left: .75rem; }
-    .gallery-arrow.next { right: .75rem; }
-
-    .gallery-video-badge {
-      position: absolute;
-      top: .75rem;
-      left: .75rem;
-      background: rgba(13,20,24,.75);
-      backdrop-filter: blur(6px);
-      color: var(--amber);
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: .28rem .65rem;
-      border-radius: 4px;
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    .gallery-meta {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      margin-top: .75rem;
-    }
-    .gallery-counter {
-      font-size: .75rem;
-      color: var(--dim);
-      letter-spacing: .08em;
-      white-space: nowrap;
-    }
-    .gallery-progress-bg {
-      flex: 1;
-      height: 2px;
-      background: var(--divider);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .gallery-progress-fill {
-      height: 100%;
-      background: var(--amber);
-      border-radius: 2px;
-      transition: width .3s ease;
-    }
-
-    .gallery-thumbs {
-      display: flex;
-      gap: 6px;
-      margin-top: .75rem;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--dim) transparent;
-    }
-    .gallery-thumbs::-webkit-scrollbar { height: 3px; }
-    .gallery-thumbs::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
-
-    .gallery-thumb-item {
-      flex: 0 0 80px;
-      height: 56px;
-      border-radius: 6px;
-      overflow: hidden;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: border-color .2s, opacity .2s;
-      opacity: 0.5;
-      position: relative;
-      background: var(--mist);
-    }
-    .gallery-thumb-item.active {
-      border-color: var(--amber);
-      opacity: 1;
-    }
-    .gallery-thumb-item:hover { opacity: 0.85; }
-    .gallery-thumb-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .gallery-thumb-video-icon {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .9rem;
-      background: rgba(0,0,0,.35);
-    }
-
-    /* ─── INFO ───────────────────────────────────────────────── */
+    /* ─── INFO ─── */
     #info { background: var(--night); }
-    .info-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .info-lead {
-      font-size: 1rem;
-      color: var(--sub);
-      line-height: 1.85;
-      margin-bottom: 1.75rem;
-    }
+    .info-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .info-lead { font-size: 1rem; color: var(--sub); line-height: 1.85; margin-bottom: 1.75rem; }
     .info-cards { display: flex; flex-direction: column; gap: 1rem; }
-    .icard {
-      background: var(--mist);
-      border: 1px solid var(--divider);
-      border-radius: var(--r);
-      padding: 1.6rem 1.75rem;
-      border-left: 3px solid var(--amber);
-    }
-    .icard h4 {
-      font-family: 'Lora', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.9rem;
-    }
+    .icard { background: var(--mist); border: 1px solid var(--divider); border-radius: var(--r); padding: 1.6rem 1.75rem; border-left: 3px solid var(--amber); }
+    .icard h4 { font-family: 'Lora', serif; font-size: 1rem; margin-bottom: 0.9rem; }
     .icard ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
-    .icard li {
-      color: var(--sub);
-      font-size: .85rem;
-      display: flex;
-      align-items: flex-start;
-      gap: .55rem;
-      line-height: 1.6;
-    }
-    .icard li::before { content: '—'; color: var(--dim); flex-shrink: 0; margin-top: .05em; }
+    .icard li { color: var(--sub); font-size: .85rem; display: flex; gap: .55rem; }
 
-    .bcard-img-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      margin: .25rem 0;
-    }
-    .bcard-img-grid img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    /* ─── SLEEPING / HYGIENE BLOCK ───────────────────────────── */
+    /* ─── BOENDE ─── */
     #boende { background: var(--deep); }
-    .boende-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-    .bcard {
-      background: var(--mist);
-      border: 1px solid var(--divider);
-      border-radius: var(--r);
-      padding: 2rem 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .bcard-icon {
-      font-size: 1.8rem;
-      line-height: 1;
-    }
-    .bcard h3 {
-      font-family: 'Lora', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .bcard p {
-      color: var(--sub);
-      font-size: .88rem;
-      line-height: 1.75;
-    }
-    .bcard-tip {
-      background: rgba(232,168,48,0.08);
-      border: 1px solid rgba(232,168,48,0.18);
-      border-radius: 8px;
-      padding: .75rem 1rem;
-      font-size: .8rem;
-      color: var(--amber);
-      line-height: 1.55;
-    }
-    .bcard-tip strong { display: block; margin-bottom: .25rem; font-weight: 600; }
+    .boende-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .bcard { background: var(--mist); border: 1px solid var(--divider); border-radius: var(--r); padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
+    .bcard-icon { font-size: 1.8rem; }
+    .bcard h3 { font-family: 'Lora', serif; font-size: 1.1rem; color: var(--text); }
+    .bcard p { color: var(--sub); font-size: .88rem; }
+    .bcard-tip { background: rgba(232,168,48,0.08); border: 1px solid rgba(232,168,48,0.18); border-radius: 8px; padding: .75rem 1rem; font-size: .8rem; color: var(--amber); }
 
-    /* ─── FEATURES ───────────────────────────────────────────── */
+    /* ─── FEATURES ─── */
     #features { background: var(--night); }
-    .feat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-    .fcard {
-      background: var(--mist);
-      border: 1px solid var(--divider);
-      border-radius: var(--r);
-      padding: 2.2rem 1.75rem;
-      transition: transform .3s, border-color .3s;
-    }
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .fcard { background: var(--mist); border: 1px solid var(--divider); border-radius: var(--r); padding: 2.2rem 1.75rem; }
     .fcard:hover { transform: translateY(-4px); border-color: rgba(232,168,48,.25); }
     .ficon { font-size: 1.6rem; margin-bottom: 1.25rem; display: block; }
-    .fcard h3 {
-      font-family: 'Lora', serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: .65rem;
-    }
-    .fcard p { color: var(--sub); font-size: .87rem; line-height: 1.7; }
+    .fcard h3 { font-family: 'Lora', serif; font-size: 1.05rem; margin-bottom: .65rem; }
+    .fcard p { color: var(--sub); font-size: .87rem; }
 
-    /* ─── UTFORSKA NEARBY ────────────────────────────────────── */
+    /* ─── UTFORSKA ─── */
     #utforska { background: var(--deep); }
-    .explore-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-    .ecard {
-      background: var(--mist);
-      border: 1px solid var(--divider);
-      border-radius: var(--r);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform .3s, border-color .3s;
-    }
-    .ecard:hover { transform: translateY(-4px); border-color: rgba(232,168,48,.3); }
-    .ecard-head {
-      padding: 1.75rem 1.75rem 0;
-    }
-    .ecard-badge {
-      display: inline-block;
-      font-size: .68rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--amber);
-      background: rgba(232,168,48,0.1);
-      border: 1px solid rgba(232,168,48,0.2);
-      border-radius: 4px;
-      padding: .2rem .55rem;
-      margin-bottom: 1rem;
-    }
-    .ecard h3 {
-      font-family: 'Lora', serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: .7rem;
-      line-height: 1.3;
-    }
-    .ecard p {
-      color: var(--sub);
-      font-size: .86rem;
-      line-height: 1.72;
-      padding: 0 1.75rem;
-    }
-    .ecard-foot {
-      margin-top: auto;
-      padding: 1.25rem 1.75rem 1.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .ecard-dist {
-      font-size: .75rem;
-      color: var(--dim);
-      display: flex;
-      align-items: center;
-      gap: .35rem;
-    }
-    .ecard-link {
-      display: inline-flex;
-      align-items: center;
-      gap: .3rem;
-      font-size: .78rem;
-      font-weight: 600;
-      color: var(--amber);
-      text-decoration: none;
-      letter-spacing: .04em;
-      transition: gap .2s;
-    }
-    .ecard-link:hover { gap: .55rem; }
+    .explore-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .ecard { background: var(--mist); border: 1px solid var(--divider); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; }
+    .ecard-head { padding: 1.75rem 1.75rem 0; }
+    .ecard-badge { display: inline-block; font-size: .68rem; font-weight: 600; color: var(--amber); background: rgba(232,168,48,0.1); border: 1px solid rgba(232,168,48,0.2); padding: .2rem .55rem; margin-bottom: 1rem; border-radius: 4px; }
+    .ecard h3 { font-family: 'Lora', serif; font-size: 1.15rem; margin-bottom: .7rem; }
+    .ecard p { color: var(--sub); font-size: .86rem; padding: 0 1.75rem; }
+    .ecard-foot { margin-top: auto; padding: 1.25rem 1.75rem 1.75rem; display: flex; justify-content: space-between; }
+    .ecard-dist { font-size: .75rem; color: var(--dim); }
+    .ecard-link { color: var(--amber); text-decoration: none; font-size: .78rem; font-weight: 600; }
 
-    /* ─── PACKLISTA ──────────────────────────────────────────── */
+    /* ─── PACKLISTA ─── */
     #packlista { background: var(--night); }
-    .pack-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-    .pcard {
-      background: var(--mist);
-      border: 1px solid var(--divider);
-      border-radius: var(--r);
-      padding: 1.75rem;
-    }
-    .pcard h4 {
-      font-family: 'Lora', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 1.1rem;
-      padding-bottom: .75rem;
-      border-bottom: 1px solid var(--divider);
-    }
+    .pack-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .pcard { background: var(--mist); border: 1px solid var(--divider); border-radius: var(--r); padding: 1.75rem; }
+    .pcard h4 { font-family: 'Lora', serif; font-size: 1rem; margin-bottom: 1.1rem; padding-bottom: .75rem; border-bottom: 1px solid var(--divider); }
     .pcard ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
-    .pcard li {
-      color: var(--sub);
-      font-size: .85rem;
-      display: flex;
-      align-items: flex-start;
-      gap: .55rem;
-      line-height: 1.5;
-    }
-    .pcard li::before { content: '✓'; color: var(--amber); font-size: .75rem; font-weight: 700; flex-shrink: 0; margin-top: .15em; }
+    .pcard li { color: var(--sub); font-size: .85rem; display: flex; gap: .55rem; }
 
-    /* ─── REVIEWS ────────────────────────────────────────────── */
+    /* ─── REVIEWS ─── */
     #reviews { background: var(--deep); }
-    .reviews-top {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-    }
-    .rating-big {
-      display: flex;
-      align-items: baseline;
-      gap: .75rem;
-    }
-    .rating-num {
-      font-family: 'Lora', serif;
-      font-size: 4.5rem;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1;
-    }
-    .rating-right { display: flex; flex-direction: column; gap: .3rem; }
-    .stars-row { display: flex; gap: 3px; }
+    .reviews-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; }
+    .rating-big { display: flex; align-items: baseline; gap: .75rem; }
+    .rating-num { font-family: 'Lora', serif; font-size: 4.5rem; color: var(--text); }
     .stars-row span { color: var(--amber); font-size: 1.25rem; }
-    .rating-count { font-size: .82rem; color: var(--dim); }
-    .rating-link {
-      display: inline-block;
-      margin-top: .5rem;
-      font-size: .8rem;
-      color: var(--amber);
-      text-decoration: none;
-      border: 1px solid rgba(232,168,48,.3);
-      padding: .45rem 1rem;
-      border-radius: 6px;
-      transition: background .2s;
-    }
-    .rating-link:hover { background: rgba(232,168,48,.08); }
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-    }
-    .cat-card {
-      background: var(--mist);
-      border: 1px solid var(--divider);
-      border-radius: var(--r);
-      padding: 1.5rem 1.25rem;
-      text-align: center;
-    }
+    .rating-link { color: var(--amber); text-decoration: none; border: 1px solid rgba(232,168,48,.3); padding: .45rem 1rem; border-radius: 6px; font-size: .8rem; }
+    .categories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .cat-card { background: var(--mist); border: 1px solid var(--divider); border-radius: var(--r); padding: 1.5rem 1.25rem; text-align: center; }
     .cat-icon { font-size: 1.5rem; display: block; margin-bottom: .75rem; }
-    .cat-label {
-      font-size: .78rem;
-      color: var(--sub);
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      display: block;
-      margin-bottom: .65rem;
-    }
-    .cat-bar-bg {
-      width: 100%;
-      height: 4px;
-      background: rgba(232,237,232,.08);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: .45rem;
-    }
-    .cat-bar-fill {
-      height: 100%;
-      background: var(--amber);
-      border-radius: 4px;
-    }
-    .cat-score {
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--amber);
-    }
+    .cat-label { font-size: .78rem; color: var(--sub); text-transform: uppercase; display: block; margin-bottom: .65rem; }
+    .cat-bar-bg { width: 100%; height: 4px; background: rgba(232,237,232,.08); border-radius: 4px; overflow: hidden; margin-bottom: .45rem; }
+    .cat-bar-fill { height: 100%; background: var(--amber); }
+    .cat-score { font-size: .82rem; font-weight: 600; color: var(--amber); }
 
-    /* ─── MAP ────────────────────────────────────────────────── */
+    /* ─── MAP ─── */
     #karta { background: var(--night); }
-    .map-layout {
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 2rem;
-      align-items: start;
-    }
-    .map-embed-wrap {
-      border-radius: var(--r);
-      overflow: hidden;
-      border: 1px solid var(--divider);
-      line-height: 0;
-    }
-    .map-embed-wrap iframe {
-      width: 100%;
-      height: 440px;
-      border: none;
-      display: block;
-      filter: var(--map-filter);
-    }
-    .map-panel {
-      background: var(--mist);
-      border: 1px solid var(--divider);
-      border-radius: var(--r);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .map-address {
-      display: flex;
-      flex-direction: column;
-      gap: .4rem;
-    }
-    .map-address-label {
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--dim);
-    }
-    .map-address-text {
-      font-size: .95rem;
-      color: var(--text);
-      line-height: 1.55;
-    }
-    .map-address-coord {
-      font-size: .75rem;
-      color: var(--dim);
-      font-family: monospace;
-    }
-    .map-divider { height: 1px; background: var(--divider); }
-    .map-cta-head {
-      font-size: .78rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--dim);
-      margin-bottom: .1rem;
-    }
+    .map-layout { display: grid; grid-template-columns: 1fr 360px; gap: 2rem; }
+    .map-embed-wrap { border-radius: var(--r); overflow: hidden; border: 1px solid var(--divider); }
+    .map-embed-wrap iframe { width: 100%; height: 440px; border: none; display: block; filter: var(--map-filter); }
+    .map-panel { background: var(--mist); border: 1px solid var(--divider); border-radius: var(--r); padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .map-address { display: flex; flex-direction: column; gap: .4rem; }
+    .map-address-label { font-size: .72rem; color: var(--dim); text-transform: uppercase; }
+    .map-address-text { font-size: .95rem; color: var(--text); }
     .map-btns { display: flex; flex-direction: column; gap: .65rem; }
-    .map-btn {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      padding: .85rem 1.1rem;
-      border-radius: 8px;
-      font-size: .87rem;
-      font-weight: 500;
-      text-decoration: none;
-      cursor: pointer;
-      border: 1px solid var(--divider);
-      background: rgba(232,237,232,.03);
-      color: var(--text);
-      transition: background .2s, border-color .2s;
-      font-family: 'Sora', sans-serif;
-      width: 100%;
-      text-align: left;
-    }
-    .map-btn:hover { background: rgba(232,237,232,.07); border-color: rgba(232,237,232,.18); }
-    .map-btn-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .map-btn-sub {
-      font-size: .72rem;
-      color: var(--dim);
-      display: block;
-      margin-top: .1rem;
-      font-weight: 300;
-    }
+    .map-btn { display: flex; align-items: center; gap: .75rem; padding: .85rem 1.1rem; border-radius: 8px; font-size: .87rem; text-decoration: none; border: 1px solid var(--divider); background: rgba(232,237,232,.03); color: var(--text); }
 
-    /* ─── FOOTER ─────────────────────────────────────────────── */
-    footer {
-      background: var(--deep);
-      border-top: 1px solid var(--divider);
-      padding: 4rem 5%;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-    .foot-brand .logo { font-size: 1.3rem; display: block; margin-bottom: .5rem; }
-    .foot-brand p { font-size: .82rem; color: var(--dim); line-height: 1.6; max-width: 280px; }
-    .foot-col h5 {
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--dim);
-      margin-bottom: 1rem;
-    }
+    /* ─── FOOTER ─── */
+    footer { background: var(--deep); border-top: 1px solid var(--divider); padding: 4rem 5%; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 3rem; margin-bottom: 3rem; }
+    .foot-brand p { font-size: .82rem; color: var(--dim); max-width: 280px; }
+    .foot-col h5 { font-size: .72rem; color: var(--dim); text-transform: uppercase; margin-bottom: 1rem; }
     .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
-    .foot-col li a, .foot-col li {
-      font-size: .85rem;
-      color: var(--sub);
-      text-decoration: none;
-      transition: color .2s;
-    }
+    .foot-col li a { font-size: .85rem; color: var(--sub); text-decoration: none; }
     .foot-col li a:hover { color: var(--amber); }
-    .footer-bottom {
-      border-top: 1px solid var(--divider);
-      padding-top: 1.5rem;
-      font-size: .75rem;
-      color: var(--dim);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
+    .footer-bottom { border-top: 1px solid var(--divider); padding-top: 1.5rem; font-size: .75rem; color: var(--dim); display: flex; justify-content: space-between; }
 
-    /* ─── REVEAL ─────────────────────────────────────────────── */
-    [data-r] {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .75s ease, transform .75s ease;
-    }
-    [data-r].on { opacity: 1; transform: none; }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1024px) {
-      .explore-grid { grid-template-columns: 1fr 1fr; }
-      .map-layout { grid-template-columns: 1fr; }
-      .map-panel { flex-direction: row; flex-wrap: wrap; gap: 1.25rem; }
-      .map-btns { flex-direction: row; flex-wrap: wrap; }
-      .map-btn { width: auto; }
+      .info-layout, .boende-grid, .feat-grid, .explore-grid, .pack-grid, .categories-grid, .map-layout { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- GALLERISEKTION MED NY INBÄDDAD YOUTUBE SHORT -->
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">Fri<span>den.</span></a>
+    <div class="nav-links">
+      <a href="#info">Om stugan</a>
+      <a href="#boende">Boende</a>
+      <a href="#features">Upplevelsen</a>
+      <a href="#utforska">Utforska</a>
+      <a href="#karta">Hitta hit</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Byt färgtema">
+        <span class="t-moon">🌙</span>
+        <span class="t-sun">☀️</span>
+      </button>
+      <a href="https://airbeds.com" class="nav-book">Boka nu</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="eyebrow">Ett med naturen</div>
+      <h1>Friden<span class="ghost">.</span></h1>
+      <p class="hero-desc">En exklusiv off-grid upplevelse djupt inne i Ångermanlands skogar. Logga ut från vardagen och vakna upp till Bodtjärnens spegelblanka vatten.</p>
+      <div class="hero-cta-row">
+        <a href="https://airbeds.com" class="btn-book">Sök lediga datum</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SPECS STRIP -->
+  <div class="specs-strip">
+    <div class="spec"><span class="spec-val">0</span><span class="spec-label">Masteffekt (Off-Grid)</span></div>
+    <div class="spec"><span class="spec-val">4</span><span class="spec-label">Bäddar</span></div>
+    <div class="spec"><span class="spec-val">15m</span><span class="spec-label">Till stranden</span></div>
+    <div class="spec"><span class="spec-val">4.96</span><span class="spec-label">Gästbetyg</span></div>
+  </div>
+
+  <!-- GALLERY -->
   <section id="gallery">
     <div class="section-inner">
+      <span class="section-label">Galleri</span>
+      <h2>En visuell rundtur</h2>
       <div class="gallery-viewer">
         <iframe 
           src="https://www.youtube.com/embed/0qQEQfKipso" 
@@ -1096,6 +278,251 @@
       </div>
     </div>
   </section>
+
+  <!-- INFO -->
+  <section id="info">
+    <div class="section-inner">
+      <div class="info-layout">
+        <div>
+          <span class="section-label">Om stugan</span>
+          <h2>Koppla bort för att koppla av</h2>
+          <p class="info-lead">Friden är inte bara ett boende, det är en omstart. Här finns inget rinnande vatten eller fast el – istället erbjuder vi lyxen av total tystnad, sprakande eld och tid att bara vara.</p>
+        </div>
+        <div class="info-cards">
+          <div class="icard">
+            <h4>Detta ingår alltid</h4>
+            <ul>
+              <li>Färskt dricksvatten i dunkar vid ankomst</li>
+              <li>Obegränsat med torr ved till kamin och bastu</li>
+              <li>Basvaror i köket (salt, peppar, kaffe, ljus)</li>
+              <li>Lakan, handdukar och ekologiska tvålar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOENDE -->
+  <section id="boende">
+    <div class="section-inner">
+      <span class="section-label">Bekvämligheter</span>
+      <h2>Enkelhet möter hög standard</h2>
+      <div class="boende-grid">
+        <div class="bcard">
+          <span class="bcard-icon">🛏️</span>
+          <h3>Sovarrangemang</h3>
+          <p>Stugan rymmer upp till 4 gäster. På loftet finns en rymlig dubbelsäng med utsikt över stjärnhimlen, och i allrummet finns en platsbyggd bäddsoffa som enkelt görs om till ytterligare två fullstora sovplatser.</p>
+        </div>
+        <div class="bcard">
+          <span class="bcard-icon">🪵</span>
+          <h3>Hygien & Toalett</h3>
+          <p>Här lever vi off-grid. Det innebär en fräsch och luktfri förbränningstoalett/mulltoa i en separat byggnad strax bakom stugan. Tvättar dig gör du i den vedeldade bastun precis som man gjorde förr i tiden.</p>
+          <div class="bcard-tip">
+            <strong>Tips från värden:</strong> Elda upp bastun till 70°C, värm sjövatten i den inbyggda tanken och ta ett stärkande dopp i Bodtjärnen mellan varven.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-inner">
+      <span class="section-label">Aktiviteter</span>
+      <h2>Gör så lite eller så mycket du vill</h2>
+      <div class="feat-grid">
+        <div class="fcard">
+          <span class="ficon">🔥</span>
+          <h3>Vedeldad Bastu</h3>
+          <p>Ligger precis på kanten till Bodtjärnen med panoramafönster ut mot vattnet. Den ultimata avkopplingen efter en vandringsdag.</p>
+        </div>
+        <div class="fcard">
+          <span class="ficon">🛶</span>
+          <h3>Roddvagn & Fiske</h3>
+          <p>En stabil roddbåt ligger förtöjd vid bryggan. Låna den för en fisketur efter abborre eller bara för att glida med kvällssolen.</p>
+        </div>
+        <div class="fcard">
+          <span class="ficon">☕</span>
+          <h3>Gjutjärnskamin</h3>
+          <p>Stugans hjärta. Den värmer snabbt upp hela rummet och har en kokplatta där du kan koka morgonkaffet till ljudet av sprakande björkved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UTFORSKA -->
+  <section id="utforska">
+    <div class="section-inner">
+      <span class="section-label">Omgivningar</span>
+      <h2>Utforska närområdet i Undrom</h2>
+      <div class="explore-grid">
+        <div class="ecard">
+          <div class="ecard-head">
+            <span class="ecard-badge">Natur</span>
+            <h3>Skuleskogens Nationalpark</h3>
+          </div>
+          <p>Upplev Höga Kustens dramatiska landskap med Slåttdalsskrevan och magiska utsiktsplatser över skärgården.</p>
+          <div class="ecard-foot">
+            <span class="ecard-dist">🚗 ca 45 min</span>
+          </div>
+        </div>
+        <div class="ecard">
+          <div class="ecard-head">
+            <span class="ecard-badge">Kultur</span>
+            <h3>Nämforsens Hällristningar</h3>
+          </div>
+          <p>En av Europas största och mest koncentrerade platser för hällristningar med över 2 600 figurer precis vid forsen.</p>
+          <div class="ecard-foot">
+            <span class="ecard-dist">🚗 ca 35 min</span>
+          </div>
+        </div>
+        <div class="ecard">
+          <div class="ecard-head">
+            <span class="ecard-badge">Mat</span>
+            <h3>Gårdsbutiker i Ådalen</h3>
+          </div>
+          <p>Besök lokala mathantverkare, köp med hemmebakat tunnbröd eller lokalproducerad ost till kvällen vid kaminen.</p>
+          <div class="ecard-foot">
+            <span class="ecard-dist">🚗 ca 15 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKLISTA -->
+  <section id="packlista">
+    <div class="section-inner">
+      <span class="section-label">Förberedelser</span>
+      <h2>Vad du bör ta med dig</h2>
+      <div class="pack-grid">
+        <div class="pcard">
+          <h4>Viktigt att packa</h4>
+          <ul>
+            <li>Powerbank (för att ladda mobilen vid behov)</li>
+            <li>Ficklampa eller pannlampa (särskilt under höst/vinter)</li>
+            <li>Rejäla och vattentäta skor för skogsturer</li>
+            <li>Mat och dryck för hela din vistelse</li>
+          </ul>
+        </div>
+        <div class="pcard">
+          <h4>Vad du kan lämna hemma</h4>
+          <ul>
+            <li>Sängkläder och handdukar (det fixar vi)</li>
+            <li>Diskmedel och tvål (vi tillhandahåller biologiskt nedbrytbara alternativ)</li>
+            <li>Ved (huggen och klar björkved finns i överflöd)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="section-inner">
+      <div class="reviews-top">
+        <div>
+          <span class="section-label">Omdömen</span>
+          <h2>Vad våra gäster säger</h2>
+        </div>
+        <div class="rating-big">
+          <span class="rating-num">4.96</span>
+          <div class="rating-right">
+            <div class="stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <span class="rating-count">Baserat på 54 bokningar</span>
+          </div>
+        </div>
+      </div>
+      <div class="categories-grid">
+        <div class="cat-card">
+          <span class="cat-icon">✨</span>
+          <span class="cat-label">Renlighet</span>
+          <div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 100%"></div></div>
+          <span class="cat-score">5.0</span>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">📍</span>
+          <span class="cat-label">Läge</span>
+          <div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 98%"></div></div>
+          <span class="cat-score">4.9</span>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">🔑</span>
+          <span class="cat-label">Incheckning</span>
+          <div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 100%"></div></div>
+          <span class="cat-score">5.0</span>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">🌲</span>
+          <span class="cat-label">Prisvärt</span>
+          <div class="cat-bar-bg"><div class="cat-bar-fill" style="width: 96%"></div></div>
+          <span class="cat-score">4.8</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="karta">
+    <div class="section-inner">
+      <span class="section-label">Hitta hit</span>
+      <h2>Vägbeskrivning & Plats</h2>
+      <div class="map-layout">
+        <div class="map-embed-wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14561.428481432127!2d17.854201314983287!3d63.14251294112398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x467b25bf35bf40bf%3A0x2300b0d3bf4bf4bf!2sUndrom!5e0!3m2!1ssv!2sse!4v1710000000000!5m2!1ssv!2sse" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-panel">
+          <div class="map-address">
+            <span class="map-address-label">Adress</span>
+            <div class="map-address-text">Bodtjärnen, Undrom<br>Västernorrlands län, Sverige</div>
+          </div>
+          <div class="map-divider"></div>
+          <div class="map-address">
+            <span class="map-address-label">Koordinater</span>
+            <div class="map-address-coord">63.1425° N, 17.8542° E</div>
+          </div>
+          <div class="map-divider"></div>
+          <div class="map-btns">
+            <a href="https://maps.google.com" target="_blank" class="map-btn">Öppna i Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="foot-brand">
+        <a href="#" class="logo">Fri<span>den.</span></a>
+        <p>Ett off-grid paradis i Ångermanland skapat för återhämtning och naturupplevelser.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Snabblänkar</h5>
+        <ul>
+          <li><a href="#info">Om stugan</a></li>
+          <li><a href="#boende">Bekvämligheter</a></li>
+          <li><a href="#gallery">Bilder</a></li>
+          <li><a href="https://airbeds.com">Bokningssida</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Friden. Alla rättigheter reserverade.</span>
+      <span>Hemsida utvecklad för GitHub Pages.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Enkel kod för att växla färgtema
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+    });
+  </script>
 
 </body>
 </html>
