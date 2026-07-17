@@ -527,6 +527,20 @@
       background: transparent;
     }
 
+    /* YouTube embed slide (used for vertical Shorts videos) */
+    .gallery-viewer iframe.gallery-yt {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 9 / 16;
+      max-height: 70vh;
+      min-height: 200px;
+      margin: 0 auto;
+      border: none;
+    }
+
     /* Prev / Next arrow buttons overlaid on the viewer */
     .gallery-arrow {
       position: absolute;
@@ -1221,7 +1235,7 @@
     <div class="gallery-viewer" id="galleryViewer">
       <div class="gallery-backdrop" id="galleryBackdrop" style="background-image:url('FramsidaStuga.jpg');"></div>
       <img id="mainImg" src="FramsidaStuga.jpg" alt="Stugans framsida" />
-      <video id="mainVideo" poster="StugaInne.JPG" controls playsinline preload="metadata" style="display:none;"></video>
+      <iframe id="mainYoutube" class="gallery-yt" style="display:none;" src="" title="Film inomhus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       <div id="videoTag" class="gallery-video-badge" style="display:none;">▶ Video</div>
       <button class="gallery-arrow prev" id="prev" aria-label="Föregående">‹</button>
       <button class="gallery-arrow next" id="next" aria-label="Nästa">›</button>
@@ -1586,7 +1600,7 @@
     { src:'Ute3.jpg',          alt:'Utsikt från sjön',  type:'img' },
     { src:'StugaNedan.JPG',    alt:'Stugan nedan',      type:'img' },
     { src:'StugaInne.JPG',     alt:'Inomhus',           type:'img' },
-    { src:'FilmStugaInne.MOV', alt:'Film inomhus',      type:'video', poster:'StugaInne.JPG' },
+    { videoId:'0qQEQfKipso',   alt:'Film inomhus',      type:'youtube', poster:'StugaInne.JPG' },
     { src:'Kamin.JPG',         alt:'Vedkaminen',        type:'img' },
     { src:'KaminBord.jpg',     alt:'Kamin och bord',    type:'img' },
     { src:'DubbelSang.jpg',    alt:'Sovplats',          type:'img' },
@@ -1600,7 +1614,7 @@
 
   let idx = 0;
   const mainImg     = document.getElementById('mainImg');
-  const mainVideo   = document.getElementById('mainVideo');
+  const mainYoutube = document.getElementById('mainYoutube');
   const videoTag    = document.getElementById('videoTag');
   const counter     = document.getElementById('slideCounter');
   const progressEl  = document.getElementById('slideProgress');
@@ -1613,8 +1627,8 @@
     item.className = 'gallery-thumb-item' + (i === 0 ? ' active' : '');
     item.dataset.idx = i;
 
-    if (s.type === 'video') {
-      // Video thumb uses poster image
+    if (s.type === 'youtube') {
+      // YouTube thumb uses poster image
       const poster = s.poster || '';
       item.innerHTML = poster
         ? `<img src="${poster}" alt="Video" /><div class="gallery-thumb-video-icon">▶</div>`
@@ -1628,29 +1642,25 @@
   });
 
   function goTo(newIdx) {
-    // Pause video if leaving video slide
-    if (slides[idx].type === 'video') {
-      mainVideo.pause();
-      mainVideo.removeAttribute('src');
-      mainVideo.load();
+    // Stop YouTube playback if leaving the youtube slide
+    if (slides[idx].type === 'youtube') {
+      mainYoutube.src = '';
     }
 
     idx = newIdx;
     const s = slides[idx];
-    const isVideo = s.type === 'video';
+    const isYoutube = s.type === 'youtube';
 
-    // Toggle img / videoo
-    mainImg.style.display   = isVideo ? 'none' : 'block';
-    mainVideo.style.display = isVideo ? 'block' : 'none';
-    videoTag.style.display  = isVideo ? 'block' : 'none';
+    // Toggle img / youtube iframe
+    mainImg.style.display     = isYoutube ? 'none' : 'block';
+    mainYoutube.style.display = isYoutube ? 'block' : 'none';
+    videoTag.style.display    = isYoutube ? 'block' : 'none';
 
-    // Blurred mirror backdrop always matches the visible photo (poster for video)
-    backdrop.style.backgroundImage = `url('${isVideo ? (s.poster || '') : s.src}')`;
+    // Blurred mirror backdrop always matches the visible photo (poster for youtube)
+    backdrop.style.backgroundImage = `url('${isYoutube ? (s.poster || '') : s.src}')`;
 
-    if (isVideo) {
-      mainVideo.poster = s.poster || '';
-      mainVideo.src    = s.src;
-      mainVideo.load(); // ensures poster renders immediately, video itself loads lazily
+    if (isYoutube) {
+      mainYoutube.src = `https://www.youtube.com/embed/${s.videoId}?rel=0`;
     } else {
       mainImg.src = s.src;
       mainImg.alt = s.alt;
