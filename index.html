@@ -3,1049 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Friden — off-grid stuga vid Bodtjärnen i Undrom, mellan Örnsköldsvik och Sollefteå. Elda i vedkaminen och vakna till spegelblankt sjövatten." />
   <title>Friden — Off-grid stuga vid Bodtjärnen</title>
+  <meta name="description" content="Friden — off-grid stuga vid Bodtjärnen i Undrom, mellan Örnsköldsvik och Sollefteå. Elda i vedkaminen och vakna till spegelblankt sjövatten." />
+
+  <!-- BYT UT DINDOMAN.se MOT DIN RIKTIGA ADRESS NÄR SIDAN LIGGER PÅ NÄTET -->
+  <link rel="alternate" hreflang="sv" href="https://DINDOMAN.se/" />
+  <link rel="alternate" hreflang="en" href="https://DINDOMAN.se/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://DINDOMAN.se/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="sv_SE" />
+  <meta property="og:title" content="Friden — Off-grid stuga vid Bodtjärnen" />
+  <meta property="og:description" content="Enkel stuga utan el och internet vid en privat sjö i Norrland." />
+  <meta property="og:image" content="https://DINDOMAN.se/bilder/StugaVyUte.jpg" />
+
+  <!-- Sätter tema och js-klass direkt, så sidan inte blinkar -->
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.className += ' js';
+      try { t = localStorage.getItem('friden-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preload" as="image" href="bilder/StugaVyUte.jpg" fetchpriority="high" />
   <link rel="preconnect" href="https://api.fontshare.com" />
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23756552' d='M12 3L2 11h3v8h6v-5h2v5h6v-8h3L12 3z'/%3E%3C/svg%3E" />
-
-  <style>
-/* ═══════════════════════════════════════════════════════════
-   FRIDEN — Off-grid stuga vid Bodtjärnen
-   Varm, naturnära design · Zodiak + General Sans
-   ═══════════════════════════════════════════════════════════ */
-
-/* ─── TOKENS ────────────────────────────────────────────── */
-:root,
-[data-theme="light"] {
-  --color-bg: #f5f1e8;
-  --color-bg-raised: #faf7ef;
-  --color-bg-elevated: #efe9dc;
-  --color-surface: #faf7ef;
-  --color-surface-2: #fdfbf5;
-  --color-surface-offset: #efe9dc;
-  --color-surface-offset-2: #e5dfd0;
-  --color-divider: #dcd5c4;
-  --color-border: #cfc7b4;
-  --color-nav-bg: rgba(245,241,232,0.88);
-
-  --color-text: #2c2a22;
-  --color-text-muted: #6e6b5f;
-  --color-text-faint: #6a6558;
-  --color-footer-muted: #5a574b;
-
-  --color-primary: #6b5b42;
-  --color-primary-hover: #574835;
-  --color-primary-active: #453828;
-  --color-primary-highlight: #e8e0cf;
-
-  --color-accent: #7d5a1b;
-  --color-accent-hover: #664813;
-  --color-accent-dim: rgba(201,154,74,0.10);
-  --color-accent-border: rgba(125,90,27,0.25);
-
-  --hero-overlay:
-    linear-gradient(to top, rgba(30,26,18,0.78) 0%, rgba(30,26,18,0.35) 45%, rgba(30,26,18,0.06) 100%);
-
-  --gallery-tint: rgba(245,241,232,0.12);
-  --map-filter: none;
-
-  --color-btn-bg: #2c2a22;
-  --color-btn-text: #faf7ef;
-
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
-
-  --shadow-sm: 0 1px 2px rgba(44,42,34,0.06);
-  --shadow-md: 0 4px 12px rgba(44,42,34,0.08);
-  --shadow-lg: 0 12px 32px rgba(44,42,34,0.12);
-
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
-  --space-32: 8rem;
-
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-  --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
-  --text-hero: clamp(3rem, 0.5rem + 7vw, 8rem);
-
-  --font-display: 'Zodiak', Georgia, serif;
-  --font-body: 'General Sans', 'Helvetica Neue', sans-serif;
-
-  --content-default: 1120px;
-  --nav-h: 68px;
-  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-[data-theme="dark"] {
-  --color-bg: #1a1814;
-  --color-bg-raised: #201d18;
-  --color-bg-elevated: #26221c;
-  --color-surface: #201d18;
-  --color-surface-2: #242019;
-  --color-surface-offset: #26221c;
-  --color-surface-offset-2: #2c2820;
-  --color-divider: #33302a;
-  --color-border: #444036;
-  --color-nav-bg: rgba(26,24,20,0.80);
-
-  --color-text: #e8e4da;
-  --color-text-muted: #c4bfb2;
-  --color-text-faint: #9b9585;
-  --color-footer-muted: #b8b2a4;
-
-  --color-primary: #c4a67e;
-  --color-primary-hover: #d4b78c;
-  --color-primary-active: #e0c9a4;
-  --color-primary-highlight: #3a332a;
-
-  --color-accent: #e0b25f;
-  --color-accent-hover: #ecc676;
-  --color-accent-dim: rgba(224,178,95,0.10);
-  --color-accent-border: rgba(224,178,95,0.22);
-
-  --hero-overlay:
-    linear-gradient(to top, rgba(26,24,20,0.88) 0%, rgba(26,24,20,0.45) 45%, rgba(26,24,20,0.10) 100%);
-
-  --gallery-tint: rgba(26,24,20,0.35);
-  --map-filter: grayscale(25%) invert(88%) hue-rotate(170deg) saturate(0.55) brightness(0.85);
-
-  --color-btn-bg: #e8e4da;
-  --color-btn-text: #1a1814;
-
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.25);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
-  --shadow-lg: 0 12px 32px rgba(0,0,0,0.4);
-}
-
-/* ─── BASE ──────────────────────────────────────────────── */
-*,
-*::before,
-*::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  scroll-behavior: smooth;
-  hanging-punctuation: first last;
-  scroll-padding-top: var(--space-16);
-}
-
-body {
-  min-height: 100dvh;
-  line-height: 1.65;
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--color-text);
-  background: var(--color-bg);
-  overflow-x: hidden;
-  transition: background-color 300ms ease, color 300ms ease;
-}
-
-img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
-
-h1, h2, h3, h4, h5, h6 { text-wrap: balance; line-height: 1.15; }
-p, li, figcaption { text-wrap: pretty; }
-
-::selection { background: var(--color-accent-dim); color: var(--color-text); }
-
-:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-
-a, button, [role="button"], [role="link"] {
-  transition:
-    color var(--transition-interactive),
-    background-color var(--transition-interactive),
-    border-color var(--transition-interactive),
-    box-shadow var(--transition-interactive);
-}
-
-button { cursor: pointer; background: none; border: none; font: inherit; }
-
-.sr-only {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
-}
-
-/* ─── LAYOUT ───────────────────────────────────────────── */
-.container {
-  width: 100%;
-  max-width: var(--content-default);
-  margin-inline: auto;
-  padding-inline: clamp(var(--space-6), 5vw, var(--space-10));
-}
-
-.section {
-  padding-block: clamp(var(--space-12), 7vw, var(--space-24));
-  scroll-margin-top: calc(var(--nav-h) + 8px);
-}
-
-.section--offset { background: var(--color-surface-offset); }
-.section--gallery { background: var(--color-surface); }
-
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: 0.75rem;
-}
-.section-label::before {
-  content: '';
-  display: inline-block;
-  width: 20px; height: 2px;
-  background: var(--color-accent);
-  border-radius: 2px;
-}
-
-h2 {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-6);
-  line-height: 1.2;
-}
-
-.section-intro {
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-8);
-  max-width: 60ch;
-}
-
-/* ─── NAV ───────────────────────────────────────────────── */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--nav-h);
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-inline: clamp(var(--space-4), 5%, var(--space-10));
-  background: var(--color-nav-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--color-divider);
-}
-
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--color-text);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-}
-.logo svg { color: var(--color-primary); }
-.logo--foot { font-size: 1.25rem; margin-bottom: 0.5rem; display: block; }
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.5vw, 2.25rem);
-}
-.nav-links a {
-  color: var(--color-text-muted);
-  text-decoration: none;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  transition: color 180ms ease;
-}
-.nav-links a:hover { color: var(--color-text); }
-.nav-links a.btn--accent { color: var(--color-btn-text); }
-.nav-links a.btn--accent:hover { color: var(--color-btn-text); }
-
-.nav-actions { display: flex; align-items: center; gap: 0.75rem; }
-
-.theme-toggle {
-  width: 40px; height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-full);
-  background: transparent;
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-divider);
-  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
-}
-.theme-toggle:hover { background: var(--color-surface-offset); color: var(--color-text); }
-
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  padding: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.burger span {
-  display: block;
-  width: 20px; height: 2px;
-  background: var(--color-text);
-  border-radius: 2px;
-  transition: transform 300ms ease;
-}
-
-/* ─── BUTTONS ──────────────────────────────────────────── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-md);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  transition:
-    background-color 220ms ease,
-    color 220ms ease,
-    border-color 220ms ease,
-    transform 180ms ease,
-    box-shadow 220ms ease;
-}
-.btn--accent { background: var(--color-btn-bg); color: var(--color-btn-text); }
-.btn--accent:hover {
-  background: var(--color-primary);
-  color: var(--color-btn-text);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-.btn--ghost {
-  background: rgba(26,24,20,0.45);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #faf7ef;
-  border: 1px solid rgba(250,247,239,0.35);
-}
-.btn--ghost:hover {
-  background: rgba(26,24,20,0.7);
-  border-color: rgba(250,247,239,0.55);
-  color: #faf7ef;
-}
-.btn--sm { padding: 0.55rem 1.1rem; font-size: var(--text-xs); }
-
-/* ─── HERO ──────────────────────────────────────────────── */
-.hero {
-  position: relative;
-  min-height: min(100svh, 880px);
-  display: flex;
-  align-items: flex-end;
-  padding: calc(var(--nav-h) + var(--space-12)) clamp(var(--space-6), 5vw, var(--space-10)) var(--space-16);
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-}
-.hero-overlay { position: absolute; inset: 0; background: var(--hero-overlay); }
-.hero-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(14,12,9,0.62) 0%, rgba(14,12,9,0.32) 45%, rgba(14,12,9,0) 75%);
-}
-.hero-content { position: relative; z-index: 2; max-width: 720px; }
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #e8c27a;
-  margin-bottom: var(--space-4);
-}
-.eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 28px; height: 2px;
-  background: #e8c27a;
-  border-radius: 2px;
-}
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: #faf7ef;
-  margin-bottom: var(--space-5);
-  text-shadow: 0 2px 24px rgba(0,0,0,0.35);
-}
-.hero-title em { font-style: italic; color: #e0b25f; }
-
-.hero-desc {
-  font-size: var(--text-base);
-  color: rgba(250,247,239,0.90);
-  line-height: 1.8;
-  max-width: 480px;
-  margin-bottom: var(--space-8);
-}
-
-.hero-cta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: var(--space-6);
-}
-.hero .btn--accent { background: #f3e6c8; color: #2a2318; border-color: transparent; }
-.hero .btn--accent:hover { background: #fff3d6; color: #2a2318; }
-
-.hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  color: rgba(250,247,239,0.80);
-  font-size: var(--text-sm);
-}
-.hero-meta .star { color: #e8c27a; }
-.hero-meta .divider { opacity: 0.5; }
-.hero-meta .rating-link {
-  color: rgba(250,247,239,0.95);
-  text-decoration: underline;
-  text-decoration-color: rgba(250,247,239,0.4);
-  text-underline-offset: 3px;
-}
-.hero-meta .rating-link:hover { text-decoration-color: #e8c27a; }
-
-/* ─── VARFÖR FRIDEN ─────────────────────────────────────── */
-.why {
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-divider);
-  padding-block: clamp(var(--space-10), 6vw, var(--space-16));
-}
-.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-.why-item {
-  padding-inline: clamp(var(--space-5), 3vw, var(--space-10));
-  border-left: 1px solid var(--color-divider);
-}
-.why-item:first-child { padding-left: 0; border-left: none; }
-.why-item:last-child { padding-right: 0; }
-.why-item h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: 600;
-  margin-bottom: var(--space-3);
-  line-height: 1.2;
-}
-.why-item p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.7; max-width: 38ch; }
-
-.feature-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px; height: 52px;
-  border-radius: 14px;
-  background: var(--color-surface-offset);
-  color: var(--color-accent);
-  margin-bottom: var(--space-4);
-}
-
-/* ─── GALLERY ───────────────────────────────────────────── */
-.section--gallery .container { max-width: 1280px; }
-
-.gallery-viewer {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  max-height: 78vh;
-  background: #0e0c09;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  border: 1px solid var(--color-divider);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.gallery-backdrop {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  filter: blur(32px) brightness(0.55) saturate(1.2);
-  transform: scale(1.15);
-  transition: background-image 300ms ease;
-  z-index: 0;
-}
-.gallery-backdrop::after { content: ''; position: absolute; inset: 0; background: var(--gallery-tint); }
-
-.gallery-viewer img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.gallery-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px; height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-full);
-  background: rgba(14,12,9,0.55);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(250,247,239,0.15);
-  color: #faf7ef;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: background 180ms ease, transform 180ms ease;
-  z-index: 5;
-}
-.gallery-arrow:hover { background: rgba(14,12,9,0.85); transform: translateY(-50%) scale(1.06); }
-.gallery-arrow.prev { left: 0.75rem; }
-.gallery-arrow.next { right: 0.75rem; }
-
-.gallery-meta { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.75rem; }
-.gallery-counter {
-  font-size: var(--text-xs);
-  color: var(--color-text-faint);
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
-.gallery-progress-bg {
-  flex: 1;
-  height: 2px;
-  background: var(--color-divider);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.gallery-progress-fill {
-  height: 100%;
-  background: var(--color-accent);
-  border-radius: 2px;
-  transition: width 300ms ease;
-}
-
-.gallery-thumbs {
-  display: flex;
-  gap: 10px;
-  margin-top: 1rem;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-text-faint) transparent;
-}
-.gallery-thumbs::-webkit-scrollbar { height: 3px; }
-.gallery-thumbs::-webkit-scrollbar-thumb { background: var(--color-text-faint); border-radius: 2px; }
-
-.gallery-thumb-item {
-  flex: 0 0 112px;
-  height: 76px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  cursor: pointer;
-  border: 2px solid transparent;
-  opacity: 0.55;
-  transition: opacity 200ms ease, border-color 200ms ease;
-  position: relative;
-  background: var(--color-surface-offset);
-}
-.gallery-thumb-item.active { border-color: var(--color-accent); opacity: 1; }
-.gallery-thumb-item:hover { opacity: 0.85; }
-.gallery-thumb-item img { width: 100%; height: 100%; object-fit: cover; }
-
-/* ─── BOENDET ───────────────────────────────────────────── */
-.info-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(var(--space-6), 4vw, var(--space-12));
-  align-items: start;
-}
-.info-text .lead {
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
-  line-height: 1.85;
-  margin-bottom: var(--space-6);
-}
-.info-figure {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin-bottom: var(--space-6);
-  box-shadow: var(--shadow-md);
-}
-.info-figure img { width: 100%; height: 260px; object-fit: cover; }
-.info-text .quote {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: var(--text-lg);
-  color: var(--color-text);
-  line-height: 1.6;
-  padding-left: var(--space-5);
-  border-left: 3px solid var(--color-accent);
-}
-
-.info-sheet {
-  background: var(--color-surface);
-  border: 1px solid var(--color-divider);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
-.info-group { padding: var(--space-6); }
-.info-group + .info-group { border-top: 1px solid var(--color-divider); }
-.info-group-head { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
-.info-group-head h3 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  line-height: 1.25;
-  color: var(--color-text);
-}
-.info-ico {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; flex-shrink: 0;
-  border-radius: 12px;
-  background: var(--color-surface-offset);
-  color: var(--color-accent);
-}
-.info-group .dash-list { gap: 0.7rem; padding-left: calc(40px + var(--space-3)); }
-.info-group .dash-list li::before {
-  content: '';
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--color-accent);
-  margin-top: 0.6em;
-}
-.info-group--note { background: var(--color-surface-offset); }
-.info-group--note .info-ico { background: var(--color-surface); }
-
-/* ─── CARDS ─────────────────────────────────────────────── */
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-divider);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
-}
-.card h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-4);
-  line-height: 1.25;
-}
-
-.dash-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-.dash-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-  line-height: 1.65;
-}
-.dash-list li::before { content: '—'; color: var(--color-accent); flex-shrink: 0; }
-
-.cards-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
-.cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
-
-/* ─── FACILITETER ──────────────────────────────────────── */
-.card--facility { display: flex; flex-direction: column; gap: var(--space-4); }
-.facility-head { display: flex; align-items: center; gap: 0.75rem; }
-.facility-head h3 { margin-bottom: 0; }
-.facility-icon { color: var(--color-primary); flex-shrink: 0; }
-
-.facility-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-items: start; }
-.facility-imgs img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-}
-.facility-img-wrap {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  aspect-ratio: 3 / 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-surface-offset);
-}
-.facility-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
-
-.card--facility p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.75; }
-
-.tip {
-  background: var(--color-accent-dim);
-  border: 1px solid var(--color-accent-border);
-  border-radius: var(--radius-md);
-  padding: 0.85rem 1.1rem;
-  font-size: var(--text-xs);
-  color: var(--color-text);
-  line-height: 1.6;
-}
-.tip strong { display: block; margin-bottom: 0.3rem; color: var(--color-primary); }
-
-/* ─── UTFORSKA ──────────────────────────────────────────── */
-.card--explore {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: inherit;
-}
-.card--explore:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-accent-border);
-  box-shadow: var(--shadow-md);
-}
-.badge {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  background: var(--color-primary-highlight);
-  border-radius: var(--radius-sm);
-  padding: 0.2rem 0.55rem;
-  margin-bottom: 0.5rem;
-}
-.card--explore p {
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-  line-height: 1.7;
-  flex: 1;
-}
-.explore-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  font-size: var(--text-xs);
-  color: var(--color-text-faint);
-  margin-top: auto;
-  padding-top: var(--space-4);
-}
-.explore-link { color: var(--color-accent); font-weight: 600; }
-
-/* ─── PACKLISTA ─────────────────────────────────────────── */
-.card--pack h3 {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--color-divider);
-  margin-bottom: var(--space-4);
-}
-.pack-ico {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; flex-shrink: 0;
-  border-radius: 10px; background: var(--color-surface-offset); color: var(--color-accent);
-}
-.check-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-.check-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-  line-height: 1.55;
-}
-.check-list li::before {
-  content: '✓';
-  color: var(--color-accent);
-  font-size: 0.8rem;
-  font-weight: 700;
-  flex-shrink: 0;
-  margin-top: 0.15em;
-}
-
-/* ─── OMDÖMEN ───────────────────────────────────────────── */
-.reviews-wrap {
-  background: var(--color-surface);
-  border: 1px solid var(--color-divider);
-  border-radius: var(--radius-xl);
-  padding: clamp(var(--space-4), 3vw, var(--space-8));
-}
-.reviews-more { margin-top: var(--space-5); font-weight: 600; }
-
-.inline-link {
-  color: var(--color-primary);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
-  text-underline-offset: 3px;
-  transition: text-decoration-color 180ms ease;
-}
-.inline-link:hover { text-decoration-color: var(--color-primary); }
-
-/* ─── MAP ───────────────────────────────────────────────── */
-.map-layout {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: var(--space-6);
-  align-items: start;
-}
-.map-embed-wrap {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--color-divider);
-  line-height: 0;
-  background: var(--color-surface-offset);
-  min-height: 420px;
-}
-.map-fallback {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  line-height: 1.4;
-  font-weight: 600;
-  color: var(--color-accent);
-  text-decoration: none;
-  z-index: 0;
-}
-.map-embed-wrap iframe {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 420px;
-  border: none;
-  display: block;
-  filter: var(--map-filter);
-}
-.map-panel {
-  background: var(--color-surface);
-  border: 1px solid var(--color-divider);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-.map-address-label {
-  display: block;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-  margin-bottom: 0.35rem;
-}
-.map-address-text { display: block; font-size: var(--text-base); color: var(--color-text); line-height: 1.5; }
-.map-address-coord {
-  display: block;
-  font-size: var(--text-xs);
-  color: var(--color-text-faint);
-  font-family: 'JetBrains Mono', monospace;
-  margin-top: 0.35rem;
-}
-.map-divider { height: 1px; background: var(--color-divider); }
-.map-cta-head {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-  margin-bottom: 0.75rem;
-}
-.map-btns { display: flex; flex-direction: column; gap: 0.6rem; }
-.map-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  text-decoration: none;
-  text-align: left;
-  border: 1px solid var(--color-divider);
-  background: var(--color-surface-2);
-  color: var(--color-text);
-  transition: background-color 200ms ease, border-color 200ms ease;
-}
-.map-btn:hover { background: var(--color-surface-offset); border-color: var(--color-primary); }
-.map-btn-icon { flex-shrink: 0; display: flex; align-items: center; }
-.map-btn-sub {
-  display: block;
-  font-size: var(--text-xs);
-  color: var(--color-text-faint);
-  margin-top: 0.1rem;
-  font-weight: 400;
-}
-
-/* ─── FOOTER ───────────────────────────────────────────── */
-.footer {
-  background: var(--color-surface-offset);
-  border-top: 1px solid var(--color-divider);
-  padding: var(--space-12) 0 var(--space-6);
-}
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--space-10);
-  margin-bottom: var(--space-8);
-}
-.foot-brand p {
-  font-size: var(--text-sm);
-  color: var(--color-footer-muted);
-  line-height: 1.65;
-  max-width: 280px;
-}
-.foot-col h4 {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-  margin-bottom: var(--space-4);
-}
-.foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-.foot-col li a,
-.foot-col li {
-  font-size: var(--text-sm);
-  color: var(--color-footer-muted);
-  text-decoration: none;
-  transition: color 180ms ease;
-}
-.foot-col li a:hover { color: var(--color-primary); }
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  border-top: 1px solid var(--color-divider);
-  padding-top: var(--space-4);
-  font-size: var(--text-xs);
-  color: var(--color-text-faint);
-  max-width: var(--content-default);
-  margin-inline: auto;
-}
-
-/* ─── REVEAL ───────────────────────────────────────────── */
-[data-r] {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 700ms ease, transform 700ms ease;
-}
-[data-r].on { opacity: 1; transform: none; }
-
-/* ─── RESPONSIVE ───────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .cards-3 { grid-template-columns: repeat(2, 1fr); }
-  .map-layout { grid-template-columns: 1fr; }
-  .map-panel { flex-direction: row; flex-wrap: wrap; gap: var(--space-5); align-items: center; }
-  .map-divider { display: none; }
-  .map-btns { flex-direction: row; flex-wrap: wrap; }
-  .map-btn { width: auto; flex: 1 1 200px; }
-}
-
-@media (max-width: 960px) {
-  .nav-links { display: none; }
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: fixed;
-    top: var(--nav-h);
-    left: 0; right: 0;
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-divider);
-    box-shadow: var(--shadow-lg);
-    padding: var(--space-6) clamp(var(--space-5), 5vw, var(--space-10));
-    gap: var(--space-4);
-    z-index: 199;
-  }
-  .burger { display: flex; }
-}
-
-@media (max-width: 900px) {
-  .info-layout { grid-template-columns: 1fr; gap: var(--space-8); }
-  .footer-inner { flex-wrap: wrap; gap: var(--space-6); }
-  .why-grid { grid-template-columns: 1fr; gap: var(--space-8); }
-  .why-item, .why-item:first-child, .why-item:last-child { padding: 0; border-left: none; }
-  .why-item p { max-width: 60ch; }
-  .info-group .dash-list { padding-left: 0; }
-}
-
-@media (max-width: 640px) {
-  :root { --nav-h: 60px; }
-  .cards-2, .cards-3 { grid-template-columns: 1fr; }
-  .hero { min-height: 88vh; padding-bottom: var(--space-10); }
-  .hero-overlay::after { background: linear-gradient(0deg, rgba(14,12,9,0.6) 0%, rgba(14,12,9,0.1) 70%); }
-  .gallery-viewer { aspect-ratio: 4 / 3; }
-  .gallery-thumb-item { flex-basis: 88px; height: 62px; }
-  .gallery-arrow { width: 42px; height: 42px; }
-  .map-panel { flex-direction: column; }
-  .map-btns { flex-direction: column; }
-  .map-btn { width: 100%; flex: none; }
-  .map-embed-wrap { min-height: 300px; }
-  .map-embed-wrap iframe { height: 300px; }
-  .footer-inner { flex-direction: column; gap: var(--space-6); }
-  .footer-bottom { flex-direction: column; gap: 0.35rem; }
-  .section { padding-block: var(--space-12); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body data-base="bilder/">
+
 <!-- ═══ NAV ══════════════════════════════════════════════ -->
 <nav class="nav">
-  <a href="#" class="logo">
+  <a href="#" class="logo" aria-label="Friden, till toppen av sidan">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
       <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1v-9.5z"/>
       <path d="M12 4v4" opacity=".35"/>
@@ -1059,13 +52,12 @@ h2 {
     <a href="#utforska">Utforska</a>
     <a href="#packlista">Packlista</a>
     <a href="#hitta-hit">Hitta hit</a>
+    <a href="en/" class="lang-switch" hreflang="en" lang="en" aria-label="View this page in English">EN</a>
     <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" rel="noopener" class="btn btn--accent btn--sm">Boka via Airbnb</a>
   </div>
   <div class="nav-actions">
-    <button class="theme-toggle" id="themeToggle" aria-label="Byt till mörkt läge" title="Byt till mörkt läge">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-    <button class="burger" id="burger" aria-label="Öppna meny">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Byt till mörkt läge" title="Byt till mörkt läge"></button>
+    <button class="burger" id="burger" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1073,7 +65,7 @@ h2 {
 
 <!-- ═══ HERO ═════════════════════════════════════════════ -->
 <header class="hero">
-  <div class="hero-bg" style="background-image: url('StugaVyUte.jpg');"></div>
+  <img class="hero-bg" src="bilder/StugaVyUte.jpg" alt="" fetchpriority="high" decoding="async" />
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <span class="eyebrow">Bodtjärnen · Norrland</span>
@@ -1121,14 +113,14 @@ h2 {
     <h2>Se stugan i verkligheten</h2>
     <p class="section-intro">Riktig natur, riktigt boende — här är Friden som den faktiskt ser ut. <a href="https://www.youtube.com/watch?v=0qQEQfKipso" target="_blank" rel="noopener" class="inline-link">Se filmen från stugan →</a></p>
 
-    <div class="gallery-viewer" id="galleryViewer">
-      <div class="gallery-backdrop" id="galleryBackdrop" style="background-image: url('FramsidaStuga.jpg');"></div>
-      <img id="mainImg" src="FramsidaStuga.jpg" alt="Stugans framsida" />
-      <button class="gallery-arrow prev" id="prev" aria-label="Föregående bild">‹</button>
-      <button class="gallery-arrow next" id="next" aria-label="Nästa bild">›</button>
+    <div class="gallery-viewer">
+      <div class="gallery-backdrop" id="galleryBackdrop"></div>
+      <img id="mainImg" src="bilder/FramsidaStuga.jpg" alt="Stugans framsida" />
+      <button class="gallery-arrow prev" id="prev" type="button" aria-label="Föregående bild">‹</button>
+      <button class="gallery-arrow next" id="next" type="button" aria-label="Nästa bild">›</button>
     </div>
     <div class="gallery-meta">
-      <span class="gallery-counter" id="slideCounter">1 / 16</span>
+      <span class="gallery-counter" id="slideCounter" aria-live="polite">1 / 16</span>
       <div class="gallery-progress-bg"><div class="gallery-progress-fill" id="slideProgress"></div></div>
     </div>
     <div class="gallery-thumbs" id="thumbStrip"></div>
@@ -1142,9 +134,9 @@ h2 {
     <h2>Livet vid Bodtjärnen</h2>
     <div class="info-layout">
       <div class="info-text">
-        <p class="lead">Belägen vid en privat sjö utan grannar — mellan Örnsköldsvik och Sollefteå — ger stugan dig en sällsynt chans att uppleva norrländsk natur på egna villkor. Stugan rymmer upp till 4 personer med våningssäng och bäddsoffa. Utrustad med gasdriven kyl och spis samt vedkamin för kyliga kvällar.</p>
+        <p class="lead">Belägen vid en privat sjö utan grannar — mellan Örnsköldsvik och Sollefteå — ger stugan dig en sällsynt chans att uppleva norrländsk natur på egna villkor. Stugan rymmer upp till 4 personer med våningssäng och bäddsoffa. Utrustad med gasoldriven kyl och spis samt vedkamin för kyliga kvällar.</p>
         <figure class="info-figure">
-          <img src="StenPir.jpg" alt="Stenpiren vid Bodtjärnen" loading="lazy" />
+          <img src="bilder/StenPir.jpg" alt="Stenpiren vid Bodtjärnen" loading="lazy" decoding="async" />
         </figure>
         <p class="quote">På andra sidan sjön passerar tåg emellanåt — en liten, stämningsfull påminnelse om att omvärlden finns, fast den känns obegripligt långt borta.</p>
       </div>
@@ -1163,15 +155,15 @@ h2 {
             <li>Vedkamin och grill.</li>
             <li>Båt och fiskespön.</li>
             <li>Picknickbord, utemöbler samt möjlighet till tältplats.</li>
-            <li>Gasoldriven kyl, frysfack och spis .</li>
+            <li>Gasoldriven kyl, frysfack och spis.</li>
           </ul>
         </div>
         <div class="info-group info-group--note">
           <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg></span><h3>Att tänka på</h3></div>
           <ul class="dash-list">
             <li>Underlakan ingår ej. Gäst tar med egna (se packlistan).</li>
-            <li>Kolla täckningskarta i förväg för mobilnät (4g/3G).</li>
-            <li>Tändstickor för vedkaminen.</li>
+            <li>Kolla täckningskarta i förväg för mobilnät (4G/3G).</li>
+            <li>Ta med tändstickor till vedkaminen.</li>
           </ul>
         </div>
       </div>
@@ -1193,13 +185,13 @@ h2 {
           <h3>Sovkomfort för 4 personer</h3>
         </div>
         <div class="facility-imgs">
-          <img src="StugaInne.JPG" alt="Sovplats inomhus" loading="lazy" />
-          <img src="DubbelSang.jpg" alt="Dubbelsäng" loading="lazy" />
+          <img src="bilder/StugaInne.JPG" alt="Sovplats inomhus" loading="lazy" decoding="async" />
+          <img src="bilder/DubbelSang.jpg" alt="Dubbelsäng" loading="lazy" decoding="async" />
         </div>
-        <p>Stugan har täcken och kuddar till alla 4 gäster — Våningssäng eller bäddsoffa finns beroende på antal.</p>
+        <p>Stugan har täcken och kuddar till alla 4 gäster — våningssäng eller bäddsoffa finns beroende på antal.</p>
         <div class="tip">
           <strong>Så här bäddar du:</strong>
-          Täcken och kuddar finns i stugan. Gäst tar dock med egna underlakan och sängkläder för bäddning, i antal som behövs för vistelse .
+          Täcken och kuddar finns i stugan. Gäst tar dock med egna underlakan och sängkläder för bäddning, i antal som behövs för vistelsen.
         </div>
       </div>
       <div class="card card--facility">
@@ -1211,13 +203,13 @@ h2 {
           <h3>Utedusch och utedass</h3>
         </div>
         <div class="facility-imgs">
-          <div class="facility-img-wrap"><img src="UteDusch.jpg" alt="Utedusch" loading="lazy" /></div>
-          <div class="facility-img-wrap"><img src="Dass.jpg" alt="Utedass" loading="lazy" /></div>
+          <div class="facility-img-wrap"><img src="bilder/UteDusch.jpg" alt="Utedusch" loading="lazy" decoding="async" /></div>
+          <div class="facility-img-wrap"><img src="bilder/Dass.jpg" alt="Utedass" loading="lazy" decoding="async" /></div>
         </div>
-        <p>Ute vid förrådet finns en enkel utedusch samt ett välskött utedass — med möjlighet till orginell utiskt.</p>
+        <p>Ute vid förrådet finns en enkel utedusch samt ett välskött utedass — med möjlighet till originell utsikt.</p>
         <div class="tip">
           <strong>Så fungerar duschen:</strong>
-          Värm upp vatten inne med gasolspis, sedan används en hink som kärl. Använd sedan elpumpen (laddas med micro usb) för att kunna duscha, med skogen och vattnet som utsikt.
+          Värm upp vatten inne med gasolspis och fyll en hink. Använd sedan elpumpen (laddas med micro-USB) för att kunna duscha, med skogen och vattnet som utsikt.
         </div>
       </div>
     </div>
@@ -1234,19 +226,19 @@ h2 {
         <span class="badge">Vandring</span>
         <h3>Nätra Fjällskog</h3>
         <p>En av Norrlands dolda pärlor — dramatisk fjällterräng och fantastiska vyer, alldeles nära stugan. Perfekt dagsutflykt för den som vill ut på ordentliga stigar.</p>
-        <span class="explore-foot">📍 Nätra, Västernorrland · <span class="explore-link">Läs mer →</span></span>
+        <span class="explore-foot"><span>📍 Nätra, Västernorrland</span> <span class="explore-link">Läs mer →</span></span>
       </a>
       <a class="card card--explore" href="https://maps.app.goo.gl/4Tuw2YRGHdDyaFGY6" target="_blank" rel="noopener">
         <span class="badge">Utsikt</span>
         <h3>Hästbacken och Ormvägen</h3>
         <p>Följ Ormvägen upp mot Hästbacken för en fin utsiktsplats i det närmaste naturområdet. En lättgången promenad som belönas med storslagen vy.</p>
-        <span class="explore-foot">📍 Nära stugan <span class="explore-link">Se karta →</span></span>
+        <span class="explore-foot"><span>📍 Nära stugan</span> <span class="explore-link">Se karta →</span></span>
       </a>
       <a class="card card--explore" href="https://maps.app.goo.gl/mZbg3PSKtK1cdyTG9" target="_blank" rel="noopener">
         <span class="badge">Promenad</span>
         <h3>Stordegersjön</h3>
         <p>Starta från Hinnsjövägen och följ vägen ned till det lugna Stordegersjön. En avslappnad naturpromenad för hela familjen med fin sjöutsikt.</p>
-        <span class="explore-foot">📍 Från Hinnsjövägen <span class="explore-link">Se karta →</span></span>
+        <span class="explore-foot"><span>📍 Från Hinnsjövägen</span> <span class="explore-link">Se karta →</span></span>
       </a>
     </div>
   </div>
@@ -1271,15 +263,15 @@ h2 {
         <ul class="check-list">
           <li>Handdukar och duschtvål vid behov</li>
           <li>Toalettartiklar samt toapapper</li>
-          <li>Myggmedel och solskydd vid väder</li>
+          <li>Myggmedel och solskydd vid behov</li>
         </ul>
       </div>
       <div class="card card--pack">
         <h3><span class="pack-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8"/><path d="M5 3v5a2 2 0 0 0 4 0V3"/><path d="M7 11v10"/><path d="M17 3c-2 2-3 4.5-3 7h3v11"/></svg></span>Mat och dryck</h3>
         <ul class="check-list">
           <li>Dricksvatten för hela vistelsen</li>
-          <li>Mat och tilltugg. Finns kyl och frysfack</li>
-          <li>Kaffe, kryddor etc. vid behov.</li>
+          <li>Mat och tilltugg. Det finns kyl och frysfack</li>
+          <li>Kaffe, kryddor etc. vid behov</li>
         </ul>
       </div>
       <div class="card card--pack">
@@ -1288,7 +280,7 @@ h2 {
           <li>Powerbank (det finns ingen el på plats)</li>
           <li>Ficklampa eller pannlampa med extra batterier</li>
           <li>Regnkläder och praktiska skor vid behov</li>
-          <li>Vandringskarta/Offlinekarta om du ska till Nätra Fjällskog</li>
+          <li>Vandringskarta eller offlinekarta om du ska till Nätra Fjällskog</li>
         </ul>
       </div>
     </div>
@@ -1315,35 +307,30 @@ h2 {
     <span class="section-label">Hitta hit</span>
     <h2>Stugan vid Bodtjärnen</h2>
     <div class="map-layout">
-      <div class="map-embed-wrap"><a class="map-fallback" href="https://www.google.com/maps?q=63.226306,18.033650" target="_blank" rel="noopener">Öppna kartan i Google Maps →</a>
+      <div class="map-embed-wrap">
+        <a class="map-fallback" href="https://www.google.com/maps?q=63.226306,18.033650" target="_blank" rel="noopener">Öppna kartan i Google Maps →</a>
         <iframe
           src="https://maps.google.com/maps?q=63.226306,18.033650&z=13&output=embed"
           allowfullscreen
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Karta över Friden vid Bodtjärnen">
-        </iframe>
+          title="Karta över Friden vid Bodtjärnen"></iframe>
       </div>
       <div class="map-panel">
-        <div class="map-address">
-        </div>
-        <div class="map-divider"></div>
-        <div>
-          <p class="map-cta-head">Vägbeskrivning</p>
-          <div class="map-btns">
-            <a href="https://www.google.com/maps/dir/?api=1&destination=63.226306,18.033650" target="_blank" rel="noopener" class="map-btn">
-              <span class="map-btn-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.6 11.1 7.6 11.9.2.2.6.2.8 0C13.4 21.1 20 15.4 20 10c0-4.4-3.6-8-8-8z"/><circle cx="12" cy="10" r="3.2" fill="#fff"/></svg>
-              </span>
-              <span>Google Maps<span class="map-btn-sub">Öppna i Google Maps</span></span>
-            </a>
-            <a href="https://maps.apple.com/?daddr=63.226306,18.033650&dirflg=d" target="_blank" rel="noopener" class="map-btn">
-              <span class="map-btn-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6" fill="#5BC8F5"/><path fill="#fff" d="M12 6l4.5 12-4.5-2.5L7.5 18z"/></svg>
-              </span>
-              <span>Apple Kartor<span class="map-btn-sub">Öppna i Apple Maps</span></span>
-            </a>
-          </div>
+        <p class="map-cta-head">Vägbeskrivning</p>
+        <div class="map-btns">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=63.226306,18.033650" target="_blank" rel="noopener" class="map-btn">
+            <span class="map-btn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.6 11.1 7.6 11.9.2.2.6.2.8 0C13.4 21.1 20 15.4 20 10c0-4.4-3.6-8-8-8z"/><circle cx="12" cy="10" r="3.2" fill="#fff"/></svg>
+            </span>
+            <span>Google Maps<span class="map-btn-sub">Öppna i Google Maps</span></span>
+          </a>
+          <a href="https://maps.apple.com/?daddr=63.226306,18.033650&dirflg=d" target="_blank" rel="noopener" class="map-btn">
+            <span class="map-btn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6" fill="#5BC8F5"/><path fill="#fff" d="M12 6l4.5 12-4.5-2.5L7.5 18z"/></svg>
+            </span>
+            <span>Apple Kartor<span class="map-btn-sub">Öppna i Apple Maps</span></span>
+          </a>
         </div>
       </div>
     </div>
@@ -1374,167 +361,16 @@ h2 {
       <ul>
         <li><a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" rel="noopener">Boka via Airbnb →</a></li>
         <li><a href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank" rel="noopener">Nätra Fjällskog →</a></li>
+        <li><a href="en/" hreflang="en" lang="en">English version →</a></li>
       </ul>
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 Friden — Sidensjö, Sverige</span>
+    <span>© 2026 Friden — Undrom, Sverige</span>
     <span>Stuga vid Bodtjärnen</span>
   </div>
 </footer>
 
-<script>
-/* ═══════════════════════════════════════════════════════════
-   FRIDEN — Interaktivitet
-   ═══════════════════════════════════════════════════════════ */
-(function () {
-  'use strict';
-
-  /* ── Theme toggle ─────────────────────────────────────── */
-  var html        = document.documentElement;
-  var themeToggle = document.getElementById('themeToggle');
-
-  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-
-  var SUN_ICON =
-    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
-  var MOON_ICON =
-    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-
-  function updateThemeIcon() {
-    var current = html.getAttribute('data-theme');
-    if (current === 'dark') {
-      themeToggle.innerHTML = SUN_ICON;
-      themeToggle.setAttribute('aria-label', 'Byt till ljust läge');
-      themeToggle.title = 'Byt till ljust läge';
-    } else {
-      themeToggle.innerHTML = MOON_ICON;
-      themeToggle.setAttribute('aria-label', 'Byt till mörkt läge');
-      themeToggle.title = 'Byt till mörkt läge';
-    }
-  }
-
-  if (themeToggle) {
-    updateThemeIcon();
-    themeToggle.addEventListener('click', function () {
-      var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      updateThemeIcon();
-    });
-  }
-
-  /* ── Burger menu ────────────────────────────────────── */
-  var burger   = document.getElementById('burger');
-  var navLinks = document.getElementById('navLinks');
-
-  if (burger && navLinks) {
-    burger.addEventListener('click', function () {
-      navLinks.classList.toggle('open');
-      var isOpen = navLinks.classList.contains('open');
-      burger.setAttribute('aria-label', isOpen ? 'Stäng meny' : 'Öppna meny');
-    });
-    navLinks.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        navLinks.classList.remove('open');
-      });
-    });
-  }
-
-  /* ── Scroll reveal ──────────────────────────────────── */
-  var revealElements = document.querySelectorAll('[data-r]');
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('on');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    revealElements.forEach(function (el) { obs.observe(el); });
-  } else {
-    revealElements.forEach(function (el) { el.classList.add('on'); });
-  }
-
-  /* ── Gallery ────────────────────────────────────────── */
-  var slides = [
-    { src: 'FramsidaStuga.jpg', alt: 'Stugans framsida' },
-    { src: 'StugaVyUte.jpg',    alt: 'Stugan utifrån' },
-    { src: 'Ute.jpg',           alt: 'Utsikt från sjön' },
-    { src: 'Ute2.jpg',          alt: 'Utsikt från sjön' },
-    { src: 'Ute3.jpg',          alt: 'Utsikt från sjön' },
-    { src: 'StugaNedan.JPG',    alt: 'Stugan nedan' },
-    { src: 'StugaInne.JPG',     alt: 'Inomhus' },
-    { src: 'Kamin.JPG',         alt: 'Vedkaminen' },
-    { src: 'KaminBord.jpg',     alt: 'Kamin och bord' },
-    { src: 'DubbelSang.jpg',    alt: 'Sovplats' },
-    { src: 'Matplats.jpg',      alt: 'Matplats' },
-    { src: 'Kok.jpg',           alt: 'Köket' },
-    { src: 'Forrad.jpg',        alt: 'Förråd med ved' },
-    { src: 'StenPir.jpg',       alt: 'Stenpiren' },
-    { src: 'UteDusch.jpg',      alt: 'Utedusch' },
-    { src: 'Dass.jpg',          alt: 'Utedass' }
-  ];
-
-  var idx        = 0;
-  var mainImg    = document.getElementById('mainImg');
-  var counter    = document.getElementById('slideCounter');
-  var progressEl = document.getElementById('slideProgress');
-  var thumbStrip = document.getElementById('thumbStrip');
-  var backdrop   = document.getElementById('galleryBackdrop');
-  var prevBtn    = document.getElementById('prev');
-  var nextBtn    = document.getElementById('next');
-
-  if (!mainImg || !thumbStrip) return;
-
-  counter.textContent = '1 / ' + slides.length;
-  progressEl.style.width = (1 / slides.length * 100) + '%';
-
-  slides.forEach(function (s, i) {
-    var item = document.createElement('button');
-    item.type = 'button';
-    item.className = 'gallery-thumb-item' + (i === 0 ? ' active' : '');
-    item.dataset.idx = i;
-    item.setAttribute('aria-label', 'Visa ' + (i + 1) + ' av ' + slides.length + ': ' + s.alt);
-    item.innerHTML = '<img src="' + s.src + '" alt="" loading="lazy" />';
-    item.addEventListener('click', function () { goTo(i); });
-    thumbStrip.appendChild(item);
-  });
-
-  function goTo(newIdx) {
-    idx = newIdx;
-    var s = slides[idx];
-
-    backdrop.style.backgroundImage = "url('" + s.src + "')";
-    mainImg.src = s.src;
-    mainImg.alt = s.alt;
-
-    counter.textContent = (idx + 1) + ' / ' + slides.length;
-    progressEl.style.width = ((idx + 1) / slides.length * 100) + '%';
-
-    Array.prototype.forEach.call(thumbStrip.children, function (el, i) {
-      el.classList.toggle('active', i === idx);
-    });
-    var activeThumb = thumbStrip.children[idx];
-    if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }
-
-  if (nextBtn && prevBtn) {
-    nextBtn.addEventListener('click', function () { goTo((idx + 1) % slides.length); });
-    prevBtn.addEventListener('click', function () { goTo((idx - 1 + slides.length) % slides.length); });
-  }
-
-  /* Tangentbord — endast när fokus är i galleriet */
-  document.addEventListener('keydown', function (e) {
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-    var gallery = document.getElementById('galleri');
-    var inGallery = gallery && (gallery.contains(e.target) || gallery.contains(document.activeElement));
-    if (!inGallery) return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); goTo((idx + 1) % slides.length); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo((idx - 1 + slides.length) % slides.length); }
-  });
-})();
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
