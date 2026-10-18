@@ -251,28 +251,30 @@ h2 {
 .nav-links a.btn--accent,
 .nav-links a.btn--accent:hover { color: var(--color-btn-text); }
 
-.nav-links a.lang-switch {
-  border: 1px solid var(--color-divider);
+.nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+/* Språk- och temaknapp delar samma utseende */
+.theme-toggle,
+.lang-toggle {
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   border-radius: var(--radius-full);
-  padding: 0.2rem 0.75rem;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-divider);
+  text-decoration: none;
+}
+.theme-toggle { width: 40px; }
+.lang-toggle {
+  padding-inline: 0.8rem;
   font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.06em;
 }
-.nav-links a.lang-switch:hover { background: var(--color-surface-offset); }
-
-.nav-actions { display: flex; align-items: center; gap: 0.75rem; }
-
-.theme-toggle {
-  width: 40px; height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-full);
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-divider);
-}
-.theme-toggle:hover { background: var(--color-surface-offset); color: var(--color-text); }
+.theme-toggle:hover,
+.lang-toggle:hover { background: var(--color-surface-offset); color: var(--color-text); }
 
 .burger {
   display: none;
@@ -940,6 +942,7 @@ h2 {
 
 @media (max-width: 640px) {
   :root { --nav-h: 60px; }
+  .nav-actions { gap: 0.5rem; }
   .cards-2, .cards-3 { grid-template-columns: 1fr; }
   .hero { min-height: 88vh; padding-bottom: var(--space-10); }
   .hero-overlay::after { background: linear-gradient(0deg, rgba(14,12,9,0.6) 0%, rgba(14,12,9,0.1) 70%); }
