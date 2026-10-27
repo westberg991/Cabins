@@ -953,6 +953,12 @@ a.cabin-card:hover {
   color: var(--color-text-faint);
 }
 
+.card--static:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--color-divider);
+}
+
 /* ─── REVEAL ───────────────────────────────────────────── */
 .js [data-r] {
   opacity: 0;
