@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="sv" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Herbret — Off-grid stuga vid Stor-Degersjön</title>
+  <meta name="description" content="Herbret — off-grid stuga i egen vik vid Stor-Degersjön i Sidensjö, mellan Örnsköldsvik och Sollefteå. Bastu med utsikt och båt för fiske." />
+
+    <link rel="alternate" hreflang="sv" href="https://westberg991.github.io/Cabins/herbret/" />
+  <link rel="alternate" hreflang="en" href="https://westberg991.github.io/Cabins/herbret/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://westberg991.github.io/Cabins/herbret/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://westberg991.github.io/Cabins/herbret/" />
+  <meta property="og:locale" content="sv_SE" />
+  <meta property="og:title" content="Herbret — Off-grid stuga vid Stor-Degersjön" />
+  <meta property="og:description" content="Off-grid stuga i egen vik utan grannar, med bastu och båt." />
+  <meta property="og:image" content="https://westberg991.github.io/Cabins/bilder/herbret/Bastuute2.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Sätter tema och js-klass direkt, så sidan inte blinkar -->
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.className += ' js';
+      try { t = localStorage.getItem('friden-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preload" as="image" href="../bilder/herbret/Bastuute2.jpg" fetchpriority="high" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23756552' d='M12 3L2 11h3v8h6v-5h2v5h6v-8h3L12 3z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body data-base="../bilder/herbret/">
+
+<!-- ═══ NAV ══════════════════════════════════════════════ -->
+<nav class="nav">
+  <a href="#" class="logo" aria-label="Herbret, till toppen av sidan">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1v-9.5z"/>
+      <path d="M12 4v4" opacity=".35"/>
+    </svg>
+    Herbret
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#galleri">Galleri</a>
+    <a href="#boendet">Boendet</a>
+    <a href="#faciliteter">Faciliteter</a>
+    <a href="https://www.airbnb.se/rooms/1747126551592135173" target="_blank" rel="noopener" class="btn btn--accent btn--sm">Boka via Airbnb</a>
+  </div>
+  <div class="nav-actions">
+    <a class="lang-toggle" href="en/" hreflang="en" lang="en" aria-label="View this page in English" title="English"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg><span>EN</span></a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Byt till mörkt läge" title="Byt till mörkt läge"></button>
+    <button class="burger" id="burger" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═════════════════════════════════════════════ -->
+<header class="hero">
+  <img class="hero-bg" src="../bilder/herbret/Bastuute2.jpg" alt="" fetchpriority="high" decoding="async" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Stor-Degersjön · Norrland</span>
+    <h1 class="hero-title">Din egen vik i <em>norrländsk natur</em></h1>
+    <p class="hero-desc">Off-grid stuga för upp till 4 gäster, i en egen vik utan grannar. Ta en bastu med utsikt, ta ut båten och koppla bort omvärlden.</p>
+    <div class="hero-cta">
+      <a href="https://www.airbnb.se/rooms/1747126551592135173" target="_blank" rel="noopener" class="btn btn--accent">Boka via Airbnb</a>
+      <a href="#galleri" class="btn btn--ghost">Se bilder</a>
+    </div>
+    <div class="hero-meta">
+      <span>Upp till 4 gäster</span>
+      <span class="divider">·</span>
+      <span>Mellan Örnsköldsvik och Sollefteå</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ WHY ══════════════════════════════════════════════ -->
+<section class="why" aria-label="Därför Herbret">
+  <div class="container why-grid" data-r>
+    <div class="why-item">
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span>
+      <h3>Bastu vid sjön</h3>
+      <p>Bastun ligger nere vid vattnet, med utsikt över sjön.</p>
+    </div>
+    <div class="why-item">
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15h18l-2.5 4h-13z"/><path d="M12 3v12"/><path d="M12 4c3 2 5 5 5.5 9H12"/></svg></span>
+      <h3>Båt och fiske</h3>
+      <p>Vid stugan finns en båt för fiske.</p>
+    </div>
+    <div class="why-item">
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l5 7h-3l4 6H6l4-6H7z"/><path d="M12 16v5"/></svg></span>
+      <h3>Egen vik</h3>
+      <p>Mitt i norrlands skogar, utan grannar i närheten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ══════════════════════════════════════════ -->
+<section class="section section--gallery" id="galleri">
+  <div class="container" data-r>
+    <span class="section-label">Galleri</span>
+    <h2>Se stugan i verkligheten</h2>
+    <p class="section-intro">Riktig natur, riktigt boende. Här är Herbret som det faktiskt ser ut.</p>
+
+    <div class="gallery-viewer">
+      <div class="gallery-backdrop" id="galleryBackdrop"></div>
+      <img id="mainImg" src="../bilder/herbret/Stugafransjo.jpg" alt="Stugan sedd från sjön" />
+      <button class="gallery-arrow prev" id="prev" type="button" aria-label="Föregående bild">‹</button>
+      <button class="gallery-arrow next" id="next" type="button" aria-label="Nästa bild">›</button>
+    </div>
+    <div class="gallery-meta">
+      <span class="gallery-counter" id="slideCounter" aria-live="polite">1 / 16</span>
+      <div class="gallery-progress-bg"><div class="gallery-progress-fill" id="slideProgress"></div></div>
+    </div>
+    <div class="gallery-thumbs" id="thumbStrip"></div>
+  </div>
+</section>
+
+<!-- ═══ THE CABIN ════════════════════════════════════════ -->
+<section class="section" id="boendet">
+  <div class="container" data-r>
+    <span class="section-label">Boendet</span>
+    <h2>Egen vik vid Stor-Degersjön</h2>
+    <div class="info-layout">
+      <div class="info-text">
+        <p class="lead">Stugan ligger i en egen vik utan grannar, mitt i norrlands skogar mellan Örnsköldsvik och Sollefteå. Här bor du med upp till 4 gäster, med bäddsoffa på nedervåningen och ett loft med madrasser. Köket har gasolspis och kyl, och stugan värms med gasol. Nere vid vattnet finns en bastu med utsikt och en båt för fiske.</p>
+        <figure class="info-figure">
+          <img src="../bilder/herbret/Bat.jpg" alt="Båten vid Herbret" loading="lazy" decoding="async" />
+        </figure>
+        <p class="quote">Mitt i norrlands skogar, i egen vik utan grannar.</p>
+      </div>
+      <div class="info-sheet">
+        <div class="info-group">
+          <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v6"/><path d="M15 2v6"/><path d="M6 8h12v4a6 6 0 0 1-12 0z"/><path d="M12 18v4"/></svg></span><h3>Off-grid: det enkla livet</h3></div>
+          <ul class="dash-list">
+            <li>Kök, kyl och värme går på gasol.</li>
+            <li>Nybyggt förråd och dass nära stugan.</li>
+          </ul>
+        </div>
+        <div class="info-group">
+          <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20L12 4l9 16z"/><path d="M12 4v16"/><path d="M9 20l3-6 3 6"/></svg></span><h3>Vid vattnet</h3></div>
+          <ul class="dash-list">
+            <li>Bastu med utsikt över sjön.</li>
+            <li>Båt för fiske.</li>
+          </ul>
+        </div>
+        <div class="info-group info-group--note">
+          <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg></span><h3>Praktiskt</h3></div>
+          <ul class="dash-list">
+            <li>Gratis parkering på tomten.</li>
+            <li>Självständig incheckning via nyckelskåp.</li>
+            <li>Mer information om vad du ska ta med och om husregler finns i Airbnb-annonsen.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FACILITIES ═══════════════════════════════════════ -->
+<section class="section section--offset" id="faciliteter">
+  <div class="container" data-r>
+    <span class="section-label">Faciliteter</span>
+    <h2>Sova gott och bastua</h2>
+    <div class="cards-2">
+      <div class="card card--facility">
+        <div class="facility-head">
+          <svg class="facility-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M3 18h18"/><path d="M7 10V7"/><path d="M12 9V6"/><path d="M17 10V7"/></svg>
+          <h3>Sovplatser för 4</h3>
+        </div>
+        <div class="facility-imgs">
+          <img src="../bilder/herbret/Sangar.jpg" alt="Sovplatser" loading="lazy" decoding="async" />
+          <img src="../bilder/herbret/Soffainne.jpg" alt="Soffan inomhus" loading="lazy" decoding="async" />
+        </div>
+        <p>Nedervåningen har en bäddsoffa med två sovplatser, och uppe i loftet ligger madrasser.</p>
+      </div>
+      <div class="card card--facility">
+        <div class="facility-head">
+          <svg class="facility-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2s6 7.5 6 12a6 6 0 0 1-12 0c0-4.5 6-12 6-12z"/><path d="M12 22v-3" opacity=".5"/></svg>
+          <h3>Bastu och dass</h3>
+        </div>
+        <div class="facility-imgs">
+          <img src="../bilder/herbret/Bastuinne.jpg" alt="Inne i bastun" loading="lazy" decoding="async" />
+          <img src="../bilder/herbret/Dassinne.jpg" alt="Inne i dasset" loading="lazy" decoding="async" />
+        </div>
+        <p>Vid vattnet finns en bastu med utsikt. Nära stugan ligger ett nybyggt förråd och dass.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer class="footer" id="kontakt">
+  <div class="container footer-inner">
+    <div class="foot-brand">
+      <span class="logo logo--foot">Herbret</span>
+      <p>Off-grid stuga vid Stor-Degersjön, Sidensjö, Västernorrland. En plats för dem som söker verklig avkoppling i norrländsk natur.</p>
+      <a href="https://www.airbnb.se/rooms/1747126551592135173" target="_blank" rel="noopener" class="btn btn--accent btn--sm" style="margin-top:1.25rem;">Boka via Airbnb</a>
+    </div>
+    <div class="foot-col">
+      <h4>Navigera</h4>
+      <ul>
+        <li><a href="#galleri">Galleri</a></li>
+        <li><a href="#boendet">Boendet</a></li>
+        <li><a href="#faciliteter">Faciliteter</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Bokning</h4>
+      <ul>
+        <li><a href="https://www.airbnb.se/rooms/1747126551592135173" target="_blank" rel="noopener">Boka via Airbnb →</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Språk</h4>
+      <ul>
+        <li><a href="en/" hreflang="en" lang="en">English →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Herbret — Sidensjö, Sverige</span>
+    <a class="inline-link" href="../">Alla stugor →</a>
+  </div>
+</footer>
+
+<script type="application/json" id="slideData">
+[
+  {
+    "f": "Stugafransjo.jpg",
+    "alt": "Stugan sedd från sjön"
+  },
+  {
+    "f": "Stugaisometrisk.jpg",
+    "alt": "Isometrisk vy av stugan"
+  },
+  {
+    "f": "Entre.jpg",
+    "alt": "Entrén"
+  },
+  {
+    "f": "Vardagsrumkok.jpg",
+    "alt": "Vardagsrum och kök"
+  },
+  {
+    "f": "Soffainne.jpg",
+    "alt": "Soffan inomhus"
+  },
+  {
+    "f": "Elemetkok.jpg",
+    "alt": "Köksdelen"
+  },
+  {
+    "f": "Kokzoom.jpg",
+    "alt": "Köket, närbild"
+  },
+  {
+    "f": "Trapp.jpg",
+    "alt": "Trappan"
+  },
+  {
+    "f": "Sangar.jpg",
+    "alt": "Sovplatser"
+  },
+  {
+    "f": "Utsiktovervaning.jpg",
+    "alt": "Utsikt från övervåningen"
+  },
+  {
+    "f": "Bastuute.jpg",
+    "alt": "Bastun utifrån"
+  },
+  {
+    "f": "Bastuute2.jpg",
+    "alt": "Bastun utifrån"
+  },
+  {
+    "f": "Bastuinne.jpg",
+    "alt": "Bastun inifrån"
+  },
+  {
+    "f": "Sjo.jpg",
+    "alt": "Sjön"
+  },
+  {
+    "f": "Bat.jpg",
+    "alt": "Båten"
+  },
+  {
+    "f": "Dassinne.jpg",
+    "alt": "Dasset inifrån"
+  }
+]
+</script>
+<script src="../script.js" defer></script>
+</body>
+</html>

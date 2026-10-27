@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="sv" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friden — Off-grid stuga vid Bodtjärnen</title>
+  <meta name="description" content="Friden — off-grid stuga vid Bodtjärnen i Sidensjö, mellan Örnsköldsvik och Sollefteå. Elda i vedkaminen och vakna till spegelblankt sjövatten." />
+
+    <link rel="alternate" hreflang="sv" href="https://westberg991.github.io/Cabins/friden/" />
+  <link rel="alternate" hreflang="en" href="https://westberg991.github.io/Cabins/friden/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://westberg991.github.io/Cabins/friden/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://westberg991.github.io/Cabins/friden/" />
+  <meta property="og:locale" content="sv_SE" />
+  <meta property="og:title" content="Friden — Off-grid stuga vid Bodtjärnen" />
+  <meta property="og:description" content="Enkel stuga utan el och internet vid en privat sjö i Norrland." />
+  <meta property="og:image" content="https://westberg991.github.io/Cabins/bilder/friden/StugaVyUte.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Sätter tema och js-klass direkt, så sidan inte blinkar -->
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.className += ' js';
+      try { t = localStorage.getItem('friden-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preload" as="image" href="../bilder/friden/StugaVyUte.jpg" fetchpriority="high" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23756552' d='M12 3L2 11h3v8h6v-5h2v5h6v-8h3L12 3z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body data-base="../bilder/friden/">
+
+<!-- ═══ NAV ══════════════════════════════════════════════ -->
+<nav class="nav">
+  <a href="#" class="logo" aria-label="Friden, till toppen av sidan">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1v-9.5z"/>
+      <path d="M12 4v4" opacity=".35"/>
+    </svg>
+    Friden
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#galleri">Galleri</a>
+    <a href="#boendet">Boendet</a>
+    <a href="#faciliteter">Faciliteter</a>
+    <a href="#utforska">Utforska</a>
+    <a href="#packlista">Packlista</a>
+    <a href="#hitta-hit">Hitta hit</a>
+    <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" rel="noopener" class="btn btn--accent btn--sm">Boka via Airbnb</a>
+  </div>
+  <div class="nav-actions">
+    <a class="lang-toggle" href="en/" hreflang="en" lang="en" aria-label="View this page in English" title="English"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg><span>EN</span></a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Byt till mörkt läge" title="Byt till mörkt läge"></button>
+    <button class="burger" id="burger" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═════════════════════════════════════════════ -->
+<header class="hero">
+  <img class="hero-bg" src="../bilder/friden/StugaVyUte.jpg" alt="" fetchpriority="high" decoding="async" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Bodtjärnen · Norrland</span>
+    <h1 class="hero-title">Din fristad i <em>norrländsk natur</em></h1>
+    <p class="hero-desc">Enkel, avskalad stuga utan el och internet. Koppla bort omvärlden, elda i vedkaminen och vakna upp med spegelblankt sjövatten utanför fönstret.</p>
+    <div class="hero-cta">
+      <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" rel="noopener" class="btn btn--accent">Boka via Airbnb</a>
+      <a href="#galleri" class="btn btn--ghost">Se bilder</a>
+    </div>
+    <div class="hero-meta">
+      <a href="#omdomen" class="rating-link"><span class="star">★</span> Omdömen på Airbnb</a>
+      <span class="divider">·</span>
+      <span>Upp till 4 gäster</span>
+      <span class="divider">·</span>
+      <span>Mellan Örnsköldsvik och Sollefteå</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ VARFÖR FRIDEN ════════════════════════════════════ -->
+<section class="why" aria-label="Därför Friden">
+  <div class="container why-grid" data-r>
+    <div class="why-item">
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span>
+      <h3>Avkoppling</h3>
+      <p>Sov gott i stugan, koppla av vid elden och njut av fågelsång, kvällsskymning och stilla lugn långt från stadslivet.</p>
+    </div>
+    <div class="why-item">
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15h18l-2.5 4h-13z"/><path d="M12 3v12"/><path d="M12 4c3 2 5 5 5.5 9H12"/></svg></span>
+      <h3>Friluftsliv</h3>
+      <p>Båt och fiskespön ingår utan extra kostnad. Möjlighet för morgonbad, fiske från piren och en tur på sjön.</p>
+    </div>
+    <div class="why-item">
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l5 7h-3l4 6H6l4-6H7z"/><path d="M12 16v5"/></svg></span>
+      <h3>Naturnära</h3>
+      <p>Långt från trafik och stadsljus. Stjärnhimlen blir din kvällsutsikt och skogen din granne.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERI ══════════════════════════════════════════ -->
+<section class="section section--gallery" id="galleri">
+  <div class="container" data-r>
+    <span class="section-label">Galleri</span>
+    <h2>Se stugan i verkligheten</h2>
+    <p class="section-intro">Riktig natur, riktigt boende — här är Friden som den faktiskt ser ut. <a href="https://www.youtube.com/watch?v=0qQEQfKipso" target="_blank" rel="noopener" class="inline-link">Se filmen från stugan →</a></p>
+
+    <div class="gallery-viewer">
+      <div class="gallery-backdrop" id="galleryBackdrop"></div>
+      <img id="mainImg" src="../bilder/friden/FramsidaStuga.jpg" alt="Stugans framsida" />
+      <button class="gallery-arrow prev" id="prev" type="button" aria-label="Föregående bild">‹</button>
+      <button class="gallery-arrow next" id="next" type="button" aria-label="Nästa bild">›</button>
+    </div>
+    <div class="gallery-meta">
+      <span class="gallery-counter" id="slideCounter" aria-live="polite">1 / 16</span>
+      <div class="gallery-progress-bg"><div class="gallery-progress-fill" id="slideProgress"></div></div>
+    </div>
+    <div class="gallery-thumbs" id="thumbStrip"></div>
+  </div>
+</section>
+
+<!-- ═══ BOENDET ══════════════════════════════════════════ -->
+<section class="section" id="boendet">
+  <div class="container" data-r>
+    <span class="section-label">Boendet</span>
+    <h2>Livet vid Bodtjärnen</h2>
+    <div class="info-layout">
+      <div class="info-text">
+        <p class="lead">Belägen vid en privat sjö utan grannar — mellan Örnsköldsvik och Sollefteå — ger stugan dig en sällsynt chans att uppleva norrländsk natur på egna villkor. Stugan rymmer upp till 4 personer med våningssäng och bäddsoffa. Utrustad med gasoldriven kyl och spis samt vedkamin för kyliga kvällar.</p>
+        <figure class="info-figure">
+          <img src="../bilder/friden/StenPir.jpg" alt="Stenpiren vid Bodtjärnen" loading="lazy" decoding="async" />
+        </figure>
+        <p class="quote">På andra sidan sjön passerar tåg emellanåt — en liten, stämningsfull påminnelse om att omvärlden finns, fast den känns obegripligt långt borta.</p>
+      </div>
+      <div class="info-sheet">
+        <div class="info-group">
+          <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v6"/><path d="M15 2v6"/><path d="M6 8h12v4a6 6 0 0 1-12 0z"/><path d="M12 18v4"/></svg></span><h3>Off-grid: det enkla livet</h3></div>
+          <ul class="dash-list">
+            <li>Inget indraget vatten. Ta med eget dricksvatten.</li>
+            <li>Ingen fast el eller internet. Ladda upp powerbank i förväg.</li>
+            <li>Utedass och förråd med ved på tomten.</li>
+          </ul>
+        </div>
+        <div class="info-group">
+          <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20L12 4l9 16z"/><path d="M12 4v16"/><path d="M9 20l3-6 3 6"/></svg></span><h3>Utrustning på plats</h3></div>
+          <ul class="dash-list">
+            <li>Vedkamin och grill.</li>
+            <li>Båt och fiskespön.</li>
+            <li>Picknickbord, utemöbler samt möjlighet till tältplats.</li>
+            <li>Gasoldriven kyl, frysfack och spis.</li>
+          </ul>
+        </div>
+        <div class="info-group info-group--note">
+          <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg></span><h3>Att tänka på</h3></div>
+          <ul class="dash-list">
+            <li>Underlakan ingår ej. Gäst tar med egna (se packlistan).</li>
+            <li>Kolla täckningskarta i förväg för mobilnät (4G/3G).</li>
+            <li>Ta med tändstickor till vedkaminen.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FACILITETER ══════════════════════════════════════ -->
+<section class="section section--offset" id="faciliteter">
+  <div class="container" data-r>
+    <span class="section-label">Faciliteter</span>
+    <h2>Sova gott och hålla sig ren</h2>
+    <div class="cards-2">
+      <div class="card card--facility">
+        <div class="facility-head">
+          <svg class="facility-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M3 18h18"/><path d="M7 10V7"/><path d="M12 9V6"/><path d="M17 10V7"/>
+          </svg>
+          <h3>Sovkomfort för 4 personer</h3>
+        </div>
+        <div class="facility-imgs">
+          <img src="../bilder/friden/StugaInne.jpg" alt="Sovplats inomhus" loading="lazy" decoding="async" />
+          <img src="../bilder/friden/DubbelSang.jpg" alt="Dubbelsäng" loading="lazy" decoding="async" />
+        </div>
+        <p>Stugan har täcken och kuddar till alla 4 gäster — våningssäng eller bäddsoffa finns beroende på antal.</p>
+        <div class="tip">
+          <strong>Så här bäddar du:</strong>
+          Täcken och kuddar finns i stugan. Gäst tar dock med egna underlakan och sängkläder för bäddning, i antal som behövs för vistelsen.
+        </div>
+      </div>
+      <div class="card card--facility">
+        <div class="facility-head">
+          <svg class="facility-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M12 2s6 7.5 6 12a6 6 0 0 1-12 0c0-4.5 6-12 6-12z"/>
+            <path d="M12 22v-3" opacity=".5"/>
+          </svg>
+          <h3>Utedusch och utedass</h3>
+        </div>
+        <div class="facility-imgs">
+          <div class="facility-img-wrap"><img src="../bilder/friden/UteDusch.jpg" alt="Utedusch" loading="lazy" decoding="async" /></div>
+          <div class="facility-img-wrap"><img src="../bilder/friden/Dass.jpg" alt="Utedass" loading="lazy" decoding="async" /></div>
+        </div>
+        <p>Ute vid förrådet finns en enkel utedusch samt ett välskött utedass — med möjlighet till originell utsikt.</p>
+        <div class="tip">
+          <strong>Så fungerar duschen:</strong>
+          Värm upp vatten inne med gasolspis och fyll en hink. Använd sedan elpumpen (laddas med micro-USB) för att kunna duscha, med skogen och vattnet som utsikt.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ UTFORSKA ═════════════════════════════════════════ -->
+<section class="section" id="utforska">
+  <div class="container" data-r>
+    <span class="section-label">Utforska</span>
+    <h2>I närheten av Friden</h2>
+    <div class="cards-3">
+      <a class="card card--explore" href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank" rel="noopener">
+        <span class="badge">Vandring</span>
+        <h3>Nätra Fjällskog</h3>
+        <p>En av Norrlands dolda pärlor — dramatisk fjällterräng och fantastiska vyer, alldeles nära stugan. Perfekt dagsutflykt för den som vill ut på ordentliga stigar.</p>
+        <span class="explore-foot"><span>📍 Nätra, Västernorrland</span> <span class="explore-link">Läs mer →</span></span>
+      </a>
+      <a class="card card--explore" href="https://maps.app.goo.gl/4Tuw2YRGHdDyaFGY6" target="_blank" rel="noopener">
+        <span class="badge">Utsikt</span>
+        <h3>Hästbacken och Ormvägen</h3>
+        <p>Följ Ormvägen upp mot Hästbacken för en fin utsiktsplats i det närmaste naturområdet. En lättgången promenad som belönas med storslagen vy.</p>
+        <span class="explore-foot"><span>📍 Nära stugan</span> <span class="explore-link">Se karta →</span></span>
+      </a>
+      <a class="card card--explore" href="https://maps.app.goo.gl/mZbg3PSKtK1cdyTG9" target="_blank" rel="noopener">
+        <span class="badge">Promenad</span>
+        <h3>Stordegersjön</h3>
+        <p>Starta från Hinnsjövägen och följ vägen ned till det lugna Stordegersjön. En avslappnad naturpromenad för hela familjen med fin sjöutsikt.</p>
+        <span class="explore-foot"><span>📍 Från Hinnsjövägen</span> <span class="explore-link">Se karta →</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PACKLISTA ════════════════════════════════════════ -->
+<section class="section section--offset" id="packlista">
+  <div class="container" data-r>
+    <span class="section-label">Packlista</span>
+    <h2>Det här tar du med</h2>
+    <div class="cards-2">
+      <div class="card card--pack">
+        <h3><span class="pack-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 15h18"/><path d="M5 9V6h5v3"/><path d="M3 18v2"/><path d="M21 18v2"/></svg></span>Sovkomfort</h3>
+        <ul class="check-list">
+          <li>Underlakan, ett per person (täcken och kuddar finns på plats)</li>
+          <li>Påslakan eller sovsäck</li>
+          <li>Extra filt till kyliga kvällar</li>
+        </ul>
+      </div>
+      <div class="card card--pack">
+        <h3><span class="pack-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2s6 7.5 6 12a6 6 0 0 1-12 0c0-4.5 6-12 6-12z"/></svg></span>Hygien och bad</h3>
+        <ul class="check-list">
+          <li>Handdukar och duschtvål vid behov</li>
+          <li>Toalettartiklar samt toapapper</li>
+          <li>Myggmedel och solskydd vid behov</li>
+        </ul>
+      </div>
+      <div class="card card--pack">
+        <h3><span class="pack-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8"/><path d="M5 3v5a2 2 0 0 0 4 0V3"/><path d="M7 11v10"/><path d="M17 3c-2 2-3 4.5-3 7h3v11"/></svg></span>Mat och dryck</h3>
+        <ul class="check-list">
+          <li>Dricksvatten för hela vistelsen</li>
+          <li>Mat och tilltugg. Det finns kyl och frysfack</li>
+          <li>Kaffe, kryddor etc. vid behov</li>
+        </ul>
+      </div>
+      <div class="card card--pack">
+        <h3><span class="pack-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>El och friluftsliv</h3>
+        <ul class="check-list">
+          <li>Powerbank (det finns ingen el på plats)</li>
+          <li>Ficklampa eller pannlampa med extra batterier</li>
+          <li>Regnkläder och praktiska skor vid behov</li>
+          <li>Vandringskarta eller offlinekarta om du ska till Nätra Fjällskog</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OMDÖMEN ══════════════════════════════════════════ -->
+<section class="section" id="omdomen">
+  <div class="container" data-r>
+    <span class="section-label">Omdömen</span>
+    <h2>Vad gästerna tycker</h2>
+    <p class="section-intro">Omdömen från gäster som bott på Friden, hämtade från Airbnb.</p>
+    <div class="reviews-wrap" id="airbnb-reviews-widget">
+      <div id="JFWebsiteWidget-019f9f9336c870008430e6f1330f34aa1485"></div>
+      <script src="https://www.jotform.com/website-widgets/embed/019f9f9336c870008430e6f1330f34aa1485"></script>
+    </div>
+    <p class="reviews-more"><a class="inline-link" href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" rel="noopener">Läs alla omdömen på Airbnb →</a></p>
+  </div>
+</section>
+
+<!-- ═══ HITTA HIT ════════════════════════════════════════ -->
+<section class="section section--offset" id="hitta-hit">
+  <div class="container" data-r>
+    <span class="section-label">Hitta hit</span>
+    <h2>Stugan vid Bodtjärnen</h2>
+    <div class="map-layout">
+      <div class="map-embed-wrap">
+        <a class="map-fallback" href="https://www.google.com/maps?q=63.226306,18.033650" target="_blank" rel="noopener">Öppna kartan i Google Maps →</a>
+        <iframe
+          src="https://maps.google.com/maps?q=63.226306,18.033650&z=13&output=embed"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Karta över Friden vid Bodtjärnen"></iframe>
+      </div>
+      <div class="map-panel">
+        <p class="map-cta-head">Vägbeskrivning</p>
+        <div class="map-btns">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=63.226306,18.033650" target="_blank" rel="noopener" class="map-btn">
+            <span class="map-btn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.6 11.1 7.6 11.9.2.2.6.2.8 0C13.4 21.1 20 15.4 20 10c0-4.4-3.6-8-8-8z"/><circle cx="12" cy="10" r="3.2" fill="#fff"/></svg>
+            </span>
+            <span>Google Maps<span class="map-btn-sub">Öppna i Google Maps</span></span>
+          </a>
+          <a href="https://maps.apple.com/?daddr=63.226306,18.033650&dirflg=d" target="_blank" rel="noopener" class="map-btn">
+            <span class="map-btn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6" fill="#5BC8F5"/><path fill="#fff" d="M12 6l4.5 12-4.5-2.5L7.5 18z"/></svg>
+            </span>
+            <span>Apple Kartor<span class="map-btn-sub">Öppna i Apple Maps</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer class="footer" id="kontakt">
+  <div class="container footer-inner">
+    <div class="foot-brand">
+      <span class="logo logo--foot">Friden</span>
+      <p>Off-grid stuga vid Bodtjärnen, Sidensjö, Västernorrland. En plats för dem som söker verklig avkoppling i norrländsk natur.</p>
+      <a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" rel="noopener" class="btn btn--accent btn--sm" style="margin-top:1.25rem;">Boka via Airbnb</a>
+    </div>
+    <div class="foot-col">
+      <h4>Navigera</h4>
+      <ul>
+        <li><a href="#boendet">Boendet</a></li>
+        <li><a href="#faciliteter">Faciliteter</a></li>
+        <li><a href="#utforska">Utforska</a></li>
+        <li><a href="#omdomen">Omdömen</a></li>
+        <li><a href="#packlista">Packlista</a></li>
+        <li><a href="#hitta-hit">Hitta hit</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Bokning</h4>
+      <ul>
+        <li><a href="https://www.airbnb.se/rooms/1261631365782137981" target="_blank" rel="noopener">Boka via Airbnb →</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Språk</h4>
+      <ul>
+        <li><a href="en/" hreflang="en" lang="en">English →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Friden — Sidensjö, Sverige</span>
+    <a class="inline-link" href="../">Alla stugor →</a>
+  </div>
+</footer>
+
+<script type="application/json" id="slideData">
+[
+  {
+    "f": "FramsidaStuga.jpg",
+    "alt": "Stugans framsida"
+  },
+  {
+    "f": "StugaVyUte.jpg",
+    "alt": "Stugan utifrån"
+  },
+  {
+    "f": "Ute.jpg",
+    "alt": "Utsikt från sjön"
+  },
+  {
+    "f": "Ute2.jpg",
+    "alt": "Utsikt från sjön"
+  },
+  {
+    "f": "Ute3.jpg",
+    "alt": "Utsikt från sjön"
+  },
+  {
+    "f": "StugaNedan.jpg",
+    "alt": "Stugan nedanifrån"
+  },
+  {
+    "f": "StugaInne.jpg",
+    "alt": "Inomhus"
+  },
+  {
+    "f": "Kamin.jpg",
+    "alt": "Vedkaminen"
+  },
+  {
+    "f": "KaminBord.jpg",
+    "alt": "Kamin och bord"
+  },
+  {
+    "f": "DubbelSang.jpg",
+    "alt": "Sovplats"
+  },
+  {
+    "f": "Matplats.jpg",
+    "alt": "Matplats"
+  },
+  {
+    "f": "Kok.jpg",
+    "alt": "Köket"
+  },
+  {
+    "f": "Forrad.jpg",
+    "alt": "Förråd med ved"
+  },
+  {
+    "f": "StenPir.jpg",
+    "alt": "Stenpiren"
+  },
+  {
+    "f": "UteDusch.jpg",
+    "alt": "Utedusch"
+  },
+  {
+    "f": "Dass.jpg",
+    "alt": "Utedass"
+  }
+]
+</script>
+<script src="../script.js" defer></script>
+</body>
+</html>

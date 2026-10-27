@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    FRIDEN — Interaktivitet (delas av svenska och engelska sidan)
-   Språk avgörs av <html lang="..."> och bildmappen av <body data-base="...">
+   Språk avgörs av <html lang="...">, bildmappen av <body data-base="..."> och bildlistan av #slideData
    ═══════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -94,28 +94,16 @@
   }
 
   /* ── Galleri ──────────────────────────────────────────── */
-  var slides = [
-    { f: 'FramsidaStuga.jpg', sv: 'Stugans framsida',   en: 'Front of the cabin' },
-    { f: 'StugaVyUte.jpg',    sv: 'Stugan utifrån',     en: 'The cabin from outside' },
-    { f: 'Ute.jpg',           sv: 'Utsikt från sjön',   en: 'View from the lake' },
-    { f: 'Ute2.jpg',          sv: 'Utsikt från sjön',   en: 'View from the lake' },
-    { f: 'Ute3.jpg',          sv: 'Utsikt från sjön',   en: 'View from the lake' },
-    { f: 'StugaNedan.jpg',    sv: 'Stugan nedanifrån',  en: 'The cabin from below' },
-    { f: 'StugaInne.jpg',     sv: 'Inomhus',            en: 'Inside the cabin' },
-    { f: 'Kamin.jpg',         sv: 'Vedkaminen',         en: 'The wood stove' },
-    { f: 'KaminBord.jpg',     sv: 'Kamin och bord',     en: 'Stove and table' },
-    { f: 'DubbelSang.jpg',    sv: 'Sovplats',           en: 'Sleeping area' },
-    { f: 'Matplats.jpg',      sv: 'Matplats',           en: 'Dining area' },
-    { f: 'Kok.jpg',           sv: 'Köket',              en: 'The kitchen' },
-    { f: 'Forrad.jpg',        sv: 'Förråd med ved',     en: 'Storage shed with firewood' },
-    { f: 'StenPir.jpg',       sv: 'Stenpiren',          en: 'The stone pier' },
-    { f: 'UteDusch.jpg',      sv: 'Utedusch',           en: 'Outdoor shower' },
-    { f: 'Dass.jpg',          sv: 'Utedass',            en: 'Outhouse' }
-  ].map(function (s) { return { src: base + s.f, alt: s[lang] }; });
+  /* Bildlistan ligger som JSON i respektive sida: <script type="application/json" id="slideData"> */
+  var slides = [];
+  try {
+    slides = JSON.parse(document.getElementById('slideData').textContent)
+      .map(function (s) { return { src: base + s.f, alt: s.alt }; });
+  } catch (e) {}
 
   var mainImg = document.getElementById('mainImg');
   var thumbStrip = document.getElementById('thumbStrip');
-  if (!mainImg || !thumbStrip) return;
+  if (!mainImg || !thumbStrip || !slides.length) return;
 
   var counter = document.getElementById('slideCounter');
   var progressEl = document.getElementById('slideProgress');

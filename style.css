@@ -267,6 +267,15 @@ h2 {
   text-decoration: none;
 }
 .theme-toggle { width: 40px; }
+/* Fast storlek på ikonerna. Den generella regeln "svg { max-width: 100% }"
+   kan annars krympa ikonen till 0 i en knapp som saknar fast bredd (syns i Chrome). */
+.theme-toggle svg,
+.lang-toggle svg {
+  width: 18px;
+  height: 18px;
+  max-width: none;
+  flex-shrink: 0;
+}
 .lang-toggle {
   padding-inline: 0.8rem;
   font-size: var(--text-xs);
@@ -893,6 +902,54 @@ h2 {
   border-top: 1px solid var(--color-divider);
   padding-top: var(--space-4);
   font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+/* ─── STARTSIDA / STUGKORT ─────────────────────────────── */
+.hub {
+  min-height: calc(100dvh - 120px);
+  padding-block: calc(var(--nav-h) + var(--space-12)) var(--space-16);
+}
+.hub-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+.cabin-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+a.cabin-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent-border);
+  box-shadow: var(--shadow-md);
+}
+.cabin-card-img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.cabin-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: var(--space-6);
+  flex: 1;
+}
+.cabin-card-body h3 { margin-bottom: 0; }
+.cabin-card-body p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.7; flex: 1; }
+.cabin-card--soon { opacity: 0.85; }
+.cabin-card-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-offset);
   color: var(--color-text-faint);
 }
 

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friden — Off-grid cabin by Lake Bodtjärnen, Sweden</title>
+  <meta name="description" content="Friden — an off-grid cabin by Lake Bodtjärnen in Sidensjö, between Örnsköldsvik and Sollefteå in northern Sweden. Light the wood stove and wake up to mirror-still water." />
+
+    <link rel="alternate" hreflang="sv" href="https://westberg991.github.io/Cabins/friden/" />
+  <link rel="alternate" hreflang="en" href="https://westberg991.github.io/Cabins/friden/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://westberg991.github.io/Cabins/friden/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://westberg991.github.io/Cabins/friden/en/" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Friden — Off-grid cabin by Lake Bodtjärnen" />
+  <meta property="og:description" content="A simple cabin with no electricity or internet, on a private lake in northern Sweden." />
+  <meta property="og:image" content="https://westberg991.github.io/Cabins/bilder/friden/StugaVyUte.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Sets theme and js class immediately to avoid a flash -->
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.className += ' js';
+      try { t = localStorage.getItem('friden-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preload" as="image" href="../../bilder/friden/StugaVyUte.jpg" fetchpriority="high" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23756552' d='M12 3L2 11h3v8h6v-5h2v5h6v-8h3L12 3z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body data-base="../../bilder/friden/">
+
+<!-- ═══ NAV ══════════════════════════════════════════════ -->
+<nav class="nav">
+  <a href="#" class="logo" aria-label="Friden, back to top of page">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1v-9.5z"/>
+      <path d="M12 4v4" opacity=".35"/>
+    </svg>
+    Friden
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#galleri">Gallery</a>
+    <a href="#boendet">The cabin</a>
+    <a href="#faciliteter">Facilities</a>
+    <a href="#utforska">Explore</a>
+    <a href="#packlista">Packing list</a>
+    <a href="#hitta-hit">Getting here</a>
+    <a href="https://www.airbnb.com/rooms/1261631365782137981" target="_blank" rel="noopener" class="btn btn--accent btn--sm">Book on Airbnb</a>
+  </div>
+  <div class="nav-actions">
+    <a class="lang-toggle" href="../" hreflang="sv" lang="sv" aria-label="Visa sidan på svenska" title="Svenska"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg><span>SV</span></a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"></button>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═════════════════════════════════════════════ -->
+<header class="hero">
+  <img class="hero-bg" src="../../bilder/friden/StugaVyUte.jpg" alt="" fetchpriority="high" decoding="async" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Lake Bodtjärnen · Northern Sweden</span>
+    <h1 class="hero-title">Your retreat in <em>Swedish wilderness</em></h1>
+    <p class="hero-desc">A simple, stripped-back cabin with no electricity or internet. Disconnect from the world, light the wood stove and wake up to mirror-still lake water outside your window.</p>
+    <div class="hero-cta">
+      <a href="https://www.airbnb.com/rooms/1261631365782137981" target="_blank" rel="noopener" class="btn btn--accent">Book on Airbnb</a>
+      <a href="#galleri" class="btn btn--ghost">See photos</a>
+    </div>
+    <div class="hero-meta">
+      <a href="#omdomen" class="rating-link"><span class="star">★</span> Reviews on Airbnb</a>
+      <span class="divider">·</span>
+      <span>Up to 4 guests</span>
+      <span class="divider">·</span>
+      <span>Between Örnsköldsvik and Sollefteå</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ WHY FRIDEN ═══════════════════════════════════════ -->
+<section class="why" aria-label="Why Friden">
+  <div class="container why-grid" data-r>
+    <div class="why-item">
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span>
+      <h3>Relaxation</h3>
+      <p>Sleep well in the cabin, unwind by the fire and enjoy birdsong, evening twilight and deep calm far from city life.</p>
+    </div>
+    <div class="why-item">
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15h18l-2.5 4h-13z"/><path d="M12 3v12"/><path d="M12 4c3 2 5 5 5.5 9H12"/></svg></span>
+      <h3>Outdoor life</h3>
+      <p>Boat and fishing rods are included at no extra cost. Enjoy a morning swim, fish from the pier and take a trip out on the lake.</p>
+    </div>
+    <div class="why-item">
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l5 7h-3l4 6H6l4-6H7z"/><path d="M12 16v5"/></svg></span>
+      <h3>Close to nature</h3>
+      <p>Far from traffic and city lights. The starry sky is your evening view and the forest is your neighbour.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ══════════════════════════════════════════ -->
+<section class="section section--gallery" id="galleri">
+  <div class="container" data-r>
+    <span class="section-label">Gallery</span>
+    <h2>See the cabin as it really is</h2>
+    <p class="section-intro">Real nature, real accommodation — this is Friden as it actually looks. <a href="https://www.youtube.com/watch?v=0qQEQfKipso" target="_blank" rel="noopener" class="inline-link">Watch the video from the cabin →</a></p>
+
+    <div class="gallery-viewer">
+      <div class="gallery-backdrop" id="galleryBackdrop"></div>
+      <img id="mainImg" src="../../bilder/friden/FramsidaStuga.jpg" alt="Front of the cabin" />
+      <button class="gallery-arrow prev" id="prev" type="button" aria-label="Previous photo">‹</button>
+      <button class="gallery-arrow next" id="next" type="button" aria-label="Next photo">›</button>
+    </div>
+    <div class="gallery-meta">
+      <span class="gallery-counter" id="slideCounter" aria-live="polite">1 / 16</span>
+      <div class="gallery-progress-bg"><div class="gallery-progress-fill" id="slideProgress"></div></div>
+    </div>
+    <div class="gallery-thumbs" id="thumbStrip"></div>
+  </div>
+</section>
+
+<!-- ═══ THE CABIN ════════════════════════════════════════ -->
+<section class="section" id="boendet">
+  <div class="container" data-r>
+    <span class="section-label">The cabin</span>
+    <h2>Life by Lake Bodtjärnen</h2>
+    <div class="info-layout">
+      <div class="info-text">
+        <p class="lead">Located by a private lake with no neighbours — between Örnsköldsvik and Sollefteå — the cabin gives you a rare chance to experience northern Swedish nature on your own terms. It sleeps up to 4 people with a bunk bed and a sofa bed, and is equipped with a gas-powered fridge and stove, plus a wood stove for chilly evenings.</p>
+        <figure class="info-figure">
+          <img src="../../bilder/friden/StenPir.jpg" alt="The stone pier at Lake Bodtjärnen" loading="lazy" decoding="async" />
+        </figure>
+        <p class="quote">Now and then a train passes on the far side of the lake — a quiet, atmospheric reminder that the world is out there, even if it feels impossibly far away.</p>
+      </div>
+      <div class="info-sheet">
+        <div class="info-group">
+          <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v6"/><path d="M15 2v6"/><path d="M6 8h12v4a6 6 0 0 1-12 0z"/><path d="M12 18v4"/></svg></span><h3>Off-grid: the simple life</h3></div>
+          <ul class="dash-list">
+            <li>No running water. Bring your own drinking water.</li>
+            <li>No mains electricity or internet. Charge your power bank beforehand.</li>
+            <li>Outhouse and a shed with firewood on the property.</li>
+          </ul>
+        </div>
+        <div class="info-group">
+          <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20L12 4l9 16z"/><path d="M12 4v16"/><path d="M9 20l3-6 3 6"/></svg></span><h3>Equipment on site</h3></div>
+          <ul class="dash-list">
+            <li>Wood stove and grill.</li>
+            <li>Boat and fishing rods.</li>
+            <li>Picnic table, outdoor furniture and space to pitch a tent.</li>
+            <li>Gas-powered fridge, freezer compartment and stove.</li>
+          </ul>
+        </div>
+        <div class="info-group info-group--note">
+          <div class="info-group-head"><span class="info-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg></span><h3>Good to know</h3></div>
+          <ul class="dash-list">
+            <li>Bottom sheets are not included. Guests bring their own (see the packing list).</li>
+            <li>Check the coverage map in advance for mobile reception (4G/3G).</li>
+            <li>Bring matches for the wood stove.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FACILITIES ═══════════════════════════════════════ -->
+<section class="section section--offset" id="faciliteter">
+  <div class="container" data-r>
+    <span class="section-label">Facilities</span>
+    <h2>Sleep well and stay fresh</h2>
+    <div class="cards-2">
+      <div class="card card--facility">
+        <div class="facility-head">
+          <svg class="facility-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M3 18h18"/><path d="M7 10V7"/><path d="M12 9V6"/><path d="M17 10V7"/>
+          </svg>
+          <h3>Comfortable sleeping for 4</h3>
+        </div>
+        <div class="facility-imgs">
+          <img src="../../bilder/friden/StugaInne.jpg" alt="Sleeping area indoors" loading="lazy" decoding="async" />
+          <img src="../../bilder/friden/DubbelSang.jpg" alt="Double bed" loading="lazy" decoding="async" />
+        </div>
+        <p>The cabin has duvets and pillows for all 4 guests — a bunk bed or sofa bed is available depending on group size.</p>
+        <div class="tip">
+          <strong>Making the beds:</strong>
+          Duvets and pillows are provided. Guests bring their own bottom sheets and bedding, as many as needed for the stay.
+        </div>
+      </div>
+      <div class="card card--facility">
+        <div class="facility-head">
+          <svg class="facility-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M12 2s6 7.5 6 12a6 6 0 0 1-12 0c0-4.5 6-12 6-12z"/>
+            <path d="M12 22v-3" opacity=".5"/>
+          </svg>
+          <h3>Outdoor shower and outhouse</h3>
+        </div>
+        <div class="facility-imgs">
+          <div class="facility-img-wrap"><img src="../../bilder/friden/UteDusch.jpg" alt="Outdoor shower" loading="lazy" decoding="async" /></div>
+          <div class="facility-img-wrap"><img src="../../bilder/friden/Dass.jpg" alt="Outhouse" loading="lazy" decoding="async" /></div>
+        </div>
+        <p>Next to the shed you will find a simple outdoor shower and a well-kept outhouse — with a view that is anything but ordinary.</p>
+        <div class="tip">
+          <strong>How the shower works:</strong>
+          Heat water indoors on the gas stove and fill a bucket. Then use the electric pump (charged via micro-USB) to shower, with the forest and the lake as your view.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPLORE ══════════════════════════════════════════ -->
+<section class="section" id="utforska">
+  <div class="container" data-r>
+    <span class="section-label">Explore</span>
+    <h2>Near Friden</h2>
+    <div class="cards-3">
+      <a class="card card--explore" href="https://www.hogakusten.com/sv/natra-fjallskog" target="_blank" rel="noopener">
+        <span class="badge">Hiking</span>
+        <h3>Nätra Fjällskog</h3>
+        <p>One of northern Sweden's hidden gems — dramatic highland terrain and stunning views, very close to the cabin. A perfect day trip for anyone who wants proper trails. (Website in Swedish.)</p>
+        <span class="explore-foot"><span>📍 Nätra, Västernorrland</span> <span class="explore-link">Read more →</span></span>
+      </a>
+      <a class="card card--explore" href="https://maps.app.goo.gl/4Tuw2YRGHdDyaFGY6" target="_blank" rel="noopener">
+        <span class="badge">Viewpoint</span>
+        <h3>Hästbacken and Ormvägen</h3>
+        <p>Follow Ormvägen up towards Hästbacken for a fine viewpoint in the nearby nature area. An easy walk rewarded with a magnificent view.</p>
+        <span class="explore-foot"><span>📍 Near the cabin</span> <span class="explore-link">View map →</span></span>
+      </a>
+      <a class="card card--explore" href="https://maps.app.goo.gl/mZbg3PSKtK1cdyTG9" target="_blank" rel="noopener">
+        <span class="badge">Walk</span>
+        <h3>Stordegersjön</h3>
+        <p>Start from Hinnsjövägen and follow the road down to the peaceful Stordegersjön. A relaxed nature walk for the whole family with lovely views over the lake.</p>
+        <span class="explore-foot"><span>📍 From Hinnsjövägen</span> <span class="explore-link">View map →</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PACKING LIST ═════════════════════════════════════ -->
+<section class="section section--offset" id="packlista">
+  <div class="container" data-r>
+    <span class="section-label">Packing list</span>
+    <h2>What to bring</h2>
+    <div class="cards-2">
+      <div class="card card--pack">
+        <h3><span class="pack-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 15h18"/><path d="M5 9V6h5v3"/><path d="M3 18v2"/><path d="M21 18v2"/></svg></span>Sleeping</h3>
+        <ul class="check-list">
+          <li>Bottom sheets, one per person (duvets and pillows are provided)</li>
+          <li>Duvet covers or a sleeping bag</li>
+          <li>An extra blanket for chilly evenings</li>
+        </ul>
+      </div>
+      <div class="card card--pack">
+        <h3><span class="pack-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2s6 7.5 6 12a6 6 0 0 1-12 0c0-4.5 6-12 6-12z"/></svg></span>Hygiene and bathing</h3>
+        <ul class="check-list">
+          <li>Towels and shower gel as needed</li>
+          <li>Toiletries and toilet paper</li>
+          <li>Insect repellent and sun protection as needed</li>
+        </ul>
+      </div>
+      <div class="card card--pack">
+        <h3><span class="pack-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8"/><path d="M5 3v5a2 2 0 0 0 4 0V3"/><path d="M7 11v10"/><path d="M17 3c-2 2-3 4.5-3 7h3v11"/></svg></span>Food and drink</h3>
+        <ul class="check-list">
+          <li>Drinking water for the whole stay</li>
+          <li>Food and snacks. There is a fridge and freezer compartment</li>
+          <li>Coffee, spices etc. as needed</li>
+        </ul>
+      </div>
+      <div class="card card--pack">
+        <h3><span class="pack-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>Power and outdoors</h3>
+        <ul class="check-list">
+          <li>Power bank (there is no electricity on site)</li>
+          <li>Flashlight or headlamp with spare batteries</li>
+          <li>Rain gear and sturdy shoes as needed</li>
+          <li>Hiking map or offline map if you are visiting Nätra Fjällskog</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ══════════════════════════════════════════ -->
+<section class="section" id="omdomen">
+  <div class="container" data-r>
+    <span class="section-label">Reviews</span>
+    <h2>What our guests say</h2>
+    <p class="section-intro">Reviews from guests who have stayed at Friden, taken from Airbnb. (Some reviews may be in Swedish.)</p>
+    <div class="reviews-wrap" id="airbnb-reviews-widget">
+      <div id="JFWebsiteWidget-019f9f9336c870008430e6f1330f34aa1485"></div>
+      <script src="https://www.jotform.com/website-widgets/embed/019f9f9336c870008430e6f1330f34aa1485"></script>
+    </div>
+    <p class="reviews-more"><a class="inline-link" href="https://www.airbnb.com/rooms/1261631365782137981" target="_blank" rel="noopener">Read all reviews on Airbnb →</a></p>
+  </div>
+</section>
+
+<!-- ═══ GETTING HERE ═════════════════════════════════════ -->
+<section class="section section--offset" id="hitta-hit">
+  <div class="container" data-r>
+    <span class="section-label">Getting here</span>
+    <h2>The cabin by Lake Bodtjärnen</h2>
+    <div class="map-layout">
+      <div class="map-embed-wrap">
+        <a class="map-fallback" href="https://www.google.com/maps?q=63.226306,18.033650" target="_blank" rel="noopener">Open the map in Google Maps →</a>
+        <iframe
+          src="https://maps.google.com/maps?q=63.226306,18.033650&z=13&hl=en&output=embed"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map of Friden by Lake Bodtjärnen"></iframe>
+      </div>
+      <div class="map-panel">
+        <p class="map-cta-head">Directions</p>
+        <div class="map-btns">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=63.226306,18.033650" target="_blank" rel="noopener" class="map-btn">
+            <span class="map-btn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.6 11.1 7.6 11.9.2.2.6.2.8 0C13.4 21.1 20 15.4 20 10c0-4.4-3.6-8-8-8z"/><circle cx="12" cy="10" r="3.2" fill="#fff"/></svg>
+            </span>
+            <span>Google Maps<span class="map-btn-sub">Open in Google Maps</span></span>
+          </a>
+          <a href="https://maps.apple.com/?daddr=63.226306,18.033650&dirflg=d" target="_blank" rel="noopener" class="map-btn">
+            <span class="map-btn-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6" fill="#5BC8F5"/><path fill="#fff" d="M12 6l4.5 12-4.5-2.5L7.5 18z"/></svg>
+            </span>
+            <span>Apple Maps<span class="map-btn-sub">Open in Apple Maps</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer class="footer" id="kontakt">
+  <div class="container footer-inner">
+    <div class="foot-brand">
+      <span class="logo logo--foot">Friden</span>
+      <p>Off-grid cabin by Lake Bodtjärnen, Sidensjö, Västernorrland, Sweden. A place for those seeking real relaxation in northern Swedish nature.</p>
+      <a href="https://www.airbnb.com/rooms/1261631365782137981" target="_blank" rel="noopener" class="btn btn--accent btn--sm" style="margin-top:1.25rem;">Book on Airbnb</a>
+    </div>
+    <div class="foot-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#boendet">The cabin</a></li>
+        <li><a href="#faciliteter">Facilities</a></li>
+        <li><a href="#utforska">Explore</a></li>
+        <li><a href="#omdomen">Reviews</a></li>
+        <li><a href="#packlista">Packing list</a></li>
+        <li><a href="#hitta-hit">Getting here</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Booking</h4>
+      <ul>
+        <li><a href="https://www.airbnb.com/rooms/1261631365782137981" target="_blank" rel="noopener">Book on Airbnb →</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Language</h4>
+      <ul>
+        <li><a href="../" hreflang="sv" lang="sv">Svenska →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Friden — Sidensjö, Sweden</span>
+    <a class="inline-link" href="../../en/">All cabins →</a>
+  </div>
+</footer>
+
+<script type="application/json" id="slideData">
+[
+  {
+    "f": "FramsidaStuga.jpg",
+    "alt": "Front of the cabin"
+  },
+  {
+    "f": "StugaVyUte.jpg",
+    "alt": "The cabin from outside"
+  },
+  {
+    "f": "Ute.jpg",
+    "alt": "View from the lake"
+  },
+  {
+    "f": "Ute2.jpg",
+    "alt": "View from the lake"
+  },
+  {
+    "f": "Ute3.jpg",
+    "alt": "View from the lake"
+  },
+  {
+    "f": "StugaNedan.jpg",
+    "alt": "The cabin from below"
+  },
+  {
+    "f": "StugaInne.jpg",
+    "alt": "Inside the cabin"
+  },
+  {
+    "f": "Kamin.jpg",
+    "alt": "The wood stove"
+  },
+  {
+    "f": "KaminBord.jpg",
+    "alt": "Stove and table"
+  },
+  {
+    "f": "DubbelSang.jpg",
+    "alt": "Sleeping area"
+  },
+  {
+    "f": "Matplats.jpg",
+    "alt": "Dining area"
+  },
+  {
+    "f": "Kok.jpg",
+    "alt": "The kitchen"
+  },
+  {
+    "f": "Forrad.jpg",
+    "alt": "Storage shed with firewood"
+  },
+  {
+    "f": "StenPir.jpg",
+    "alt": "The stone pier"
+  },
+  {
+    "f": "UteDusch.jpg",
+    "alt": "Outdoor shower"
+  },
+  {
+    "f": "Dass.jpg",
+    "alt": "Outhouse"
+  }
+]
+</script>
+<script src="../../script.js" defer></script>
+</body>
+</html>
