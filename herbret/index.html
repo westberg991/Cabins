@@ -24,7 +24,7 @@
       var d = document.documentElement, t = null;
       d.className += ' js';
       try { t = localStorage.getItem('friden-theme'); } catch (e) {}
-      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (!t) t = 'light';
       d.setAttribute('data-theme', t);
     })();
   </script>
@@ -90,7 +90,7 @@
 <section class="why" aria-label="Därför Härbret">
   <div class="container why-grid" data-r>
     <div class="why-item">
-      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span>
+      <span class="feature-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
       <h3>Bastu vid sjön</h3>
       <p>Vedeldad bastu nere vid vattnet, med utsikt över sjön.</p>
     </div>
@@ -213,7 +213,7 @@
   <div class="container" data-r>
     <span class="section-label">Utforska</span>
     <h2>I närheten av Härbret</h2>
-    <div class="cards-2">
+    <div class="cards-3">
       <div class="card card--explore card--static">
         <span class="badge">Båt och fiske</span>
         <h3>Ut på Stor-Degersjön</h3>
@@ -226,17 +226,11 @@
         <p>En av Norrlands dolda pärlor — dramatisk fjällterräng och fantastiska vyer, alldeles nära stugan. Perfekt dagsutflykt för den som vill ut på ordentliga stigar.</p>
         <span class="explore-foot"><span>📍 Nätra, Västernorrland</span> <span class="explore-link">Läs mer →</span></span>
       </a>
-      <a class="card card--explore" href="https://maps.app.goo.gl/4Tuw2YRGHdDyaFGY6" target="_blank" rel="noopener">
+      <a class="card card--explore" href="https://maps.app.goo.gl/krgVo1rbmd4T98by5" target="_blank" rel="noopener">
         <span class="badge">Utsikt</span>
         <h3>Hästbacken och Ormvägen</h3>
         <p>Följ Ormvägen upp mot Hästbacken för en fin utsiktsplats i det närmaste naturområdet. En lättgången promenad som belönas med storslagen vy.</p>
         <span class="explore-foot"><span>📍 Nära stugan</span> <span class="explore-link">Se karta →</span></span>
-      </a>
-      <a class="card card--explore" href="https://maps.app.goo.gl/mZbg3PSKtK1cdyTG9" target="_blank" rel="noopener">
-        <span class="badge">Promenad</span>
-        <h3>Stor-Degersjön</h3>
-        <p>Starta från Hinnsjövägen och följ vägen ned till det lugna Stor-Degersjön. En avslappnad naturpromenad för hela familjen med fin sjöutsikt.</p>
-        <span class="explore-foot"><span>📍 Från Hinnsjövägen</span> <span class="explore-link">Se karta →</span></span>
       </a>
     </div>
   </div>

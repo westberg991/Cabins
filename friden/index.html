@@ -24,7 +24,7 @@
       var d = document.documentElement, t = null;
       d.className += ' js';
       try { t = localStorage.getItem('friden-theme'); } catch (e) {}
-      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (!t) t = 'light';
       d.setAttribute('data-theme', t);
     })();
   </script>
