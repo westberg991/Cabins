@@ -114,17 +114,13 @@
     <h2>Se stugan i verkligheten</h2>
     <p class="section-intro">Riktig natur, riktigt boende — här är Friden som den faktiskt ser ut. <a href="https://www.youtube.com/watch?v=0qQEQfKipso" target="_blank" rel="noopener" class="inline-link">Se filmen från stugan →</a></p>
 
-    <div class="gallery-viewer">
-      <div class="gallery-backdrop" id="galleryBackdrop"></div>
-      <img id="mainImg" src="../bilder/friden/FramsidaStuga.jpg" alt="Stugans framsida" />
+    <div class="gallery-carousel">
+      <div class="carousel-track" id="carouselTrack" role="region" aria-roledescription="carousel" aria-label="Bildgalleri" tabindex="0"></div>
       <button class="gallery-arrow prev" id="prev" type="button" aria-label="Föregående bild">‹</button>
       <button class="gallery-arrow next" id="next" type="button" aria-label="Nästa bild">›</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <p class="sr-only" id="slideCounter" aria-live="polite"></p>
     </div>
-    <div class="gallery-meta">
-      <span class="gallery-counter" id="slideCounter" aria-live="polite">1 / 16</span>
-      <div class="gallery-progress-bg"><div class="gallery-progress-fill" id="slideProgress"></div></div>
-    </div>
-    <div class="gallery-thumbs" id="thumbStrip"></div>
   </div>
 </section>
 

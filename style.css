@@ -467,35 +467,56 @@ h2 {
 /* ─── GALLERY ───────────────────────────────────────────── */
 .section--gallery .container { max-width: 1280px; }
 
-.gallery-viewer {
+/* Mittbild med grannbilder som tittar fram. Svep på mobil (scroll-snap). */
+.gallery-carousel {
+  --ar: 1.5;
+  --sw: min(72cqw, calc(70vh * var(--ar)));   /* mittbildens bredd */
+  container-type: inline-size;
   position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  max-height: 78vh;
-  background: #0e0c09;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  border: 1px solid var(--color-divider);
+}
+.carousel-track {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: clamp(0.5rem, 2cqw, 1.25rem);
+  padding: 1.25rem calc((100cqw - var(--sw)) / 2);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-track:focus-visible { outline-offset: -4px; }
 
-.gallery-backdrop {
+.slide {
+  position: relative;
+  flex: 0 0 var(--sw);
+  aspect-ratio: var(--ar);
+  margin: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: #0e0c09;
+  box-shadow: var(--shadow-md);
+  scroll-snap-align: center;
+  transform: scale(0.84);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: transform 400ms ease, opacity 400ms ease, box-shadow 400ms ease;
+}
+.slide.is-active { transform: none; opacity: 1; box-shadow: var(--shadow-lg); cursor: default; }
+
+.slide-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
   filter: blur(32px) brightness(0.55) saturate(1.2);
   transform: scale(1.15);
-  z-index: 0;
 }
-.gallery-backdrop::after { content: ''; position: absolute; inset: 0; background: var(--gallery-tint); }
-
-.gallery-viewer img {
+.slide-bg::after { content: ''; position: absolute; inset: 0; background: var(--gallery-tint); }
+.slide img {
   position: relative;
-  z-index: 1;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -520,55 +541,45 @@ h2 {
   z-index: 5;
 }
 .gallery-arrow:hover { background: rgba(14,12,9,0.85); transform: translateY(-50%) scale(1.06); }
-.gallery-arrow.prev { left: 0.75rem; }
-.gallery-arrow.next { right: 0.75rem; }
+.gallery-arrow.prev { left: calc((100cqw - var(--sw)) / 2 + 0.75rem); }
+.gallery-arrow.next { right: calc((100cqw - var(--sw)) / 2 + 0.75rem); }
 
-.gallery-meta { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.75rem; }
-.gallery-counter {
-  font-size: var(--text-xs);
-  color: var(--color-text-faint);
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
-.gallery-progress-bg {
-  flex: 1;
-  height: 2px;
-  background: var(--color-divider);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.gallery-progress-fill {
-  height: 100%;
-  background: var(--color-accent);
-  border-radius: 2px;
-  transition: width 300ms ease;
-}
-
-.gallery-thumbs {
+.carousel-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 2.1rem;
+  transform: translateX(-50%);
   display: flex;
-  gap: 10px;
-  margin-top: 1rem;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-text-faint) transparent;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  background: rgba(14,12,9,0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 5;
 }
-.gallery-thumbs::-webkit-scrollbar { height: 3px; }
-.gallery-thumbs::-webkit-scrollbar-thumb { background: var(--color-text-faint); border-radius: 2px; }
+.carousel-dots button {
+  display: grid;
+  place-items: center;
+  width: 16px; height: 24px;
+}
+.carousel-dots button::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 3px;
+  background: rgba(250,247,239,0.55);
+  transition: width 250ms ease, background-color 250ms ease;
+}
+.carousel-dots button.is-active::before { width: 14px; background: #faf7ef; }
 
-.gallery-thumb-item {
-  flex: 0 0 112px;
-  height: 76px;
-  border-radius: var(--radius-md);
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
   overflow: hidden;
-  border: 2px solid transparent;
-  opacity: 0.55;
-  transition: opacity 200ms ease, border-color 200ms ease;
-  background: var(--color-surface-offset);
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
-.gallery-thumb-item.active { border-color: var(--color-accent); opacity: 1; }
-.gallery-thumb-item:hover { opacity: 0.85; }
-.gallery-thumb-item img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ─── BOENDET ───────────────────────────────────────────── */
 .info-layout {
@@ -1009,8 +1020,9 @@ a.cabin-card:hover {
   .cards-2, .cards-3 { grid-template-columns: 1fr; }
   .hero { min-height: 88vh; padding-bottom: var(--space-10); }
   .hero-overlay::after { background: linear-gradient(0deg, rgba(14,12,9,0.6) 0%, rgba(14,12,9,0.1) 70%); }
-  .gallery-viewer { aspect-ratio: 4 / 3; }
-  .gallery-thumb-item { flex-basis: 88px; height: 62px; }
+  .gallery-carousel { --ar: 1.3333; --sw: min(80cqw, calc(70vh * var(--ar))); }
+  .slide { transform: scale(0.92); }
+  .carousel-dots button { width: 14px; }
   .gallery-arrow { width: 42px; height: 42px; }
   .map-btns { flex-direction: column; }
   .map-btn { width: 100%; flex: none; }

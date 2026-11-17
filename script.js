@@ -101,64 +101,103 @@
       .map(function (s) { return { src: base + s.f, alt: s.alt }; });
   } catch (e) {}
 
-  var mainImg = document.getElementById('mainImg');
-  var thumbStrip = document.getElementById('thumbStrip');
-  if (!mainImg || !thumbStrip || !slides.length) return;
+  var track = document.getElementById('carouselTrack');
+  var dotsEl = document.getElementById('carouselDots');
+  if (!track || !dotsEl || !slides.length) return;
 
-  var counter = document.getElementById('slideCounter');
-  var progressEl = document.getElementById('slideProgress');
-  var backdrop = document.getElementById('galleryBackdrop');
-  var idx = 0;
+  var live = document.getElementById('slideCounter');
+  var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var els = [], dots = [], bgs = [], imgs = [], idx = 0;
 
   slides.forEach(function (s, i) {
-    var item = document.createElement('button');
-    item.type = 'button';
-    item.className = 'gallery-thumb-item' + (i === 0 ? ' active' : '');
-    item.setAttribute('aria-label', T.show(i + 1, slides.length, s.alt));
-    item.innerHTML = '<img src="' + s.src + '" alt="" loading="lazy" decoding="async" />';
-    item.addEventListener('click', function () { goTo(i); });
-    thumbStrip.appendChild(item);
+    var fig = document.createElement('figure');
+    fig.className = 'slide';
+    fig.setAttribute('role', 'group');
+    fig.setAttribute('aria-roledescription', 'slide');
+    fig.setAttribute('aria-label', (i + 1) + ' / ' + slides.length);
+
+    var bg = document.createElement('div');
+    bg.className = 'slide-bg';
+    bg.setAttribute('aria-hidden', 'true');
+
+    var img = new Image();
+    img.alt = s.alt;
+    img.decoding = 'async';
+    img.loading = i < 2 ? 'eager' : 'lazy';
+    img.src = s.src;
+
+    fig.appendChild(bg);
+    fig.appendChild(img);
+    fig.addEventListener('click', function () { if (i !== idx) goTo(i); });
+    track.appendChild(fig);
+
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('aria-label', T.show(i + 1, slides.length, s.alt));
+    d.addEventListener('click', function () { goTo(i); });
+    dotsEl.appendChild(d);
+
+    els.push(fig); bgs.push(bg); imgs.push(img); dots.push(d);
   });
 
-  function preload(i) {
-    var n = (i + slides.length) % slides.length;
-    (new Image()).src = slides[n].src;
-  }
-
-  function goTo(newIdx) {
-    idx = (newIdx + slides.length) % slides.length;
-    var s = slides[idx];
-
-    backdrop.style.backgroundImage = "url('" + s.src + "')";
-    mainImg.src = s.src;
-    mainImg.alt = s.alt;
-
-    counter.textContent = (idx + 1) + ' / ' + slides.length;
-    progressEl.style.width = ((idx + 1) / slides.length * 100) + '%';
-
-    Array.prototype.forEach.call(thumbStrip.children, function (el, i) {
-      el.classList.toggle('active', i === idx);
+  function setActive(i) {
+    idx = i;
+    els.forEach(function (el, n) {
+      var active = n === i;
+      var near = Math.abs(n - i) <= 1;
+      el.classList.toggle('is-active', active);
+      dots[n].classList.toggle('is-active', active);
+      if (active) dots[n].setAttribute('aria-current', 'true'); else dots[n].removeAttribute('aria-current');
+      /* Suddig bakgrund och förladdning bara för aktuell bild och grannarna */
+      if (near) {
+        imgs[n].loading = 'eager';
+        bgs[n].style.backgroundImage = "url('" + slides[n].src + "')";
+      } else {
+        bgs[n].style.backgroundImage = '';
+      }
     });
-    var activeThumb = thumbStrip.children[idx];
-    if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-
-    preload(idx + 1);
-    preload(idx - 1);
+    if (live) live.textContent = T.show(i + 1, slides.length, slides[i].alt);
   }
 
-  /* Startläge (HTML innehåller redan första bilden) */
-  backdrop.style.backgroundImage = "url('" + slides[0].src + "')";
-  counter.textContent = '1 / ' + slides.length;
-  progressEl.style.width = (100 / slides.length) + '%';
+  function scrollTarget(i) {
+    var el = els[i];
+    return el.offsetLeft - (track.clientWidth - el.offsetWidth) / 2;
+  }
 
-  document.getElementById('next').addEventListener('click', function () { goTo(idx + 1); });
-  document.getElementById('prev').addEventListener('click', function () { goTo(idx - 1); });
+  function goTo(i, instant) {
+    var n = (i + slides.length) % slides.length;
+    track.scrollTo({ left: scrollTarget(n), behavior: (instant || reduceMotion) ? 'auto' : 'smooth' });
+    if (instant) setActive(n);
+  }
+
+  /* Vilken bild ligger i mitten just nu? (uppdateras vid svep och knapptryck) */
+  var ticking = false;
+  track.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      var mid = track.scrollLeft + track.clientWidth / 2, best = 0, bestDist = Infinity;
+      els.forEach(function (el, n) {
+        var dist = Math.abs(el.offsetLeft + el.offsetWidth / 2 - mid);
+        if (dist < bestDist) { bestDist = dist; best = n; }
+      });
+      if (best !== idx) setActive(best);
+    });
+  }, { passive: true });
+
+  window.addEventListener('resize', function () { track.scrollTo({ left: scrollTarget(idx), behavior: 'auto' }); });
+
+  document.getElementById('next').addEventListener('click', function () { goTo(idx + 1, idx === slides.length - 1); });
+  document.getElementById('prev').addEventListener('click', function () { goTo(idx - 1, idx === 0); });
+
+  setActive(0);
 
   /* Piltangenter när fokus är i galleriet */
   var gallery = document.getElementById('galleri');
   document.addEventListener('keydown', function (e) {
     if (!gallery || !gallery.contains(document.activeElement)) return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(idx + 1); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(idx - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(idx + 1, idx === slides.length - 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(idx - 1, idx === 0); }
   });
 })();
