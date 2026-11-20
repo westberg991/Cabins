@@ -986,6 +986,16 @@ a.cabin-card:hover {
   .map-btn { width: auto; flex: 1 1 200px; }
 }
 
+/* Surfplatta och mobil: galleriet går ut till skärmens kanter så att bilderna blir större */
+@media (max-width: 1024px) {
+  .gallery-carousel {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    --sw: min(84cqw, calc(70vh * var(--ar)));
+  }
+  .slide { transform: scale(0.92); }
+}
+
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .nav-links.open {
@@ -1020,8 +1030,8 @@ a.cabin-card:hover {
   .cards-2, .cards-3 { grid-template-columns: 1fr; }
   .hero { min-height: 88vh; padding-bottom: var(--space-10); }
   .hero-overlay::after { background: linear-gradient(0deg, rgba(14,12,9,0.6) 0%, rgba(14,12,9,0.1) 70%); }
-  .gallery-carousel { --ar: 1.3333; --sw: min(80cqw, calc(70vh * var(--ar))); }
-  .slide { transform: scale(0.92); }
+  .gallery-carousel { --ar: 1.3333; --sw: min(88cqw, calc(70vh * var(--ar))); }
+  .slide { transform: scale(0.96); }
   .carousel-dots button { width: 14px; }
   .gallery-arrow { width: 42px; height: 42px; }
   .map-btns { flex-direction: column; }
